@@ -128,7 +128,14 @@ jobs:
           DEPLOY_HEALTH_ENDPOINT: ${{ vars.DEPLOY_HEALTH_ENDPOINT }}
         run: |
           set -euo pipefail
-          curl -fsS "$DEPLOY_DOMAIN$DEPLOY_HEALTH_ENDPOINT" -o /tmp/homepage.html
+          for attempt in 1 2 3 4 5 6; do
+            if curl -fsS "$DEPLOY_DOMAIN$DEPLOY_HEALTH_ENDPOINT" -o /tmp/homepage.html; then
+              break
+            fi
+            echo "HTTPS not ready yet (attempt ${attempt}); waiting"
+            sleep 5
+          done
+          test -s /tmp/homepage.html
           grep -q 'La Vida Belize' /tmp/homepage.html
           curl -fsS "$DEPLOY_DOMAIN/css/styles.css" -o /dev/null
           curl -fsS "$DEPLOY_DOMAIN/js/main.js" -o /dev/null
