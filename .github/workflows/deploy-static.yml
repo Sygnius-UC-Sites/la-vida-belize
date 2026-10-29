@@ -119,15 +119,7 @@ jobs:
             exit 0
           fi
           ssh -o StrictHostKeyChecking=yes "root@$DEPLOY_HOST" \
-            "DOMAIN='$DOMAIN' bash -s" <<'REMOTE'
-          set -euo pipefail
-          CONF="$(grep -RIl --include='*.conf' "server_name ${DOMAIN}" /etc/nginx /home 2>/dev/null | head -n 1 || true)"
-          echo "vhost=$CONF"
-          if [ -n "$CONF" ]; then
-            grep -n "well-known\|scheme\|server_name\|listen" "$CONF" | head -n 80 || true
-          fi
-          clpctl lets-encrypt:install:certificate --domainName="$DOMAIN"
-          REMOTE
+            "clpctl lets-encrypt:install:certificate --domainName='$DOMAIN'"
 
       - name: Verify public staging URL
         shell: bash
