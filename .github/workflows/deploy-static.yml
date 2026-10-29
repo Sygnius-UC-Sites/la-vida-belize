@@ -77,10 +77,6 @@ jobs:
           fi
           chown -R "${SITE_USER}:${SITE_USER}" "/home/${SITE_USER}/.ssh"
           chmod 600 "/home/${SITE_USER}/.ssh/authorized_keys"
-
-          if ! curl -fsS --max-time 20 "https://${DOMAIN}/" >/dev/null 2>&1; then
-            clpctl lets-encrypt:install:certificate --domainName="$DOMAIN"
-          fi
           REMOTE
 
       - name: Deploy files
@@ -105,7 +101,33 @@ jobs:
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_APP_PATH: ${{ vars.DEPLOY_APP_PATH }}
         run: |
-          ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_APP_PATH' && clpctl system:permissions:reset --directories=755 --files=644 --path=."
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_APP_PATH' && clpctl system:permissions:reset --directories=755 --files=644 --path=." || \
+          ssh "root@$DEPLOY_HOST" "chown -R '${{ secrets.DEPLOY_USER }}:${{ secrets.DEPLOY_USER }}' '$DEPLOY_APP_PATH' && find '$DEPLOY_APP_PATH' -type d -exec chmod 755 {} + && find '$DEPLOY_APP_PATH' -type f -exec chmod 644 {} +"
+
+      - name: Install Let's Encrypt certificate
+        shell: bash
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
+        run: |
+          set -euo pipefail
+          DOMAIN="${DEPLOY_DOMAIN#https://}"
+          DOMAIN="${DOMAIN#http://}"
+          DOMAIN="${DOMAIN%/}"
+          if curl -fsS --max-time 20 "https://${DOMAIN}/" >/dev/null 2>&1; then
+            echo "Trusted HTTPS already works"
+            exit 0
+          fi
+          ssh -o StrictHostKeyChecking=yes "root@$DEPLOY_HOST" \
+            "DOMAIN='$DOMAIN' bash -s" <<'REMOTE'
+          set -euo pipefail
+          CONF="$(grep -RIl --include='*.conf' "server_name ${DOMAIN}" /etc/nginx /home 2>/dev/null | head -n 1 || true)"
+          echo "vhost=$CONF"
+          if [ -n "$CONF" ]; then
+            grep -n "well-known\|scheme\|server_name\|listen" "$CONF" | head -n 80 || true
+          fi
+          clpctl lets-encrypt:install:certificate --domainName="$DOMAIN"
+          REMOTE
 
       - name: Verify public staging URL
         shell: bash
