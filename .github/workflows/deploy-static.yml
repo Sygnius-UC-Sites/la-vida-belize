@@ -1,0 +1,120 @@
+name: Deploy static staging
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-static-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to CloudPanel staging
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate static site
+        shell: bash
+        run: |
+          test -f index.html
+          test -d css
+          test -d js
+          grep -q 'La Vida Belize' index.html
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Trust deployment host
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' '31.170.165.106 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGOnV0w+MN94o87demmBNK8ee9fJD6Dc3OB6c7GIl5eQ' >> ~/.ssh/known_hosts
+
+      - name: Ensure CloudPanel site
+        shell: bash
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
+          DEPLOY_APP_PATH: ${{ vars.DEPLOY_APP_PATH }}
+        run: |
+          set -euo pipefail
+          test -n "$DEPLOY_HOST"
+          test -n "$DEPLOY_USER"
+          test -n "$DEPLOY_APP_PATH"
+          ssh -o StrictHostKeyChecking=yes "root@$DEPLOY_HOST" \
+            "DEPLOY_USER='$DEPLOY_USER' DEPLOY_APP_PATH='$DEPLOY_APP_PATH' DEPLOY_DOMAIN='$DEPLOY_DOMAIN' bash -s" <<'REMOTE'
+          set -euo pipefail
+          SITE_USER="$DEPLOY_USER"
+          DOMAIN="${DEPLOY_DOMAIN#https://}"
+          DOMAIN="${DOMAIN#http://}"
+          DOMAIN="${DOMAIN%/}"
+          APP_PATH="$DEPLOY_APP_PATH"
+
+          if [ ! -d "$APP_PATH" ]; then
+            PASS="$(openssl rand -base64 24 | tr -d '/+=')Aa1!"
+            clpctl site:add:static --domainName="$DOMAIN" --siteUser="$SITE_USER" --siteUserPassword="$PASS"
+          fi
+
+          test -d "$APP_PATH"
+
+          install -d -m 700 "/home/${SITE_USER}/.ssh"
+          touch "/home/${SITE_USER}/.ssh/authorized_keys"
+          if [ -f /root/.ssh/authorized_keys ]; then
+            while IFS= read -r line; do
+              [ -z "$line" ] && continue
+              grep -qxF "$line" "/home/${SITE_USER}/.ssh/authorized_keys" || printf '%s\n' "$line" >> "/home/${SITE_USER}/.ssh/authorized_keys"
+            done < /root/.ssh/authorized_keys
+          fi
+          chown -R "${SITE_USER}:${SITE_USER}" "/home/${SITE_USER}/.ssh"
+          chmod 600 "/home/${SITE_USER}/.ssh/authorized_keys"
+
+          if ! curl -fsS --max-time 20 "https://${DOMAIN}/" >/dev/null 2>&1; then
+            clpctl lets-encrypt:install:certificate --domainName="$DOMAIN"
+          fi
+          REMOTE
+
+      - name: Deploy files
+        shell: bash
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_APP_PATH: ${{ vars.DEPLOY_APP_PATH }}
+        run: |
+          set -euo pipefail
+          rsync -rlz --delete --no-perms --omit-dir-times \
+            --exclude ".git/" \
+            --exclude ".github/" \
+            --exclude ".gitignore" \
+            --exclude "README.md" \
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APP_PATH/"
+
+      - name: Reset site permissions
+        shell: bash
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_APP_PATH: ${{ vars.DEPLOY_APP_PATH }}
+        run: |
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_APP_PATH' && clpctl system:permissions:reset --directories=755 --files=644 --path=."
+
+      - name: Verify public staging URL
+        shell: bash
+        env:
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
+          DEPLOY_HEALTH_ENDPOINT: ${{ vars.DEPLOY_HEALTH_ENDPOINT }}
+        run: |
+          set -euo pipefail
+          curl -fsS "$DEPLOY_DOMAIN$DEPLOY_HEALTH_ENDPOINT" -o /tmp/homepage.html
+          grep -q 'La Vida Belize' /tmp/homepage.html
+          curl -fsS "$DEPLOY_DOMAIN/css/styles.css" -o /dev/null
+          curl -fsS "$DEPLOY_DOMAIN/js/main.js" -o /dev/null
