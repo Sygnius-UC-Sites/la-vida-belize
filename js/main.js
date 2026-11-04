@@ -554,7 +554,7 @@ if (contactForm) {
       `Phone: ${data.phone || ""}`,
     ].join("\n");
     window.location.assign(
-      `mailto:info@lavidabelize.com?subject=${encodeURIComponent("La Vida Belize inquiry")}&body=${encodeURIComponent(body)}`,
+      `mailto:info@lavidabelize.com?subject=${encodeURIComponent("La Vida Belize stay inquiry")}&body=${encodeURIComponent(body)}`,
     );
   });
 }
