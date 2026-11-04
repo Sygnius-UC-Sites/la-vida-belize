@@ -944,7 +944,7 @@ body.has-mobile-book .footer {
 }
 
 .page-hero.has-search {
-  min-height: min(72vh, 680px);
+  min-height: min(62vh, 560px);
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-end;
@@ -954,14 +954,20 @@ body.has-mobile-book .footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 28px;
+  padding-bottom: 20px;
 }
 .page-hero.has-search .hero-bottom {
   position: relative;
   z-index: 2;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 .page-hero.has-search .search-panel {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 92px;
+  margin-bottom: 0;
   box-shadow: 0 -8px 28px rgba(8, 36, 35, 0.18);
 }
 
