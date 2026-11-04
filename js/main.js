@@ -539,6 +539,26 @@ if (form && cal && gp && ci && co && gt && cl && out) {
   updateGuests();
 }
 
+const contactForm = $("#contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(contactForm).entries());
+    const body = [
+      "Hello La Vida Belize,",
+      "",
+      data.message || "",
+      "",
+      `Name: ${data.name || ""}`,
+      `Email: ${data.email || ""}`,
+      `Phone: ${data.phone || ""}`,
+    ].join("\n");
+    window.location.assign(
+      `mailto:info@lavidabelize.com?subject=${encodeURIComponent("La Vida Belize inquiry")}&body=${encodeURIComponent(body)}`,
+    );
+  });
+}
+
 document.documentElement.classList.add("motion-enhanced");
 if (!reduced.matches && window.innerWidth > 900) {
   const layers = [

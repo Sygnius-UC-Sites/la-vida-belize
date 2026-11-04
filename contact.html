@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#123c3a">
-<meta name="description" content="Contact La Vida Belize in Placencia.">
+<meta name="description" content="Contact La Vida Belize in Placencia. Address, phone, email, WhatsApp and a message form.">
 <title>Contact — La Vida Belize</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page" id="top">
+
 <div class="topline">AN INTIMATE BEACHFRONT RETREAT <span>✦</span> PLACENCIA PENINSULA, BELIZE</div>
 <header class="header" id="header">
 <nav aria-label="Main navigation" class="nav">
@@ -30,21 +31,61 @@
 <button aria-controls="navLinks" aria-expanded="false" aria-label="Open menu" class="menu-toggle" id="menuToggle">☰</button>
 </nav>
 </header>
+
 <main>
 
-<section class="page-hero"><img alt="" src="assets/image-13-1a4592828319.webp" width="1600" height="900"><div class="wrap"><div class="eyebrow">Contact</div><h1>We would love<br>to hear from you.</h1></div></section>
-<section class="page-copy"><div class="wrap">
-<div class="contact-grid">
-<div class="contact-card"><h3>Address</h3><p>204 Plantation, Placencia Road<br>Placencia, Stann Creek, Belize</p></div>
-<div class="contact-card"><h3>Phone</h3><p><a href="tel:+18778235493">+1 877-823-5493</a></p></div>
-<div class="contact-card"><h3>Email</h3><p><a href="mailto:info@lavidabelize.com">info@lavidabelize.com</a></p></div>
-<div class="contact-card"><h3>Text / WhatsApp</h3><p><a href="https://wa.me/5016278977">+501-627-8977</a></p></div>
+<section class="page-hero contact-hero">
+<img alt="Beachfront at La Vida Belize" src="assets/peninsula/sunset-palms.webp" width="1600" height="900">
+<div class="wrap">
+<div class="eyebrow">Contact</div>
+<h1>Tell us what kind of stay you are planning.</h1>
+<p class="hero-lead">Send dates, guest count, and questions about La Vida Belize. We will get back to you soon.</p>
 </div>
-<p class="prose" style="margin-top:36px">For group dates or a full-property enquiry, email us with your preferred dates and guest count. For a single home, the availability search is the fastest path to live rates.</p>
-<a class="button primary" href="index.html#booking">Check availability <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 3.5 12.5 8 8 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</section>
+<section class="contact-strip"><div class="wrap contact-strip-grid">
+<article>
+<div class="contact-kicker">Address</div>
+<p>204 Plantation, Placencia Road<br>Placencia, Stann Creek, Belize</p>
+</article>
+<article>
+<div class="contact-kicker">Phone</div>
+<p><a href="tel:+18778235493">+1 877-823-5493</a></p>
+</article>
+<article>
+<div class="contact-kicker">Email address</div>
+<p><a href="mailto:info@lavidabelize.com">info@lavidabelize.com</a></p>
+</article>
+<article>
+<div class="contact-kicker">Text us</div>
+<p><a href="https://wa.me/5016278977">+501-627-8977</a></p>
+</article>
+</div></section>
+<section class="page-copy contact-main"><div class="wrap contact-layout">
+<div class="contact-panel">
+<h2>Feel free to contact us</h2>
+<form class="inquiry-form" id="contactForm">
+<label class="field">Full name *
+<input type="text" name="name" autocomplete="name" required placeholder="Full name">
+</label>
+<label class="field">Email *
+<input type="email" name="email" autocomplete="email" required placeholder="Email">
+</label>
+<label class="field">Phone
+<input type="tel" name="phone" autocomplete="tel" placeholder="Phone">
+</label>
+<label class="field">Message *
+<textarea name="message" rows="5" required placeholder="Share your dates, guest count, and anything you would like to know before booking."></textarea>
+</label>
+<button class="button primary" type="submit">Send Message <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 3.5 12.5 8 8 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</form>
+</div>
+<div class="contact-map">
+<iframe title="La Vida Belize on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=La%20Vida%20Belize%2C%20204%20Plantation%2C%20Placencia%20Road%2C%20Placencia%2C%20Belize&amp;z=14&amp;output=embed"></iframe>
+</div>
 </div></section>
 
 </main>
+
 <footer class="footer"><div class="wrap">
 <div class="footer-main">
 <div class="footer-brand">
@@ -79,17 +120,6 @@
 </div>
 </div></footer>
 <a class="mobile-book" href="index.html#booking">Check dates &amp; book your stay <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 3.5 12.5 8 8 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-
-<div aria-label="Choose check-in and check-out dates" aria-modal="false" class="booking-popover date-popover" hidden id="datePopover" role="dialog">
-<div class="calendar-head"><div aria-live="polite" class="calendar-message" id="calendarPrompt">Choose your check-in date</div><div class="calendar-arrows"><button aria-label="Previous month" id="calendarPrev" type="button">‹</button><button aria-label="Next month" id="calendarNext" type="button">›</button></div></div>
-<div class="calendar-months" id="calendarMonths"></div>
-<div class="calendar-bottom"><button class="clear-dates" id="clearDates" type="button">Clear dates</button><span class="calendar-hint" id="calendarHint">Select your dates</span></div>
-</div>
-<div aria-label="Choose number of guests" aria-modal="false" class="booking-popover guest-popover" hidden id="guestPopover" role="dialog">
-<div class="guest-row"><div class="guest-label"><strong>Adults</strong><span>Ages 13+</span></div><div class="guest-controls"><button aria-label="Remove adult" data-counter="adults" data-step="-1" type="button">−</button><output id="adultCount">1</output><button aria-label="Add adult" data-counter="adults" data-step="1" type="button">+</button></div></div>
-<div class="guest-row"><div class="guest-label"><strong>Children</strong><span>Ages 2–12</span></div><div class="guest-controls"><button aria-label="Remove child" data-counter="children" data-step="-1" type="button">−</button><output id="childCount">0</output><button aria-label="Add child" data-counter="children" data-step="1" type="button">+</button></div></div>
-<button class="guest-close" id="guestClose" type="button">Close</button>
-</div>
 
 
 <script src="js/main.js" defer></script>
