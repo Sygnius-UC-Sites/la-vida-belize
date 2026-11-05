@@ -943,7 +943,7 @@ body.has-mobile-book .footer {
   }
   .hero {
     height: auto !important;
-    min-height: 0 !important;
+    min-height: 70svh !important;
   }
 }
 
@@ -1250,5 +1250,92 @@ body.has-mobile-book .footer {
   }
   .contact-map iframe {
     height: 220px;
+  }
+}
+
+@media (max-width: 900px) {
+  .home .header,
+  .home .header.fixed {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #123c3a;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .home .topline {
+    z-index: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.08em;
+  }
+
+  .home .hero-content {
+    padding-top: 40px;
+  }
+
+  .header {
+    z-index: 50;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+  }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .section-head p {
+    max-width: none;
+    margin: 0;
+    position: static;
+    color: #3d524c;
+  }
+
+  .explore,
+  .groups,
+  .day {
+    overflow: visible;
+  }
+
+  .explore-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .explore-card {
+    min-height: 320px;
+    width: 100%;
+  }
+
+  .footer a:not(.logo) {
+    display: block;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .footer-bottom span,
+  .footer-bottom a {
+    display: inline !important;
+  }
+
+  .footer-bottom span {
+    line-height: 1.5;
+  }
+
+  .back-top {
+    margin-top: 4px;
   }
 }
