@@ -289,7 +289,6 @@ body {
 .stay-sub,
 .day-intro,
 .timeitem p,
-.explore-content p,
 .groups-copy p,
 .review-stats p,
 .story p,
@@ -311,6 +310,11 @@ body {
 .finale p,
 .groups-copy p {
   color: #e7f2ec;
+}
+
+.explore-content p {
+  color: #fff;
+  opacity: 1;
 }
 
 .button,
@@ -1153,6 +1157,10 @@ body.has-mobile-book .footer {
 }
 .attraction-cats .explore-card:after {
   background: linear-gradient(0deg, rgba(3, 36, 37, 0.9) 0%, rgba(8, 36, 35, 0.18) 58%);
+}
+.attraction-cats .explore-content p {
+  color: #fff;
+  opacity: 1;
 }
 .crumb {
   font-size: 14px;
