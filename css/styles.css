@@ -576,15 +576,27 @@ body.has-mobile-book .footer {
 }
 
 .page .header,
-.page .header.fixed {
+.page .header.fixed,
+.home .header,
+.home .header.fixed {
   position: sticky;
   top: 0;
+  z-index: 50;
   background: rgba(16, 56, 53, 0.96);
   box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
 }
 
-.page .topline + .header {
+.page .topline + .header,
+.home .topline + .header {
   top: 0;
+}
+
+.home .topline {
+  z-index: 1;
+}
+
+.home .hero-content {
+  padding-top: 72px;
 }
 
 .page-hero {
@@ -1254,17 +1266,7 @@ body.has-mobile-book .footer {
 }
 
 @media (max-width: 900px) {
-  .home .header,
-  .home .header.fixed {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: #123c3a;
-    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
-  }
-
   .home .topline {
-    z-index: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
