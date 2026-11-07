@@ -153,33 +153,79 @@ PY
 
 ensure_database() {
   install -d -m 700 -o "$SITE_USER" -g "$SITE_USER" "$SECRET_DIR"
-  if [ -f "$DB_SECRET" ]; then
-    # shellcheck disable=SC1090
-    . "$DB_SECRET"
-    mysql -N -e "SHOW DATABASES" | grep -qx "$DB_DATABASE" || fail_blocker "Saved staging DB ${DB_DATABASE} is missing"
-    log "Reusing existing staging database (name only logged)"
-    return
-  fi
+  python3 - "$SECRET_DIR" "$SITE_USER" "$DOMAIN" "$DB_SECRET" <<'PY'
+import os, re, subprocess, sys
+from pathlib import Path
 
-  local db_name="brad_lavida"
-  local db_user="bradlavida"
-  local db_pass
-  db_pass="$(openssl rand -base64 24 | tr -d '/+=' | cut -c1-24)Aa1!"
+secret_dir, site_user, domain, db_secret_path = sys.argv[1:]
+db_secret = Path(db_secret_path)
+admin_cnf = Path("/root/.brad-mysql-admin.cnf")
 
-  mysql -e "CREATE DATABASE IF NOT EXISTS \`${db_name}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-  mysql -e "CREATE USER IF NOT EXISTS '${db_user}'@'localhost' IDENTIFIED BY '${db_pass}';"
-  mysql -e "ALTER USER '${db_user}'@'localhost' IDENTIFIED BY '${db_pass}';" 2>/dev/null || true
-  mysql -e "GRANT ALL PRIVILEGES ON \`${db_name}\`.* TO '${db_user}'@'localhost'; FLUSH PRIVILEGES;"
+def write_admin_cnf() -> None:
+    if admin_cnf.is_file():
+        return
+    raw = subprocess.check_output(["clpctl", "db:show:master-credentials"], text=True, stderr=subprocess.STDOUT)
+    def grab(*patterns):
+        for pat in patterns:
+            m = re.search(pat, raw, re.I)
+            if m:
+                return m.group(1).strip().strip("|").strip()
+        return None
+    host = grab(r"Host[:\s|]+([^\s|]+)") or "127.0.0.1"
+    user = grab(r"User(?:\s*Name)?[:\s|]+([^\s|]+)") or "root"
+    password = grab(r"Password[:\s|]+([^\s|]+)")
+    port = grab(r"Port[:\s|]+(\d+)") or "3306"
+    if not password:
+        raise SystemExit("CLOUDPANEL_BLOCKER: could not parse MySQL master credentials from clpctl")
+    admin_cnf.write_text(
+        f"[client]\nhost={host}\nuser={user}\npassword={password}\nport={port}\n",
+        encoding="utf-8",
+    )
+    admin_cnf.chmod(0o600)
 
-  umask 077
-  cat >"$DB_SECRET" <<EOF
-DB_DATABASE=${db_name}
-DB_USERNAME=${db_user}
-DB_PASSWORD=${db_pass}
-EOF
-  chown "${SITE_USER}:${SITE_USER}" "$DB_SECRET"
-  chmod 600 "$DB_SECRET"
-  log "Staging MySQL database is ready"
+def mysql_admin(*args: str) -> subprocess.CompletedProcess:
+    write_admin_cnf()
+    return subprocess.run(
+        ["mysql", f"--defaults-extra-file={admin_cnf}", *args],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+if db_secret.is_file():
+    vals = dict(line.split("=", 1) for line in db_secret.read_text().splitlines() if "=" in line)
+    out = mysql_admin("-N", "-e", "SHOW DATABASES").stdout.splitlines()
+    if vals.get("DB_DATABASE") not in out:
+        raise SystemExit("CLOUDPANEL_BLOCKER: saved staging database is missing")
+    print("Reusing existing staging database (name only logged)")
+    raise SystemExit(0)
+
+db_name = "bradlavida"
+db_user = "bradlavida"
+db_pass = subprocess.check_output(
+    ["openssl", "rand", "-base64", "24"], text=True
+).strip().replace("/", "x").replace("+", "y").replace("=", "z")[:24] + "Aa1!"
+
+mysql_admin("-e", f"CREATE DATABASE IF NOT EXISTS `{db_name}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;")
+mysql_admin("-e", f"CREATE USER IF NOT EXISTS '{db_user}'@'localhost' IDENTIFIED BY '{db_pass}';")
+subprocess.run(
+    ["mysql", f"--defaults-extra-file={admin_cnf}", "-e", f"ALTER USER '{db_user}'@'localhost' IDENTIFIED BY '{db_pass}';"],
+    check=False,
+    capture_output=True,
+    text=True,
+)
+mysql_admin("-e", f"GRANT ALL PRIVILEGES ON `{db_name}`.* TO '{db_user}'@'localhost'; FLUSH PRIVILEGES;")
+print("Created staging database via CloudPanel master credentials")
+
+os.umask(0o077)
+db_secret.write_text(
+    f"DB_DATABASE={db_name}\nDB_USERNAME={db_user}\nDB_PASSWORD={db_pass}\n",
+    encoding="utf-8",
+)
+os.chown(db_secret, int(subprocess.check_output(["id", "-u", site_user])), int(subprocess.check_output(["id", "-g", site_user])))
+db_secret.chmod(0o600)
+print("Staging MySQL database is ready")
+PY
 }
 
 write_env_if_needed() {
