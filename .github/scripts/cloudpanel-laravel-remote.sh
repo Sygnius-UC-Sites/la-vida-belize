@@ -91,48 +91,36 @@ POOL
   printf '%s' "$listen"
 }
 
-ensure_php_vhost() {
+patch_vhost_file() {
   local vhost="$1"
   local listen="$2"
-  local backup="${vhost}.pre-laravel.bak"
-
-  if grep -q 'fastcgi_pass' "$vhost" && grep -q 'index.php' "$vhost"; then
-    python3 - "$vhost" "$APP_PATH" <<'PY'
-import re, sys
-path, root = sys.argv[1], sys.argv[2]
-text = open(path, encoding="utf-8").read()
-text = text.replace("try_files $uri $uri/ =404;", "try_files $uri $uri/ /index.php?$query_string;")
-text = re.sub(r"^(\s*)root\s+.+;$", rf"\1root {root};", text, count=1, flags=re.M)
-if "try_files $uri $uri/ /index.php" not in text:
-    text = re.sub(
-        r"(location\s+/\s*\{)",
-        r"\1\n    try_files $uri $uri/ /index.php?$query_string;",
-        text,
-        count=1,
-    )
-open(path, "w", encoding="utf-8").write(text)
-PY
-    nginx -t
-    systemctl reload nginx || service nginx reload
-    log "Ensured Laravel try_files and PHP root ${APP_PATH}"
-    return
-  fi
-
-  cp -a "$vhost" "$backup"
-
   python3 - "$vhost" "$APP_PATH" "$listen" <<'PY'
 import re, sys
+from pathlib import Path
 path, root, listen = sys.argv[1], sys.argv[2], sys.argv[3]
-text = open(path, encoding="utf-8").read()
+text = Path(path).read_text(encoding="utf-8")
 text = re.sub(r"index\s+index\.html\s*;", "index index.php index.html;", text)
+if "index index.php" not in text:
+    text = re.sub(r"index\s+[^;]+;", "index index.php index.html;", text, count=1)
 text = re.sub(
-    r"location\s+/\s*\{[^}]*try_files\s+\$uri\s+\$uri/\s+=404;\s*\}",
+    r"try_files\s+\$uri\s+\$uri/\s+=\s*404\s*;",
+    "try_files $uri $uri/ /index.php?$query_string;",
+    text,
+)
+text = re.sub(
+    r"try_files\s+\$uri\s+\$uri/\s+/index\.html(?:\?\$[a-z_]+)?\s*;",
+    "try_files $uri $uri/ /index.php?$query_string;",
+    text,
+)
+text = re.sub(
+    r"location\s+/\s*\{[^{}]*\}",
     "location / {\n    try_files $uri $uri/ /index.php?$query_string;\n  }",
     text,
     count=1,
 )
 if "try_files $uri $uri/ /index.php" not in text:
-    text = text.replace("try_files $uri $uri/ =404;", "try_files $uri $uri/ /index.php?$query_string;")
+    text = re.sub(r"\n\}\s*$", "\n  location / {\n    try_files $uri $uri/ /index.php?$query_string;\n  }\n}\n", text, count=1)
+text = re.sub(r"^(\s*)root\s+.+;$", rf"\1root {root};", text, count=1, flags=re.M)
 if "fastcgi_pass" not in text:
     pass_target = listen if listen.startswith("127.") else ("unix:" + listen)
     php_block = """
@@ -149,12 +137,36 @@ if "fastcgi_pass" not in text:
   }
 """ % pass_target
     text = re.sub(r"\n\}\s*$", php_block + "\n}\n", text, count=1)
-text = re.sub(r"^(\s*)root\s+.+;$", rf"\1root {root};", text, count=1, flags=re.M)
-open(path, "w", encoding="utf-8").write(text)
+Path(path).write_text(text, encoding="utf-8")
+print(path)
+for i, line in enumerate(text.splitlines(), 1):
+    if re.search(r"try_files|location |index |fastcgi_pass|^\s*root ", line):
+        print(f"{i}:{line.strip()}")
 PY
+}
+
+ensure_php_vhost() {
+  local listen="$1"
+  local files=""
+  files="$(grep -RIl --include='*.conf' -e "server_name.*${DOMAIN}" /etc/nginx 2>/dev/null || true)"
+  if [ -z "$files" ]; then
+    files="$(find_vhost)"
+  fi
+  [ -n "$files" ] || fail_blocker "Could not find nginx vhost for ${DOMAIN}"
+
+  local vhost
+  while IFS= read -r vhost; do
+    [ -n "$vhost" ] || continue
+    [ -f "$vhost" ] || continue
+    cp -a "$vhost" "${vhost}.pre-laravel.bak"
+    log "Patching vhost ${vhost}"
+    patch_vhost_file "$vhost" "$listen"
+  done <<< "$files"
 
   if ! nginx -t; then
-    mv "$backup" "$vhost"
+    while IFS= read -r vhost; do
+      [ -f "${vhost}.pre-laravel.bak" ] && mv "${vhost}.pre-laravel.bak" "$vhost"
+    done <<< "$files"
     fail_blocker "nginx rejected the PHP vhost; restored the previous config"
   fi
   systemctl reload nginx || service nginx reload || fail_blocker "Could not reload nginx"
@@ -284,11 +296,8 @@ case "${1:-}" in
     [ -d "$APP_PATH" ] || fail_blocker "CloudPanel app path ${APP_PATH} does not exist"
     PHP_VER="$(php_version)"
     log "Using PHP ${PHP_VER}"
-    VHOST="$(find_vhost)"
-    [ -n "$VHOST" ] || fail_blocker "Could not find nginx vhost for ${DOMAIN}"
-    log "Vhost: ${VHOST}"
     LISTEN="$(ensure_fpm_pool "$PHP_VER")"
-    ensure_php_vhost "$VHOST" "$LISTEN"
+    ensure_php_vhost "$LISTEN"
     ensure_database
     install -d -m 755 -o "$SITE_USER" -g "$SITE_USER" "$APP_PATH"
     ;;
