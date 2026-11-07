@@ -17,6 +17,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cms;
 use App\Models\BookingRequest;
+use App\Models\Property;
 use App\Models\Pms\PmsRoom;
 use App\Models\Pms\PmsRate;
 
@@ -52,6 +53,10 @@ class PmsPageController extends Controller
      */
     public function propertyDetail($seo_url)
     {
+        if ($this->sitePropertyExists($seo_url)) {
+            return $this->delegateToSiteController($seo_url);
+        }
+
         $data = PmsRoom::where('seo_url', $seo_url)
             ->where('status', 'true')
             ->first();
@@ -81,6 +86,11 @@ class PmsPageController extends Controller
     /**
      * Call the host site's own property detail method, whatever it is named.
      */
+    protected function sitePropertyExists($seo_url): bool
+    {
+        return Property::where('seo_url', $seo_url)->where('status', 'true')->exists();
+    }
+
     protected function delegateToSiteController($seo_url)
     {
         $controller = app(\App\Http\Controllers\PageController::class);
@@ -103,6 +113,10 @@ class PmsPageController extends Controller
      */
     public function catchAll(Request $request, $seo_url)
     {
+        if ($this->sitePropertyExists($seo_url)) {
+            return $this->delegateToSiteController($seo_url);
+        }
+
         $data = PmsRoom::where('seo_url', $seo_url)
             ->where('status', 'true')
             ->first();

@@ -89,8 +89,13 @@ PY
 
 as_site "$PHP_BIN artisan migrate --force --ansi"
 as_site "$PHP_BIN artisan db:seed --class=LaVidaPropertiesSeeder --force --ansi"
+as_site "$PHP_BIN artisan view:clear --ansi"
+as_site "$PHP_BIN artisan cache:clear --ansi" || true
 as_site "$PHP_BIN artisan adminlte:install --only=assets --force --ansi"
 as_site "$PHP_BIN artisan storage:link --ansi" || true
+if command -v "$PHP_BIN" >/dev/null 2>&1; then
+  "$PHP_BIN" -r 'if (function_exists("opcache_reset")) { opcache_reset(); echo "opcache reset\n"; }' || true
+fi
 
 chown -R "${SITE_USER}:${SITE_USER}" "$APP_PATH"
 chmod -R ug+rwx "${PROJECT}/storage" "${PROJECT}/bootstrap/cache"

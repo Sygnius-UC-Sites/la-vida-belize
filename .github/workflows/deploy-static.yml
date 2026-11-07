@@ -203,6 +203,19 @@ jobs:
           grep -qi 'casa\|casita\|studio\|La Vida' /tmp/properties.html
           fetch /stay/la-vida-belize-casa /tmp/casa.html
           grep -qi 'La Vida' /tmp/casa.html
+          grep -q 'Read more' /tmp/casa.html
+          grep -q 'id="booking-widget"' /tmp/casa.html
+          grep -q 'stayAmenityDrawer' /tmp/casa.html
+          grep -q 'stayReviewDrawer' /tmp/casa.html
+          grep -q 'More properties from La Vida Belize' /tmp/casa.html
+          grep -q 'css/styles.css' /tmp/casa.html
+          if grep -q 'guest.css' /tmp/casa.html; then
+            echo "Casa page is still loading zip guest CSS" >&2
+            exit 1
+          fi
+          curl -fsSL --max-time 20 "${DOMAIN}/css/styles.css" -o /tmp/styles.css
+          grep -q '.stay-see-all' /tmp/styles.css
+          grep -q 'dialog.stay-drawer' /tmp/styles.css
           fetch /login /tmp/login.html
           grep -qi 'login-email\|Sign in\|password' /tmp/login.html
           curl -fsSL --max-time 20 "${DOMAIN}/css/styles.css" -o /dev/null

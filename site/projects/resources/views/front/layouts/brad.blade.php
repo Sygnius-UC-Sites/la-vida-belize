@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="icon" href="{{ asset('assets/favicon.svg') }}" type="image/svg+xml">
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}?v={{ @filemtime(public_path('css/styles.css')) ?: 1 }}">
 @yield('head')
 </head>
 <body class="@yield('body-class', 'page')" id="top">
@@ -21,7 +21,7 @@
 @yield('content')
 @include('front.partials.footer')
 @yield('modals')
-<script src="{{ asset('js/main.js') }}" defer></script>
+<script src="{{ asset('js/main.js') }}?v={{ @filemtime(public_path('js/main.js')) ?: 1 }}" defer></script>
 @yield('scripts')
 </body>
 </html>

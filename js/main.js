@@ -1,8 +1,8 @@
 const listings = {
-  casa: "https://www.lavidabelize.com/la-vida-belize---casa-212730",
-  casita: "https://www.lavidabelize.com/la-vida-belize-casita-212729",
-  studio: "https://www.lavidabelize.com/la-vida-belize---studio-213571",
-  all: "https://www.lavidabelize.com/properties",
+  casa: "/stay/la-vida-belize-casa",
+  casita: "/stay/la-vida-belize-casita",
+  studio: "/stay/la-vida-belize-studio",
+  all: "/properties",
 };
 
 const capacity = { casa: 6, casita: 3, studio: 2 };
@@ -188,23 +188,35 @@ if (videoToggle) {
 reduced.addEventListener("change", startVideo);
 if (navigator.connection) navigator.connection.addEventListener("change", startVideo);
 
+let liveGallery = null;
+try {
+  const liveNode = $("#propertyGalleryData");
+  if (liveNode) liveGallery = JSON.parse(liveNode.textContent);
+} catch (e) {
+  liveGallery = null;
+}
+
 let galleryName = "casa";
 let galleryIndex = 0;
 let previousFocus;
+function currentGallery() {
+  if (liveGallery && galleryName === "property") return liveGallery;
+  return gallery[galleryName];
+}
 function paintGallery() {
-  const g = gallery[galleryName];
+  const g = currentGallery();
   if (!g || !$("#galleryModal")) return;
-  $("#modalPill").textContent = g.pill;
+  $("#modalPill").textContent = g.pill || "La Vida Belize";
   $("#galleryTitle").textContent = g.name;
-  $("#modalDesc").textContent = g.desc;
+  $("#modalDesc").textContent = g.desc || "";
   $("#modalImage").src = g.photos[galleryIndex];
   $("#modalImage").alt = `${g.name} photo ${galleryIndex + 1}`;
   $("#galleryCount").textContent = `${galleryIndex + 1} / ${g.photos.length}`;
 }
-function openGallery(name) {
+function openGallery(name, index = 0) {
   previousFocus = document.activeElement;
   galleryName = name;
-  galleryIndex = 0;
+  galleryIndex = index;
   paintGallery();
   $("#galleryModal").classList.add("active");
   document.body.style.overflow = "hidden";
@@ -218,17 +230,22 @@ function closeGallery() {
   previousFocus?.focus();
 }
 $$("[data-gallery]").forEach((b) => b.addEventListener("click", () => openGallery(b.dataset.gallery)));
+$$("[data-property-gallery]").forEach((b) =>
+  b.addEventListener("click", () => openGallery("property", Number(b.dataset.propertyGallery) || 0)),
+);
 $("#modalClose")?.addEventListener("click", closeGallery);
 $("#galleryModal")?.addEventListener("click", (e) => {
   if (e.target.id === "galleryModal") closeGallery();
 });
 $("#galleryPrev")?.addEventListener("click", () => {
-  const g = gallery[galleryName];
+  const g = currentGallery();
+  if (!g) return;
   galleryIndex = (galleryIndex - 1 + g.photos.length) % g.photos.length;
   paintGallery();
 });
 $("#galleryNext")?.addEventListener("click", () => {
-  const g = gallery[galleryName];
+  const g = currentGallery();
+  if (!g) return;
   galleryIndex = (galleryIndex + 1) % g.photos.length;
   paintGallery();
 });
@@ -272,14 +289,15 @@ if (mobileBook && booking && "IntersectionObserver" in window) {
 
 const cal = $("#datePopover");
 const gp = $("#guestPopover");
-const ci = $("#checkin");
-const co = $("#checkout");
-const gt = $("#guestTrigger");
-const cl = $("#checkinTrigger");
-const out = $("#checkoutTrigger");
 const form = $("#bookingForm");
+const ci = $("#checkin") || $("#widget-check-in");
+const co = $("#checkout") || $("#widget-check-out");
+const gt = $("#guestTrigger");
+const cl = $("#checkinTrigger") || $("#widget-check-in");
+const out = $("#checkoutTrigger") || $("#widget-check-out");
+const hasGuestBar = Boolean(gp && gt && $("#guests"));
 
-if (form && cal && gp && ci && co && gt && cl && out) {
+if (cal && ci && co && cl && out) {
   const dateToday = new Date();
   dateToday.setHours(12, 0, 0, 0);
   const todayIso = `${dateToday.getFullYear()}-${String(dateToday.getMonth() + 1).padStart(2, "0")}-${String(dateToday.getDate()).padStart(2, "0")}`;
@@ -300,11 +318,15 @@ if (form && cal && gp && ci && co && gt && cl && out) {
   let hovered = null;
   const people = { adults: 1, children: 0 };
   const startOfMonth = (d) => new Date(d.getFullYear(), d.getMonth(), 1, 12);
+  const blockedDates = new Set();
+  try {
+    JSON.parse(ci.getAttribute("data-blocked") || "[]").forEach((d) => blockedDates.add(String(d).slice(0, 10)));
+  } catch (_) {}
 
   function setExpanded() {
     cl.setAttribute("aria-expanded", String(active === cal && mode === "checkin"));
     out.setAttribute("aria-expanded", String(active === cal && mode === "checkout"));
-    gt.setAttribute("aria-expanded", String(active === gp));
+    if (gt) gt.setAttribute("aria-expanded", String(active === gp));
   }
   function closePopup() {
     if (active) active.hidden = true;
@@ -335,8 +357,13 @@ if (form && cal && gp && ci && co && gt && cl && out) {
     requestAnimationFrame(() => place(panel, trigger));
   }
   function syncDateText() {
-    cl.textContent = pretty(ci.value);
-    out.textContent = pretty(co.value);
+    if (cl.tagName === "BUTTON") cl.textContent = pretty(ci.value);
+    if (out.tagName === "BUTTON") out.textContent = pretty(co.value);
+  }
+  function emitDateChange() {
+    syncDateText();
+    ci.dispatchEvent(new Event("change", { bubbles: true }));
+    co.dispatchEvent(new Event("change", { bubbles: true }));
   }
   function renderCalendar() {
     const container = $("#calendarMonths");
@@ -380,7 +407,8 @@ if (form && cal && gp && ci && co && gt && cl && out) {
         b.className = "calendar-day";
         b.textContent = String(day);
         b.dataset.date = s;
-        if (s < todayIso) b.disabled = true;
+        if (s < todayIso || blockedDates.has(s)) b.disabled = true;
+        if (blockedDates.has(s)) b.classList.add("is-blocked");
         if (s === todayIso) b.classList.add("today");
         if (s === ci.value || s === co.value) b.classList.add("selected");
         const hi = co.value || (mode === "checkout" ? hovered : null);
@@ -413,14 +441,14 @@ if (form && cal && gp && ci && co && gt && cl && out) {
       ci.value = s;
       co.value = "";
       mode = "checkout";
-      syncDateText();
+      emitDateChange();
       renderCalendar();
       setExpanded();
       return;
     }
     if (s <= ci.value) return;
     co.value = s;
-    syncDateText();
+    emitDateChange();
     renderCalendar();
     closePopup();
   }
@@ -453,7 +481,7 @@ if (form && cal && gp && ci && co && gt && cl && out) {
     co.value = "";
     mode = "checkin";
     hovered = null;
-    syncDateText();
+    emitDateChange();
     renderCalendar();
     setExpanded();
   });
@@ -463,6 +491,7 @@ if (form && cal && gp && ci && co && gt && cl && out) {
     return `${n} guest${n === 1 ? "" : "s"}`;
   }
   function updateGuests() {
+    if (!hasGuestBar) return;
     gt.innerHTML = `${guestsSummary()} <span class="booking-chevron" aria-hidden="true">⌄</span>`;
     $("#guests").value = String(total());
     $("#adultCount").textContent = people.adults;
@@ -473,28 +502,30 @@ if (form && cal && gp && ci && co && gt && cl && out) {
       b.disabled = step < 0 ? people[type] <= (type === "adults" ? 1 : 0) : total() >= 11;
     });
   }
-  gt.addEventListener("click", () => {
-    if (active === gp) {
-      closePopup();
-      return;
-    }
-    updateGuests();
-    showPopup(gp, gt);
-  });
-  $$("[data-counter]").forEach((b) =>
-    b.addEventListener("click", () => {
-      const type = b.dataset.counter;
-      const step = Number(b.dataset.step);
-      const low = type === "adults" ? 1 : 0;
-      if (people[type] + step < low) return;
-      if (step > 0 && total() >= 11) return;
-      people[type] += step;
+  if (hasGuestBar) {
+    gt.addEventListener("click", () => {
+      if (active === gp) {
+        closePopup();
+        return;
+      }
       updateGuests();
-    }),
-  );
-  $("#guestClose")?.addEventListener("click", closePopup);
+      showPopup(gp, gt);
+    });
+    $$("[data-counter]").forEach((b) =>
+      b.addEventListener("click", () => {
+        const type = b.dataset.counter;
+        const step = Number(b.dataset.step);
+        const low = type === "adults" ? 1 : 0;
+        if (people[type] + step < low) return;
+        if (step > 0 && total() >= 11) return;
+        people[type] += step;
+        updateGuests();
+      }),
+    );
+    $("#guestClose")?.addEventListener("click", closePopup);
+  }
   document.addEventListener("pointerdown", (e) => {
-    if (active && !active.contains(e.target) && !cl.contains(e.target) && !out.contains(e.target) && !gt.contains(e.target)) {
+    if (active && !active.contains(e.target) && !cl.contains(e.target) && !out.contains(e.target) && !(gt && gt.contains(e.target))) {
       closePopup();
     }
   });
@@ -505,42 +536,48 @@ if (form && cal && gp && ci && co && gt && cl && out) {
     if (e.key === "Escape" && active) closePopup();
   });
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    closePopup();
-    if (!ci.value || !co.value) {
-      openDate(ci.value ? "checkout" : "checkin");
-      return;
-    }
-    if (co.value <= ci.value) {
-      openDate("checkout");
-      return;
-    }
-    const rental = $("#rental").value;
-    if (capacity[rental] && total() > capacity[rental]) {
-      alert(`This accommodation is listed for up to ${capacity[rental]} guests. Please adjust guest numbers or choose another stay.`);
-      return;
-    }
-    if (rental === "group") {
-      const body = `Hello La Vida Belize,\n\nI would like to enquire about booking the full property.\nCheck-in: ${ci.value}\nCheck-out: ${co.value}\nGuests: ${people.adults} adult(s), ${people.children} child(ren)\n`;
-      window.location.assign(`mailto:info@lavidabelize.com?subject=${encodeURIComponent("La Vida Belize group stay inquiry")}&body=${encodeURIComponent(body)}`);
-      return;
-    }
-    const url = new URL(listings[rental] || listings.all);
-    url.searchParams.set("start_date", ci.value);
-    url.searchParams.set("end_date", co.value);
-    url.searchParams.set("adults", String(people.adults));
-    url.searchParams.set("child", String(people.children));
-    window.location.assign(url.href);
-  });
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      closePopup();
+      if (!ci.value || !co.value) {
+        openDate(ci.value ? "checkout" : "checkin");
+        return;
+      }
+      if (co.value <= ci.value) {
+        openDate("checkout");
+        return;
+      }
+      const rental = $("#rental").value;
+      if (capacity[rental] && total() > capacity[rental]) {
+        alert(`This accommodation is listed for up to ${capacity[rental]} guests. Please adjust guest numbers or choose another stay.`);
+        return;
+      }
+      if (rental === "group") {
+        const body = `Hello La Vida Belize,\n\nI would like to enquire about booking the full property.\nCheck-in: ${ci.value}\nCheck-out: ${co.value}\nGuests: ${people.adults} adult(s), ${people.children} child(ren)\n`;
+        window.location.assign(`mailto:info@lavidabelize.com?subject=${encodeURIComponent("La Vida Belize group stay inquiry")}&body=${encodeURIComponent(body)}`);
+        return;
+      }
+      const url = new URL(listings[rental] || listings.all, window.location.origin);
+      url.searchParams.set("check_in", ci.value);
+      url.searchParams.set("check_out", co.value);
+      url.searchParams.set("adults", String(people.adults));
+      if (people.children > 0) url.searchParams.set("children", String(people.children));
+      if (rental !== "all") {
+        url.searchParams.set("highlight", "widget");
+        url.hash = "booking-widget";
+      }
+      window.location.assign(url.pathname + url.search + url.hash);
+    });
+  }
 
   renderCalendar();
   syncDateText();
-  updateGuests();
+  if (hasGuestBar) updateGuests();
 }
 
 const contactForm = $("#contactForm");
-if (contactForm) {
+if (contactForm && !contactForm.getAttribute("action")) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(contactForm).entries());
