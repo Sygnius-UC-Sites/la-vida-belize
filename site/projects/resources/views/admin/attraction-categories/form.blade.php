@@ -22,6 +22,28 @@
                     <span class="text-danger">{{ $errors->first('seo_url') }}</span>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('shortDescription', 'Card eyebrow') !!}
+                    {!! Form::text('shortDescription', null, ['class' => 'form-control', 'placeholder' => 'e.g. Eat']) !!}
+                    <small class="text-muted">Shown as the small label on the /attractions card.</small>
+                    <span class="text-danger">{{ $errors->first('shortDescription') }}</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('ordering', 'Display order') !!}
+                    {!! Form::number('ordering', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
+                    <span class="text-danger">{{ $errors->first('ordering') }}</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('publish') !!}
+                    {!! Form::select('publish', ['published' => 'published', 'draft' => 'draft', 'pending' => 'pending'], 'published', ['class' => 'form-control']) !!}
+                    <span class="text-danger">{{ $errors->first('publish') }}</span>
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="form-group">
                     {!! Form::label('description', 'Short description') !!}
@@ -102,4 +124,3 @@
 </div>
 
 {!! Form::hidden('templete', 'common') !!}
-{!! Form::hidden('publish', 'published') !!}

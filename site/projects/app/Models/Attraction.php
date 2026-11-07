@@ -40,6 +40,24 @@ class Attraction extends Model
 		'category_type',
     ];
 
+    public static function mediaUrl(?string $path): string
+    {
+        $path = trim((string) $path);
+        if ($path === '') {
+            return '';
+        }
+        if (preg_match('#^(https?:)?//#i', $path)) {
+            return $path;
+        }
+
+        return asset(ltrim($path, '/'));
+    }
+
+    public function imageUrl(): string
+    {
+        return self::mediaUrl($this->image);
+    }
+
     public static $rules = [];
 
     public function property()

@@ -101,6 +101,29 @@ class PageController extends Controller{
         }
         return abort(404);
     }
+
+    public function guestAttractionCategory($seo_url)
+    {
+        if (!\App\Helper\FeatureFlags::frontPageEnabled('attractions')) {
+            return abort(404);
+        }
+
+        $category = AttractionCategory::where('seo_url', $seo_url)
+            ->where('publish', 'published')
+            ->first();
+        if (!$category) {
+            return abort(404);
+        }
+
+        $data = Cms::where('seo_url', 'attractions-' . $seo_url)->first() ?: $category;
+        $attractions = Attraction::where('category_id', $category->id)
+            ->where('publish', 'published')
+            ->orderBy('ordering', 'asc')
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return view('front.static.attractions-category', compact('data', 'category', 'attractions'));
+    }
   
     public function propertyDetail($seo_url){
         return $this->redirectToCanonicalProperty($seo_url);

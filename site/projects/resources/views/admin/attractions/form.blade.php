@@ -176,6 +176,7 @@
         <div class="form-group">
             {!! Form::label("longDescription", "Full description") !!}
             {!! Form::textarea("longDescription",null,["class"=>"form-control","rows"=>"2"]) !!}
+            <small class="text-muted d-block">Optional extra line under the card (phone / website). HTML is allowed.</small>
             <span class="text-danger">{{ $errors->first("longDescription")}}</span>
         </div>
     </div>

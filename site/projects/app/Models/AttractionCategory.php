@@ -30,9 +30,29 @@ class AttractionCategory extends Model
 		'publish',
 
 		'header_section',
-		'footer_section'
-
+		'footer_section',
+		'ordering',
     ];
+
+    public static function mediaUrl(?string $path): string
+    {
+        return Attraction::mediaUrl($path);
+    }
+
+    public function imageUrl(): string
+    {
+        return self::mediaUrl($this->image ?: $this->bannerImage);
+    }
+
+    public function bannerUrl(): string
+    {
+        return self::mediaUrl($this->bannerImage ?: $this->image);
+    }
+
+    public function guestUrl(): string
+    {
+        return url('/attractions/' . ltrim((string) $this->seo_url, '/'));
+    }
 
     public static $rules = [
         // create rules

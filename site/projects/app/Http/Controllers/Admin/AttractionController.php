@@ -16,7 +16,7 @@ class AttractionController extends Controller{
     }
     
     public function index(){
-        $data=$this->model::orderBy("id","desc")->get();
+        $data=$this->model::orderBy("ordering","asc")->orderBy("id","asc")->get();
         return view($this->admin_view.".index",compact("data"));
     }
     

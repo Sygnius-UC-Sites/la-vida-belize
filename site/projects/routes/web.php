@@ -347,23 +347,8 @@ Route::group(["middleware" => ["OptimizeMiddleware"]], function () {
     Route::get("attractions/detail/{seo_url}", "PageController@attractionSingle");
     Route::get("attractions/location/{seo_url}", "PageController@attractionLocation");
     Route::get("attractions/category/{seo_url}", "PageController@attractionCategory");
-    $attractionChildren = [
-        'dining' => 'attractions-dining',
-        'adventures' => 'attractions-adventures',
-        'taxi' => 'attractions-taxi',
-        'golf-cart' => 'attractions-golf-cart',
-        'car-rental' => 'attractions-car-rental',
-    ];
-    foreach ($attractionChildren as $slug => $template) {
-        Route::get("attractions/{$slug}", function () use ($slug, $template) {
-            $data = \App\Models\Cms::where('seo_url', 'attractions-' . $slug)->first()
-                ?: \App\Models\Cms::firstOrCreate(
-                    ['seo_url' => 'attractions-' . $slug],
-                    ['name' => \Illuminate\Support\Str::headline($slug), 'templete' => $template, 'publish' => 'published']
-                );
-            return view('front.static.' . $template, compact('data'));
-        });
-    }
+    Route::get('attractions/{seo_url}', 'PageController@guestAttractionCategory')
+        ->where('seo_url', '[A-Za-z0-9\-_]+');
     Route::get("properties/detail/{seo_url}", "PageController@propertyDetail");
     Route::get('/', "PageController@index")->name("front-home");
     Route::get("condos/{seo_url}", "PageController@condoDetail");

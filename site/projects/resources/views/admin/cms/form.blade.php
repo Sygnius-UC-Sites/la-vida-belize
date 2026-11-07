@@ -71,7 +71,7 @@
         <div class="col-md-4"><div class="form-group">{!! Form::label('fw_section_eyebrow','Section Eyebrow') !!}{!! Form::text('fw_section_eyebrow', null, ['class'=>'form-control']) !!}</div></div>
         <div class="col-md-8"><div class="form-group">{!! Form::label('fw_section_title','Section Title') !!}{!! Form::text('fw_section_title', null, ['class'=>'form-control']) !!}</div></div>
         <div class="col-md-12"><div class="form-group">{!! Form::label('fw_section_sub','Section Sub-text') !!}{!! Form::textarea('fw_section_sub', null, ['class'=>'form-control','rows'=>2]) !!}</div></div>
-        @if($data->seo_url=='attractions')<div class="col-md-12 alert alert-secondary"><small>📍 The attraction cards on this page are managed in <a href="{{ url('admin/attractions') }}">Attractions</a>.</small></div>@endif
+        @if($data->seo_url=='attractions' || str_starts_with((string) $data->seo_url, 'attractions-'))<div class="col-md-12 alert alert-secondary"><small>📍 Category cards on /attractions are managed in <a href="{{ url('admin/attraction-categories') }}">Attraction Categories</a>. Venue cards on the inner pages are managed in <a href="{{ url('admin/attractions') }}">Attractions</a>.</small></div>@endif
         @if(in_array($data->seo_url,['faqs','faq']))<div class="col-md-12 alert alert-secondary"><small>📍 The Q&amp;A items on this page are managed in <a href="{{ url('admin/faqs') }}">FAQs</a>.</small></div>@endif
     @endif
     @endisset

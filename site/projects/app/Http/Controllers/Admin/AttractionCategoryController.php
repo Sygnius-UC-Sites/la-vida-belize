@@ -17,7 +17,7 @@ class AttractionCategoryController extends Controller{
     }
     
     public function index(){
-        $data=$this->model::orderBy("id","desc")->get();
+        $data=$this->model::orderBy("ordering","asc")->orderBy("id","asc")->get();
         return view($this->admin_view.".index",compact("data"));
     }
     
@@ -39,6 +39,9 @@ class AttractionCategoryController extends Controller{
         // already did this; the standard store() did not).
         $data['templete'] = $data['templete'] ?? 'common';
         $data['publish']  = $data['publish'] ?? 'published';
+        if (!isset($data['ordering']) || $data['ordering'] === '') {
+            $data['ordering'] = 0;
+        }
         if ($request->hasFile("image")) {
             $data['image'] = Upload::fileUpload($request->file("image"),"attraction-categories");
         }
@@ -77,6 +80,9 @@ class AttractionCategoryController extends Controller{
             $data=$request->all();
             $data['templete'] = $data['templete'] ?? 'common';
             $data['publish']  = $data['publish'] ?? 'published';
+            if (!isset($data['ordering']) || $data['ordering'] === '') {
+                $data['ordering'] = 0;
+            }
             if ($request->hasFile("image")) {
                 Helper::deleteFile($exist->image);
                 $data['image'] = Upload::fileUpload($request->file("image"),"attraction-categories");

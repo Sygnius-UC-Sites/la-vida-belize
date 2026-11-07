@@ -62,6 +62,7 @@ $name="Attraction Categories";$route="attraction-categories";
                 <th>#</th>
                 <th>Name</th>
                 <th>URL slug</th>
+                <th>Order</th>
                 <th>Image</th>
                 <th>Banner Image</th>
                 <th>Action</th>
@@ -79,6 +80,7 @@ $name="Attraction Categories";$route="attraction-categories";
                 <td>
                   {{ $client->seo_url }}
                 </td>
+                <td>{{ $client->ordering }}</td>
 
 
 

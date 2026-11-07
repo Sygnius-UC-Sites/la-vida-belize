@@ -84,15 +84,27 @@ class AttractionsPageTest extends TestCase
         parent::tearDown();
     }
 
-    public function test_things_to_do_page_renders_with_published_attractions(): void
+    public function test_attractions_index_renders_category_cards_from_admin(): void
     {
-        $resp = $this->get('/things-to-do');
+        $resp = $this->get('/attractions');
         $resp->assertOk();
-        // All 4 published attractions should appear in the page body
-        $resp->assertSee('_test_p9_attr_food_a_');
-        $resp->assertSee('_test_p9_attr_food_b_');
-        $resp->assertSee('_test_p9_attr_outdoor_a_');
-        $resp->assertSee('_test_p9_attr_linked_to_11_');
+        $resp->assertSee('explore-card', false);
+        $resp->assertSee('Dining');
+        $resp->assertSee('Adventures');
+        $resp->assertSee('Taxi Services');
+        $resp->assertSee('Golf Cart Rental');
+        $resp->assertSee('Car Rental');
+        $resp->assertDontSee('_test_p9_attr_food_a_');
+    }
+
+    public function test_attractions_inner_page_renders_seeded_venue_cards(): void
+    {
+        $resp = $this->get('/attractions/dining');
+        $resp->assertOk();
+        $resp->assertSee('spot-card', false);
+        $resp->assertSee('Tutti-Frutti Gelato');
+        $resp->assertSee('The Green Parrot');
+        $resp->assertDontSee('_test_p9_attr_food_a_');
     }
 
     public function test_attraction_category_page_filters_to_matching_attractions(): void
