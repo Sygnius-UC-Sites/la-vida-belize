@@ -1,0 +1,1 @@
+{{-- Phase 8 stub: original partial deleted by mistake (audit thought it was orphan, but it's @included by booking-confirmation-user-email.blade.php, reminder-user-email.blade.php, reminder-admin-email.blade.php). Recreate the original content if you need data shown here. --}}

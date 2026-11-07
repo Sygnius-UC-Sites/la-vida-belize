@@ -1,0 +1,194 @@
+/* === Booking Now Page === */
+
+.booking-section {
+    background: var(--cream);
+    padding: 80px 0 100px;
+}
+
+.booking-section .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.booking-section .section-sub {
+    font-family: Jost, sans-serif;
+    font-size: .875rem;
+    color: var(--muted, #888);
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 48px;
+}
+
+/* Two-column layout */
+.booking-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Form card */
+.booking-card {
+    background: #fff;
+    border: 1px solid rgba(197, 164, 106, .25);
+    border-radius: 12px;
+    padding: 36px 32px;
+}
+
+.booking-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 24px;
+}
+
+.booking-card label {
+    display: block;
+    font-family: Jost, sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--bg-dark);
+    margin-bottom: 6px;
+    margin-top: 18px;
+}
+
+.booking-card label:first-of-type {
+    margin-top: 0;
+}
+
+.booking-card input,
+.booking-card select,
+.booking-card textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: transparent;
+    border: 1px solid rgba(14, 12, 10, .25);
+    border-radius: 4px;
+    font-family: Jost, sans-serif;
+    font-size: .875rem;
+    color: var(--bg-dark);
+    outline: none;
+    transition: border-color .2s;
+}
+
+.booking-card input:focus,
+.booking-card select:focus,
+.booking-card textarea:focus {
+    border-color: var(--gold);
+}
+
+.booking-card textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.booking-date-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.btn-book {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 14px 24px;
+    background: var(--gold);
+    color: #0e0c0a;
+    font-family: Jost, sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .25s, transform .2s;
+}
+
+.btn-book:hover {
+    background: #d4b87e;
+    transform: translateY(-2px);
+}
+
+/* Info card */
+.booking-info {
+    background: #fff;
+    border: 1px solid rgba(197, 164, 106, .25);
+    border-radius: 12px;
+    padding: 36px 32px;
+}
+
+.booking-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 20px;
+}
+
+.booking-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+}
+
+.booking-info ul li {
+    font-family: Jost, sans-serif;
+    font-size: .875rem;
+    color: var(--bg-dark);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(14, 12, 10, .08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.booking-info ul li:last-child {
+    border-bottom: none;
+}
+
+.check-icon {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.map-box {
+    border-radius: 8px;
+    overflow: hidden;
+    height: 220px;
+    margin-top: 24px;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .booking-cols {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 575px) {
+    .booking-section {
+        padding: 60px 0 80px;
+    }
+
+    .booking-card,
+    .booking-info {
+        padding: 28px 20px;
+    }
+
+    .booking-date-row {
+        grid-template-columns: 1fr;
+    }
+}

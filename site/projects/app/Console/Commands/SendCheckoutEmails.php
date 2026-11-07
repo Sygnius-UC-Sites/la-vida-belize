@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\Models\BookingRequest;
+use App\Models\Property;
+use Illuminate\Console\Command;
+
+class SendCheckoutEmails extends Command
+{
+    protected $signature = 'bookings:send-checkout-emails';
+    protected $description = 'Send check-out info emails (per-property override → global checkout_email_send_day).';
+
+    public function handle(): int
+    {
+        $today = date('Y-m-d');
+        $horizon = date('Y-m-d', strtotime('+90 days'));
+
+        $candidates = BookingRequest::where('booking_status', 'booked')
+            ->where('checkout_email', 'false')
+            ->whereBetween('checkout', [$today, $horizon])
+            ->get();
+
+        $sent = 0;
+        foreach ($candidates as $booking) {
+            $property = Property::find($booking->property_id);
+            if (!$property) continue;
+
+            $resolver = new \App\Services\Stay\StayCommunicationsResolver($property, $booking);
+            $offsetDays = $resolver->resolveSendDayOffset('checkout_email_send_day', 'checkout_email_send_day', 0);
+            $targetDate = date('Y-m-d', strtotime("{$booking->checkout} -{$offsetDays} days"));
+
+            if ($targetDate !== $today) continue;
+
+            try {
+                $payload = $resolver->resolveCheckoutPayload();
+                $sendError = null;
+                $mailable = new \App\Mail\CheckoutInfoSent($booking, $property, $payload);
+                $rendered = $mailable->render();
+                $subject  = $resolver->expandMergeFields((string) (\ModelHelper::getDataFromSetting('checkout_default_subject') ?: 'Check-out details for your stay at {{property_name}}'));
+                try {
+                    \MailHelper::emailSenderByController($rendered, $booking->email, $subject);
+
+                    if (\ModelHelper::getDataFromSetting('admin_bcc_checkout_enabled') === '1') {
+                        $this->sendAdminBccAlert($booking, $property, $resolver,
+                            'admin_alert_checkout_subject', 'admin_alert_checkout_body_html',
+                            'Check-out info sent — booking #{{booking_id}} ({{property_name}})');
+                    }
+                } catch (\Throwable $mailErr) {
+                    $sendError = $mailErr->getMessage();
+                    logger()->warning('SendCheckoutEmails: mail send failed', [
+                        'booking_id' => $booking->id, 'error' => $sendError,
+                    ]);
+                }
+                $update = [
+                    'checkout_email_attempted_at' => now(),
+                    'checkout_email_error' => $sendError,
+                ];
+                if ($sendError === null) {
+                    $update['checkout_email'] = 'true';
+                    $update['checkout_email_sent_at'] = now();
+                }
+                $booking->update($update);
+                \App\Services\Email\SendLog::record((int)$booking->id, 'checkout', (string)$booking->email, $subject, $rendered, $sendError);
+                if ($sendError === null) $sent++;
+            } catch (\Throwable $e) {
+                $this->error("Booking {$booking->id} failed: " . $e->getMessage());
+                logger()->error('SendCheckoutEmails failed', ['booking_id' => $booking->id, 'exception' => $e]);
+            }
+        }
+
+        $this->info("Sent {$sent} check-out emails (matched {$candidates->count()} candidates within {$today}..{$horizon})");
+        return self::SUCCESS;
+    }
+
+    /** Phase 13E — shared admin-BCC helper. See SendWelcomeEmails for the canonical version. */
+    private function sendAdminBccAlert(
+        BookingRequest $booking,
+        Property $property,
+        \App\Services\Stay\StayCommunicationsResolver $resolver,
+        string $subjectKey,
+        string $bodyKey,
+        string $defaultSubject
+    ): void {
+        $adminTo = \ModelHelper::getDataFromSetting('booking_receiving_mail')
+                ?: \ModelHelper::getDataFromSetting('admin_email_primary');
+        if (!$adminTo) return;
+
+        $brand  = \ModelHelper::getDataFromSetting('owner_name')
+               ?: \ModelHelper::getDataFromSetting('mailer_admin_name')
+               ?: \ModelHelper::getDataFromSetting('mail_from_name')
+               ?: 'Notification';
+        $footer = \ModelHelper::getDataFromSetting('mail_footer') ?: '';
+
+        $subject = $resolver->expandMergeFields((string) (\ModelHelper::getDataFromSetting($subjectKey) ?: $defaultSubject));
+        $body    = $resolver->expandMergeFields((string) (\ModelHelper::getDataFromSetting($bodyKey) ?: '<p>{{property_name}} — booking #{{booking_id}}.</p><p><a href="{{admin_url}}">View →</a></p>'));
+        $html    = view('mail.email-shell', ['body_html_rendered' => $body, 'brand' => $brand, 'mail_footer' => $footer])->render();
+
+        \MailHelper::emailSenderByController($html, $adminTo, $subject);
+    }
+}

@@ -1,0 +1,199 @@
+/* === Attraction Detail Page === */
+
+.atr-breadcrumb,
+.atr-single-eyebrow,
+.atr-single-tag {
+    font-family: Jost, sans-serif;
+    text-transform: uppercase;
+}
+
+.atr-single-section {
+    background: var(--cream);
+    padding: 80px 0;
+}
+
+.atr-single-section .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.atr-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 48px;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    color: rgba(14, 12, 10, .5);
+}
+
+.atr-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.atr-breadcrumb .current,
+.atr-breadcrumb a:hover {
+    color: var(--color-gold, #c5a46a);
+}
+
+.atr-breadcrumb .sep {
+    color: rgba(14, 12, 10, .3);
+}
+
+.atr-body-block {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: start;
+    margin-bottom: 60px;
+}
+
+.atr-body-img {
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.atr-body-img img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .6s;
+}
+
+.atr-body-img:hover img {
+    transform: scale(1.04);
+}
+
+.atr-body-img .atr-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--color-gold, #c5a46a);
+    color: #0e0c0a;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    font-family: Jost, sans-serif;
+}
+
+.atr-body-text {
+    padding-top: 4px;
+}
+
+.atr-body-text p {
+    font-family: Jost, sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+.atr-body-text p:last-child {
+    margin-bottom: 0;
+}
+
+.atr-body-text .highlight {
+    color: var(--color-gold, #c5a46a);
+    font-weight: 400;
+}
+
+.atr-section-divider {
+    border: none;
+    border-top: 1px solid rgba(14, 12, 10, .12);
+    margin: 0 0 60px;
+}
+
+.atr-nearby-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 28px;
+}
+
+.atr-nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+.atr-nearby-card {
+    background: rgba(255, 255, 255, .6);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color .3s, transform .3s;
+}
+
+.atr-nearby-card:hover {
+    border-color: rgba(197, 164, 106, .3);
+    transform: translateY(-4px);
+}
+
+.atr-nearby-card .nc-img {
+    height: 180px;
+    overflow: hidden;
+}
+
+.atr-nearby-card .nc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.atr-nearby-card:hover .nc-img img {
+    transform: scale(1.06);
+}
+
+.atr-nearby-card .nc-body {
+    padding: 18px 20px;
+}
+
+.atr-nearby-card .nc-tag {
+    font-family: Jost, sans-serif;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--color-gold, #c5a46a);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.atr-nearby-card .nc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--bg-dark);
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+@media (max-width: 991px) {
+    .atr-body-block {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .atr-nearby-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 575px) {
+    .atr-nearby-grid {
+        grid-template-columns: 1fr;
+    }
+}

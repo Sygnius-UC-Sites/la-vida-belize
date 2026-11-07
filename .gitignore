@@ -1,0 +1,34 @@
+# OS / extract leftovers
+.DS_Store
+__MACOSX/
+_extract_tmp/
+_zippeek/
+.firecrawl/
+
+# Node / Composer
+node_modules/
+vendor/
+
+# Env / secrets — never commit real .env files
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Laravel runtime: logs, cache, compiled views, sessions
+storage/logs/*
+!storage/logs/.gitignore
+!storage/logs/.gitkeep
+**/storage/logs/*
+!**/storage/logs/.gitignore
+!**/storage/logs/.gitkeep
+**/storage/debugbar/
+**/storage/framework/cache/
+**/storage/framework/sessions/
+**/storage/framework/views/
+**/bootstrap/cache/*.php
+!**/bootstrap/cache/.gitignore
+
+# Local DBs (sanitized dump at database/*.sql may be committed)
+*.sqlite
+*.sqlite3

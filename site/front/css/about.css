@@ -1,0 +1,125 @@
+/* ===================================================
+   About Page — Base Design System
+   =================================================== */
+
+/* ---- Section wrapper ---- */
+.about-section {
+    background: var(--cream, #f9f6f0);
+    padding: 80px 0 100px;
+}
+
+.about-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---- Two-column grid ---- */
+.about-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+/* Reverse layout: RTL trick so image comes first visually */
+.about-cols.reverse {
+    direction: rtl;
+}
+
+.about-cols.reverse > * {
+    direction: ltr;
+}
+
+/* ---- Text column ---- */
+.about-text .section-eyebrow {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold, #b8976a);
+    margin-bottom: 14px;
+}
+
+.about-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.75rem, 3vw, 2.6rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--bg-dark, #1a1a1a);
+    margin-bottom: 24px;
+}
+
+.about-body p,
+.about-body {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #444;
+}
+
+.about-body p + p {
+    margin-top: 1em;
+}
+
+/* ---- Image column ---- */
+.about-img {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.about-img img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.about-img:hover img {
+    transform: scale(1.03);
+}
+
+/* ---- Divider between sections ---- */
+.about-cols:not(:last-child) {
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(184, 151, 106, 0.18);
+}
+
+/* ===================================================
+   Responsive
+   =================================================== */
+@media (max-width: 900px) {
+    .about-cols {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-bottom: 56px;
+    }
+
+    /* Undo RTL trick on mobile so text always comes first */
+    .about-cols.reverse {
+        direction: ltr;
+    }
+
+    .about-img img {
+        height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section {
+        padding: 56px 0 72px;
+    }
+
+    .about-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .about-img img {
+        height: 240px;
+    }
+}

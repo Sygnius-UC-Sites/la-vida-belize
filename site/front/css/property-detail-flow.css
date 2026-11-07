@@ -1,0 +1,35 @@
+@import url(property-detail-base.css);
+
+.condos-detail-hero {
+    height: 50vh;
+    min-height: 350px;
+    width: auto;
+    background: linear-gradient(rgb(10 48 46 / 72%), rgb(10 48 46 / 68%)) fixed, url(../images/property/condos-detail-hero.webp) center center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.condos-detail-page {
+    background: #fff;
+    color: #222
+}
+
+.property-wrap {
+    border-bottom: 2px solid #f0f0f0
+}
+
+.property-wrap:last-child {
+    border-bottom: none
+}
+
+.condos-detail-hero h1 {
+    color: #f0f0f0
+}
+
+@media (max-width:992px) {
+    .condos-detail-hero {
+        height: auto;
+        padding: 120px 0 60px
+    }
+}

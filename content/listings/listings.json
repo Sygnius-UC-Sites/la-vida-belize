@@ -1,0 +1,3303 @@
+{
+  "source": "https://www.lavidabelize.com",
+  "properties_list_url": "https://www.lavidabelize.com/properties",
+  "scraped_at": "2026-11-07T03:15:05Z",
+  "notes": {
+    "rates": "Live Hostaway list page shows Casa $180, Casita $173, Studio $89. Brad properties.html currently shows Casita From $148 / night; live rate is stored as standard_rate.",
+    "area": "Hostaway detail pages show Area as square meters (Casa 116, Casita 40, Studio 36). Square-foot figures come from each listing overview (1250 / 450 / 390).",
+    "seeder_tables": [
+      "properties",
+      "property_galleries",
+      "property_amenities",
+      "property_reviews"
+    ]
+  },
+  "properties": [
+    {
+      "key": "casa",
+      "name": "The Casa",
+      "listing_name": "La Vida Belize - Casa",
+      "seo_url": "la-vida-belize-casa",
+      "hostaway_listing_id": 212730,
+      "source_url": "https://www.lavidabelize.com/la-vida-belize---casa-212730",
+      "location": "Placencia, Stann Creek District, Belize",
+      "short_description": "Spacious beachfront home with its own pool. Ideal for families and friends who want room to gather.",
+      "overview": "Looking for a serene beachfront escape? Look no further than La Vida Belize Casa. With three spacious bedrooms and a private oasis by the Caribbean Sea, this stunning home is perfect for a dream vacation with friends or family. Plus, it's just a short ride away from Placencia Village and Maya Beach, giving you easy access to the best of Belize without the crowds.\n\nThis spacious 1250 sq ft home is meticulously crafted from Belizean hardwoods sourced from the Maya Mountains, which lie just 20 miles to the west of our property. Unique design features have been thoughtfully incorporated to optimize your indoor and outdoor living experience. The fully equipped kitchen is ready for those eager to whip up their own authentic Belizean dishes. For added comfort, all rooms are equipped with air conditioning, ensuring you stay cool even when the trade winds take a break. Step through the French doors, and you'll find the sea at your doorstep, providing a private and serene sanctuary for your soul. A stay with us transforms your Belize trip into an unforgettable and truly distinctive escape.\n\nAt La Vida Belize, we are committed to ensuring your experience meets your expectations. We offer complimentary use of a tandem kayak and bicycles. Just off the beach, you'll encounter expansive coral heads perfect for honing your snorkeling skills before embarking on your Cayes adventure. For fishing enthusiasts, snapper, snook, jacks, grunts, and Spanish mackerel are just steps away from our front door, while tarpon and other species await across the road in the lagoon. There is a 75-foot pier right off the beach for fishing, swimming, snorkeling, or just soaking up the Caribbean sun.\n\nOur location is conveniently situated just a short 5-minute drive north of Maya Beach and a 25-minute drive north of Placencia Village. Many tour operators offer the convenience of pick-up and drop-off services right here at La Vida Belize. We highly recommend that our guests consider renting a car to explore the region or opt for a golf cart to leisurely explore the peninsula.\n\nIf you need extra space, the home can be booked alongside our Casita (sleeps up to 3) and/or Studio (sleeps 2), accommodating up to eleven guests for an even more memorable stay.\n\nRental includes the entire home's upper floor and access to the grounds, Casa's pool, beach, and pier.\n\nWe are located in a neighborhood of private residences.\n\nA rental car is best for transportation. Golf carts are another option.\n\nPlease note: The beach consists of two lots and a pier. They are shared with our guests staying at the other rentals on the property. It is large enough for all to have their own private space.",
+      "standard_rate": 180,
+      "local_listed_rate": 180,
+      "live_listed_rate": 180,
+      "currency": "USD",
+      "sleeps": 6,
+      "bedrooms": 3,
+      "beds": 4,
+      "baths": 2,
+      "area_sqft": 1250,
+      "area_sqm": 116,
+      "rating": 4.93,
+      "listed_review_count": 64,
+      "feature_image": {
+        "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-JENt8KKMVtJrB6X-nvehcCddWeZBUZ--unGBKR0vCQY0-6993f62b72fa1",
+        "local_path": "content/listings/casa/feature.jpg",
+        "filename": "feature.jpg",
+        "page_banner_url": "https://www.lavidabelize.com/uploads/properties/66b1115570656.png"
+      },
+      "gallery": [
+        {
+          "sort_order": 1,
+          "caption": "",
+          "is_feature": true,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-JENt8KKMVtJrB6X-nvehcCddWeZBUZ--unGBKR0vCQY0-6993f62b72fa1",
+          "local_path": "content/listings/casa/gallery/01.jpg",
+          "filename": "01.jpg"
+        },
+        {
+          "sort_order": 2,
+          "caption": "IMG_3751.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-yRw7rCQXY-GOYmmbtarwG6CpV3Iepc4MfhuK--n8npfg-6993f6850f8ca",
+          "local_path": "content/listings/casa/gallery/02.jpg",
+          "filename": "02.jpg"
+        },
+        {
+          "sort_order": 3,
+          "caption": "Pool with view of Casita",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-WdH5ql1B17kopqQ0qqfM--NsY8psLNqNbVztIckP1MV8-65550a72c20fe",
+          "local_path": "content/listings/casa/gallery/03.jpg",
+          "filename": "03.jpg"
+        },
+        {
+          "sort_order": 4,
+          "caption": "Pool view from Main Home (Casa)",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-JMG1Rs45syew3yXJ1YV--ikjJsITpMm0zlb--bUUulgDc-65550a70d2f6a",
+          "local_path": "content/listings/casa/gallery/04.jpg",
+          "filename": "04.jpg"
+        },
+        {
+          "sort_order": 5,
+          "caption": "pool with deck and Palapa",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-cJkVCf2b2ZQ-ZExbND116VLzvK4KuLEAyXVgvKLODoE-65a50912743f2",
+          "local_path": "content/listings/casa/gallery/05.jpg",
+          "filename": "05.jpg"
+        },
+        {
+          "sort_order": 6,
+          "caption": "Sunrise on the beach",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-7L11vbG0GIRWIcOC5eOGwo5YRqkZ0REUqzN6jlgC1nw-65a5091552c28",
+          "local_path": "content/listings/casa/gallery/06.jpg",
+          "filename": "06.jpg"
+        },
+        {
+          "sort_order": 7,
+          "caption": "Sunrise on the beach",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-UI4sCDXegcPgW950o-NevdGEkJ66ynIoL9qrgy7Lfms-65a50916e4966",
+          "local_path": "content/listings/casa/gallery/07.jpg",
+          "filename": "07.jpg"
+        },
+        {
+          "sort_order": 8,
+          "caption": "La Vida Belize Beach View",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-OI4SxuCB4fyCvOnQjtyOqv0DZN3I8MZbSeBG6kGrE--g-65550ad10fe52",
+          "local_path": "content/listings/casa/gallery/08.jpg",
+          "filename": "08.jpg"
+        },
+        {
+          "sort_order": 9,
+          "caption": "IMG_3764.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-ySPkJ--8SOi3uDHeR-7dpozZNOlYpBlfoK7nU-vzD8rU-6993f65fd7e3f",
+          "local_path": "content/listings/casa/gallery/09.jpg",
+          "filename": "09.jpg"
+        },
+        {
+          "sort_order": 10,
+          "caption": "IMG_5110.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-MOsWXUd2MMMwjvP8rweaSp8Qv-aAh5eUD0OFZggiLno-6993f60a848b7",
+          "local_path": "content/listings/casa/gallery/10.jpg",
+          "filename": "10.jpg"
+        },
+        {
+          "sort_order": 11,
+          "caption": "Casa Living Room",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-C93lps8pz4tNOp69dUO55QY9HyewAiOwuv7R3LcqS7I-65a50922d7bb9",
+          "local_path": "content/listings/casa/gallery/11.jpg",
+          "filename": "11.jpg"
+        },
+        {
+          "sort_order": 12,
+          "caption": "Casa Living Room",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-RC6S0SX6Mla9fMFIRQMT5Lx4UHaFyiFOQqpJXmvItAs-65a50925e8ea2",
+          "local_path": "content/listings/casa/gallery/12.jpg",
+          "filename": "12.jpg"
+        },
+        {
+          "sort_order": 13,
+          "caption": "IMG_5113.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-F86LunqODEhxvLOSaDpii8--Yy9dV2EGvqW--AsU6OTOc-6993f64e0b080",
+          "local_path": "content/listings/casa/gallery/13.jpg",
+          "filename": "13.jpg"
+        },
+        {
+          "sort_order": 14,
+          "caption": "Casa Kitchen",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-nIkF--xuLOjse62hXknU5lC--GwbSwhocoxF4oFIrQmVA-65a5092ccd677",
+          "local_path": "content/listings/casa/gallery/14.jpg",
+          "filename": "14.jpg"
+        },
+        {
+          "sort_order": 15,
+          "caption": "IMG_3666.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-ZytzoN8jX60ulKqK3DPMSwTgzIWtnjKB2QS--0I0cBXA-6993f5eb38d50",
+          "local_path": "content/listings/casa/gallery/15.jpg",
+          "filename": "15.jpg"
+        },
+        {
+          "sort_order": 16,
+          "caption": "IMG_5125.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-i0PBvZZ2kXBm4pBDACWuABuc3dJhgJ0-Klsv4Bqkn3Y-6993f61af040c",
+          "local_path": "content/listings/casa/gallery/16.jpg",
+          "filename": "16.jpg"
+        },
+        {
+          "sort_order": 17,
+          "caption": "IMG_5124.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-IV48IDB7YTN9kP51oIfiYr-hGGWTKyF6p8l--NVO0etA-6993f63d0dd79",
+          "local_path": "content/listings/casa/gallery/17.jpg",
+          "filename": "17.jpg"
+        },
+        {
+          "sort_order": 18,
+          "caption": "Casa-Master Bath",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-Un2hwVP32CrZFgmNoHkwbcx-V2XMN6--0yx3i4e841Yg-65550a9cccc09",
+          "local_path": "content/listings/casa/gallery/18.jpg",
+          "filename": "18.jpg"
+        },
+        {
+          "sort_order": 19,
+          "caption": "Mater Bathroom",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-rBl7B3G0UAPiWYdmXAfBYQT83AKZ22J839in9GAclAQ-65550aa2e73bb",
+          "local_path": "content/listings/casa/gallery/19.jpg",
+          "filename": "19.jpg"
+        },
+        {
+          "sort_order": 20,
+          "caption": "IMG_5118.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-Ts3tz1hCk2--Ylb4WV5--FZGtSL6RqAIAjDIylUI1G1zE-6993f5cce7a01",
+          "local_path": "content/listings/casa/gallery/20.jpg",
+          "filename": "20.jpg"
+        },
+        {
+          "sort_order": 21,
+          "caption": "Master Bathroom Shower",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-C3s8cAQJ2yqvNjK51wA3TQNhiLw--mfo4P5JA0biEyzg-65a5093c4121b",
+          "local_path": "content/listings/casa/gallery/21.jpg",
+          "filename": "21.jpg"
+        },
+        {
+          "sort_order": 22,
+          "caption": "IMG_5097.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-9UnVSseOXde2x8j7cI--WavC--WqfoBp0wKYFJGYgVJd4-6993f5bf1d6a1",
+          "local_path": "content/listings/casa/gallery/22.jpg",
+          "filename": "22.jpg"
+        },
+        {
+          "sort_order": 23,
+          "caption": "IMG_5122.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-fKlqAq2xVOTSmHdHFinS6oe1bVX8f-v8qvoua9TYk04-6993f5fa7b40d",
+          "local_path": "content/listings/casa/gallery/23.jpg",
+          "filename": "23.jpg"
+        },
+        {
+          "sort_order": 24,
+          "caption": "IMG_5116.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-P2folYWoLV-Nh6WPlVVWRaN--0--aoDTbSE2tzhlx2G2Q-6993f5dbb22bd",
+          "local_path": "content/listings/casa/gallery/24.jpg",
+          "filename": "24.jpg"
+        },
+        {
+          "sort_order": 25,
+          "caption": "IMG_5115.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-nyszpY4E8HKLMck5Y2RGZIV-HXZGA-GA7X3sNjvDC04-6993f595dd01f",
+          "local_path": "content/listings/casa/gallery/25.jpg",
+          "filename": "25.jpg"
+        },
+        {
+          "sort_order": 26,
+          "caption": "IMG_8967.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-tc7i--3xp98O96rDV5eIvvT-d7xKsUaOh1yXEVOLQwYQ-6993f5889dec3",
+          "local_path": "content/listings/casa/gallery/26.jpg",
+          "filename": "26.jpg"
+        },
+        {
+          "sort_order": 27,
+          "caption": "IMG_5114.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-qP3zFaE9gVhmkA9UBGKQL7WR-mPNG5vAOe9jFUpAVQ0-6993f5a362d8c",
+          "local_path": "content/listings/casa/gallery/27.jpg",
+          "filename": "27.jpg"
+        },
+        {
+          "sort_order": 28,
+          "caption": "IMG_4490.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-KJgDG-LU-2mmHrpSrrS66PR7Xh6pVRGFB9yFGNHbA6g-6993f5b0cab0e",
+          "local_path": "content/listings/casa/gallery/28.jpg",
+          "filename": "28.jpg"
+        },
+        {
+          "sort_order": 29,
+          "caption": "Entrance to property",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-AVbryf1lLrEvSlI5ptrTZyPBnPrarKq5z-DVTSA--Y7w-65a509188a457",
+          "local_path": "content/listings/casa/gallery/29.jpg",
+          "filename": "29.jpg"
+        },
+        {
+          "sort_order": 30,
+          "caption": "Night View of Casa from beach",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-JPDxx3MPOXTD-Y7XSTy6vDMpBCWXEPCibGRAmnrtQ-c-65a5091f2cf40",
+          "local_path": "content/listings/casa/gallery/30.jpg",
+          "filename": "30.jpg"
+        },
+        {
+          "sort_order": 31,
+          "caption": "Parking",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-aTh--C-wJ17tKl2CxrEj9RNPiWhVc40Sk0IoMGF8absU-65a5094aae987",
+          "local_path": "content/listings/casa/gallery/31.jpg",
+          "filename": "31.jpg"
+        },
+        {
+          "sort_order": 32,
+          "caption": "Pool and Palapa",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-k3oaBPeGqTu0GMu748rijzm521gJsKMuXENtyC-8pwc-65550ab757bc0",
+          "local_path": "content/listings/casa/gallery/32.jpg",
+          "filename": "32.jpg"
+        },
+        {
+          "sort_order": 33,
+          "caption": "Pool with Deck and Palapa",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-fGNzLb4F-zM5QFUvK9oLfs6xsMesRcbFqJrmkRsh28o-65a50957ec5a8",
+          "local_path": "content/listings/casa/gallery/33.jpg",
+          "filename": "33.jpg"
+        },
+        {
+          "sort_order": 34,
+          "caption": "Palapa and Pool",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-vTaTMKwyujeq--dQx1JvGkWh-EQMUvyAGSXJS8h6p1Io-65a5095ee50e0",
+          "local_path": "content/listings/casa/gallery/34.jpg",
+          "filename": "34.jpg"
+        },
+        {
+          "sort_order": 35,
+          "caption": "IMG_3763.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-z15Crie3kjFuG9VOzeSDUMbhPCSxbZ6uRS904HPfpuQ-6993f6723a83e",
+          "local_path": "content/listings/casa/gallery/35.jpg",
+          "filename": "35.jpg"
+        },
+        {
+          "sort_order": 36,
+          "caption": "IMG_3757.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-eiaAN898HSqyyvI7PegeYgtDDwS20W--RwEFyt4sOQoI-6993f69918d7e",
+          "local_path": "content/listings/casa/gallery/36.jpg",
+          "filename": "36.jpg"
+        },
+        {
+          "sort_order": 37,
+          "caption": "View from Pool towards entrance",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-d-Hr5bpAOAMmArjDsHp5XtomDpWfxH0SYx3g8cpDycA-655516f617c04",
+          "local_path": "content/listings/casa/gallery/37.jpg",
+          "filename": "37.jpg"
+        },
+        {
+          "sort_order": 38,
+          "caption": "Sidewalk in Placencia Village",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-3--VNdlo3BbroxEYyruqFjPEsgUo4o7Vyu3c5paImNxk-65a5096d53b20",
+          "local_path": "content/listings/casa/gallery/38.jpg",
+          "filename": "38.jpg"
+        },
+        {
+          "sort_order": 39,
+          "caption": "Tubing in nearby river",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-6zYS-HT-AY2cnpya7rmHmdeTc1UxOrjMQaOmMryzQ9U-65a5096f54efb",
+          "local_path": "content/listings/casa/gallery/39.jpg",
+          "filename": "39.jpg"
+        },
+        {
+          "sort_order": 40,
+          "caption": "Fishing in front of Casita",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730---KQfzzrNJl6K--j4e4yu0w415kkhOAj5x5EUYS4u-rIA-65a5097119315",
+          "local_path": "content/listings/casa/gallery/40.jpg",
+          "filename": "40.jpg"
+        },
+        {
+          "sort_order": 41,
+          "caption": "Placencia Village",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-YaauLUAfoUfWMNgsUc--pONRj8o0XL4CDqiNj26j6Nh8-65a50972f3765",
+          "local_path": "content/listings/casa/gallery/41.jpg",
+          "filename": "41.jpg"
+        },
+        {
+          "sort_order": 42,
+          "caption": "Placencia Village",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212730-qv34TyoKJp4LRFzDGJBZWC1h8S5cC5vD6F--t3DJ2idY-65a509751da49",
+          "local_path": "content/listings/casa/gallery/42.jpg",
+          "filename": "42.jpg"
+        }
+      ],
+      "amenities": [
+        {
+          "sort_order": 1,
+          "name": "Internet",
+          "category": null
+        },
+        {
+          "sort_order": 2,
+          "name": "Wireless",
+          "category": null
+        },
+        {
+          "sort_order": 3,
+          "name": "Air conditioning",
+          "category": null
+        },
+        {
+          "sort_order": 4,
+          "name": "Swimming pool",
+          "category": null
+        },
+        {
+          "sort_order": 5,
+          "name": "Kitchen",
+          "category": null
+        },
+        {
+          "sort_order": 6,
+          "name": "Washing Machine",
+          "category": null
+        },
+        {
+          "sort_order": 7,
+          "name": "Dryer",
+          "category": null
+        },
+        {
+          "sort_order": 8,
+          "name": "Hair Dryer",
+          "category": null
+        },
+        {
+          "sort_order": 9,
+          "name": "Smoke detector",
+          "category": null
+        },
+        {
+          "sort_order": 10,
+          "name": "Carbon Monoxide Detector",
+          "category": null
+        },
+        {
+          "sort_order": 11,
+          "name": "First aid kit",
+          "category": null
+        },
+        {
+          "sort_order": 12,
+          "name": "Fire Extinguisher",
+          "category": null
+        },
+        {
+          "sort_order": 13,
+          "name": "Essentials",
+          "category": null
+        },
+        {
+          "sort_order": 14,
+          "name": "Shampoo",
+          "category": null
+        },
+        {
+          "sort_order": 15,
+          "name": "Hangers",
+          "category": null
+        },
+        {
+          "sort_order": 16,
+          "name": "Iron",
+          "category": null
+        },
+        {
+          "sort_order": 17,
+          "name": "Laptop Friendly workspace",
+          "category": null
+        },
+        {
+          "sort_order": 18,
+          "name": "TV",
+          "category": null
+        },
+        {
+          "sort_order": 19,
+          "name": "Free parking",
+          "category": null
+        },
+        {
+          "sort_order": 20,
+          "name": "Balcony",
+          "category": null
+        },
+        {
+          "sort_order": 21,
+          "name": "Suitable for children",
+          "category": null
+        },
+        {
+          "sort_order": 22,
+          "name": "Suitable for infants",
+          "category": null
+        },
+        {
+          "sort_order": 23,
+          "name": "Linens",
+          "category": null
+        },
+        {
+          "sort_order": 24,
+          "name": "Outdoor grill",
+          "category": null
+        },
+        {
+          "sort_order": 25,
+          "name": "Toaster",
+          "category": null
+        },
+        {
+          "sort_order": 26,
+          "name": "Microwave",
+          "category": null
+        },
+        {
+          "sort_order": 27,
+          "name": "Oven",
+          "category": null
+        },
+        {
+          "sort_order": 28,
+          "name": "Electric kettle",
+          "category": null
+        },
+        {
+          "sort_order": 29,
+          "name": "Coffee/tea maker",
+          "category": null
+        },
+        {
+          "sort_order": 30,
+          "name": "Shower",
+          "category": null
+        },
+        {
+          "sort_order": 31,
+          "name": "Stove",
+          "category": null
+        },
+        {
+          "sort_order": 32,
+          "name": "Refrigerator",
+          "category": null
+        },
+        {
+          "sort_order": 33,
+          "name": "Towels",
+          "category": null
+        },
+        {
+          "sort_order": 34,
+          "name": "Garden or backyard",
+          "category": null
+        },
+        {
+          "sort_order": 35,
+          "name": "High chair",
+          "category": null
+        },
+        {
+          "sort_order": 36,
+          "name": "Kitchen utensils",
+          "category": null
+        },
+        {
+          "sort_order": 37,
+          "name": "Single level home",
+          "category": null
+        },
+        {
+          "sort_order": 38,
+          "name": "Hot water",
+          "category": null
+        },
+        {
+          "sort_order": 39,
+          "name": "Private entrance",
+          "category": null
+        },
+        {
+          "sort_order": 40,
+          "name": "Extra pillows and blankets",
+          "category": null
+        },
+        {
+          "sort_order": 41,
+          "name": "Cooking basics",
+          "category": null
+        },
+        {
+          "sort_order": 42,
+          "name": "Beach essentials",
+          "category": null
+        },
+        {
+          "sort_order": 43,
+          "name": "Toilet",
+          "category": null
+        },
+        {
+          "sort_order": 44,
+          "name": "Car recommended",
+          "category": null
+        },
+        {
+          "sort_order": 45,
+          "name": "Baby bath",
+          "category": null
+        },
+        {
+          "sort_order": 46,
+          "name": "Childrens dinnerware",
+          "category": null
+        },
+        {
+          "sort_order": 47,
+          "name": "Pack n play travel crib",
+          "category": null
+        },
+        {
+          "sort_order": 48,
+          "name": "Games",
+          "category": null
+        },
+        {
+          "sort_order": 49,
+          "name": "Video library",
+          "category": null
+        },
+        {
+          "sort_order": 50,
+          "name": "Dining area",
+          "category": null
+        },
+        {
+          "sort_order": 51,
+          "name": "Spices",
+          "category": null
+        },
+        {
+          "sort_order": 52,
+          "name": "Boating",
+          "category": null
+        },
+        {
+          "sort_order": 53,
+          "name": "Eco tourism",
+          "category": null
+        },
+        {
+          "sort_order": 54,
+          "name": "Horseback riding",
+          "category": null
+        },
+        {
+          "sort_order": 55,
+          "name": "Shopping",
+          "category": null
+        },
+        {
+          "sort_order": 56,
+          "name": "Water sports",
+          "category": null
+        },
+        {
+          "sort_order": 57,
+          "name": "Beach",
+          "category": null
+        },
+        {
+          "sort_order": 58,
+          "name": "Mountain view",
+          "category": null
+        },
+        {
+          "sort_order": 59,
+          "name": "Ocean front",
+          "category": null
+        },
+        {
+          "sort_order": 60,
+          "name": "Ocean view",
+          "category": null
+        },
+        {
+          "sort_order": 61,
+          "name": "Waterfront",
+          "category": null
+        },
+        {
+          "sort_order": 62,
+          "name": "Bicycle",
+          "category": null
+        },
+        {
+          "sort_order": 63,
+          "name": "Kayak canoe",
+          "category": null
+        },
+        {
+          "sort_order": 64,
+          "name": "Water sports gear",
+          "category": null
+        },
+        {
+          "sort_order": 65,
+          "name": "Luggage dropoff allowed",
+          "category": null
+        },
+        {
+          "sort_order": 66,
+          "name": "Long term stays allowed",
+          "category": null
+        },
+        {
+          "sort_order": 67,
+          "name": "Private pool",
+          "category": null
+        },
+        {
+          "sort_order": 68,
+          "name": "Stair gates",
+          "category": null
+        },
+        {
+          "sort_order": 69,
+          "name": "Cleaning included",
+          "category": null
+        },
+        {
+          "sort_order": 70,
+          "name": "Massage",
+          "category": null
+        },
+        {
+          "sort_order": 71,
+          "name": "Fishing",
+          "category": null
+        },
+        {
+          "sort_order": 72,
+          "name": "Fishing fly",
+          "category": null
+        },
+        {
+          "sort_order": 73,
+          "name": "Fishing surf",
+          "category": null
+        },
+        {
+          "sort_order": 74,
+          "name": "Kayaking",
+          "category": null
+        },
+        {
+          "sort_order": 75,
+          "name": "Scuba or snorkeling",
+          "category": null
+        },
+        {
+          "sort_order": 76,
+          "name": "Snorkeling",
+          "category": null
+        },
+        {
+          "sort_order": 77,
+          "name": "Snorkeling diving",
+          "category": null
+        },
+        {
+          "sort_order": 78,
+          "name": "Swimming",
+          "category": null
+        },
+        {
+          "sort_order": 79,
+          "name": "Family",
+          "category": null
+        },
+        {
+          "sort_order": 80,
+          "name": "Romantic",
+          "category": null
+        },
+        {
+          "sort_order": 81,
+          "name": "Enhanced Cleaning Practices",
+          "category": null
+        },
+        {
+          "sort_order": 82,
+          "name": "Contactless Check-In/Out",
+          "category": null
+        },
+        {
+          "sort_order": 83,
+          "name": "Free WiFi",
+          "category": null
+        },
+        {
+          "sort_order": 84,
+          "name": "WiFi speed (50+ Mbps)",
+          "category": null
+        },
+        {
+          "sort_order": 85,
+          "name": "Smart TV",
+          "category": null
+        },
+        {
+          "sort_order": 86,
+          "name": "Desk chair",
+          "category": null
+        },
+        {
+          "sort_order": 87,
+          "name": "Kitchen island",
+          "category": null
+        },
+        {
+          "sort_order": 88,
+          "name": "Private dock",
+          "category": null
+        },
+        {
+          "sort_order": 89,
+          "name": "Outdoor dining",
+          "category": null
+        },
+        {
+          "sort_order": 90,
+          "name": "Outdoor furniture",
+          "category": null
+        },
+        {
+          "sort_order": 91,
+          "name": "Outdoor sunloungers",
+          "category": null
+        },
+        {
+          "sort_order": 92,
+          "name": "Safe",
+          "category": null
+        },
+        {
+          "sort_order": 93,
+          "name": "Cleaning products",
+          "category": null
+        },
+        {
+          "sort_order": 94,
+          "name": "Body soap",
+          "category": null
+        },
+        {
+          "sort_order": 95,
+          "name": "Conditioner",
+          "category": null
+        },
+        {
+          "sort_order": 96,
+          "name": "Shower gel",
+          "category": null
+        },
+        {
+          "sort_order": 97,
+          "name": "Drying rack for clothing",
+          "category": null
+        },
+        {
+          "sort_order": 98,
+          "name": "Board games",
+          "category": null
+        },
+        {
+          "sort_order": 99,
+          "name": "Ceiling fan",
+          "category": null
+        },
+        {
+          "sort_order": 100,
+          "name": "Portable fans",
+          "category": null
+        },
+        {
+          "sort_order": 101,
+          "name": "Baking sheet",
+          "category": null
+        },
+        {
+          "sort_order": 102,
+          "name": "Barbeque utensils",
+          "category": null
+        },
+        {
+          "sort_order": 103,
+          "name": "Blender",
+          "category": null
+        },
+        {
+          "sort_order": 104,
+          "name": "Coffee",
+          "category": null
+        },
+        {
+          "sort_order": 105,
+          "name": "Freezer",
+          "category": null
+        },
+        {
+          "sort_order": 106,
+          "name": "Wine glasses",
+          "category": null
+        },
+        {
+          "sort_order": 107,
+          "name": "Hammock",
+          "category": null
+        }
+      ],
+      "reviews": [
+        {
+          "guest_name": "Alexander N.",
+          "date": "August 2026",
+          "date_iso": "2026-08",
+          "rating": 5,
+          "text": "This was by far my favorite place to visit, especially when traveling with a big family. It was super comfortable, pool was great for the kids and we all enjoyed our stay. Highly recommend!"
+        },
+        {
+          "guest_name": "Ryan E.",
+          "date": "August 2026",
+          "date_iso": "2026-08",
+          "rating": 5,
+          "text": "This place was perfect for the family. We enjoyed our stay very much!"
+        },
+        {
+          "guest_name": "Sarah O.",
+          "date": "August 2026",
+          "date_iso": "2026-08",
+          "rating": 5,
+          "text": "This place was absolutely amazing. I couldn’t ask for anything better. Love the private beach and the pool. The view was beautiful. Highly recommend if you want something peaceful."
+        },
+        {
+          "guest_name": "Joey A.",
+          "date": "July 2026",
+          "date_iso": "2026-07",
+          "rating": 5,
+          "text": "Nice place to stay.\nLooking for peace thats the perfect place.\nIt’s a nice place to stay with family.\nWorth the price.\nYou have your own privacy.\nWill be back soon."
+        },
+        {
+          "guest_name": "Thaddaeus H.",
+          "date": "July 2026",
+          "date_iso": "2026-07",
+          "rating": 5,
+          "text": "My family and I truly enjoyed our stay at La Vida Belize. Brad (Host) and Lucas (Property Manager) were great and responsive. The home was a perfect fit and met all of our needs for relaxing and resetting. We look forward to coming back soon. Thank you, Brad!"
+        },
+        {
+          "guest_name": "Joanne R.",
+          "date": "July 2026",
+          "date_iso": "2026-07",
+          "rating": 5,
+          "text": "Perfect stay for our family of 6. Probably the best stocked kitchen appliances/tools of any air bnb we’ve ever stayed in. ( We like to be able to cook) The private dock was amazing, especially at night to look at the stars"
+        },
+        {
+          "guest_name": "Lindsay A.",
+          "date": "July 2026",
+          "date_iso": "2026-07",
+          "rating": 5,
+          "text": "host was very kind and helpful and the place was beautiful and peaceful ✌️ 10/10!"
+        },
+        {
+          "guest_name": "Tanya S.",
+          "date": "June 2026",
+          "date_iso": "2026-06",
+          "rating": 5,
+          "text": "Always a wonderful experience.  Extremely flexible host. Highly recommended!!!\nWill definitely be back"
+        },
+        {
+          "guest_name": "John N.",
+          "date": "May 2026",
+          "date_iso": "2026-05",
+          "rating": 4,
+          "text": "Really enjoyed our time at this property.  We loved the pool and the beautiful setting.  We wish it had been closer to Placencia town as in the lower season many restaurants that were close were closed so it forced us to drive much further to get dinner.  Also the room with the bunk beds is incredibly small which was challenging for my two adult children.  They made it work but it was not ideal. The BBQ was in very poor condition and was barely operable for us to use to cook dinner.  Still loved this property."
+        },
+        {
+          "guest_name": "Michelle M.",
+          "date": "April 2026",
+          "date_iso": "2026-04",
+          "rating": 5,
+          "text": "My family and I had a lovely stay at this villa. The house was exactly as described and Brad the owner was responsive before and after booking. Great advice about getting a car over a golf cart. Plenty of great restaurants nearby and the property was perfect for a relaxing family holiday. Lucas the property manager was a good source of information and friendly and helpful. We enjoyed using kayaks and bikes! Would definitely stay again."
+        },
+        {
+          "guest_name": "Nick E.",
+          "date": "April 2026",
+          "date_iso": "2026-04",
+          "rating": 5,
+          "text": "None of us wanted to leave. Great stay, great staff, absolutely beautiful."
+        },
+        {
+          "guest_name": "David C.",
+          "date": "April 2026",
+          "date_iso": "2026-04",
+          "rating": 5,
+          "text": "Clean, beautiful and has everything you need to enjoy a relaxing vacation. Pool was well kept"
+        },
+        {
+          "guest_name": "Heather D.",
+          "date": "April 2026",
+          "date_iso": "2026-04",
+          "rating": 4,
+          "text": "La Vida Belize was exactly as listed. The house, pool and grounds are all well maintained.  It really is a beautiful property. The only reason we gave it 4 stars instead of 5 was the stinky smell from the seaweed piling up on the beach, but also realize this is not all within owners control. It was quite overwhelming much of the time. The stench even made it difficult to enjoy the pool a majority of the time we were there. We attempted to go on the pier a couple of times but that was short lived. Bring a good bug spray...the mosquitos were relentless much of the time. Overall, we had a good stay minus the stinky smell."
+        },
+        {
+          "guest_name": "Colin Y.",
+          "date": "April 2026",
+          "date_iso": "2026-04",
+          "rating": 3.5,
+          "text": "Nevertheless , we enjoyed the house and the pool - I would stay again\nPositive: The property is beautiful ; lots of trees ; yard well kept and maintain; pier and palapa are great and the house was very clean and all the amenities needed inlcluded ! The pool made it especially comfortable from the heat !\nNegative: The third bedroom is v small with two bunks beds ; the steps up and down to get to top bunk  is risky and a little slippery  ; the pictures made living room and bedroom bigger than they appear !  The sargassum situation the last two days of the stay spoiled the visit - the smell  got unbearable ; however , the sargassum was impacting the entire coastline so not fault on the owners"
+        },
+        {
+          "guest_name": "Brianna K.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 5,
+          "text": "We had a great time staying at La Vida Belize! It was amazing to have our own private beach."
+        },
+        {
+          "guest_name": "Edith P.",
+          "date": "February 2026",
+          "date_iso": "2026-02",
+          "rating": 5,
+          "text": "La Vida was the perfect getaway with friends. There was plenty of sun and sand to ride us of winter blues.\nIn the future we will consider renting the entire property (3units) to accommodate everyone and increase privacy.\nA car rental is necessary.\nIn the address MM11, means the house is found at Mile Marker 11. Oops"
+        },
+        {
+          "guest_name": "Denise C.",
+          "date": "February 2026",
+          "date_iso": "2026-02",
+          "rating": 5,
+          "text": "Private beach and pool. Pool maintenance was exceptional, property well maintained. We had an issue with the air conditioner but they responded quickly.  The kitchen was well stocked, beach towels provided and the washer and dryer were a real plus. Easy drive to grocery store, restaurants and shopping."
+        },
+        {
+          "guest_name": "Stacy P.",
+          "date": "February 2026",
+          "date_iso": "2026-02",
+          "rating": 5,
+          "text": "The house was great, the views were excellent. The property was well taken care of, and we had everything we needed. One thing to point out is that one bedroom only had bunk beds, but the pictures make it look like there are three regular sized beds. Not a deal breaker, but could be important if you are planning on rooms for three couples."
+        },
+        {
+          "guest_name": "Rod D.",
+          "date": "December 2025",
+          "date_iso": "2025-12",
+          "rating": 5,
+          "text": "House, location plus beach and pool were great. Brad, lucas etc were super responsive when we needed something.  We had three kids - 14 12 and 8 and we had tons of fun and relaxation"
+        },
+        {
+          "guest_name": "Aimee W.",
+          "date": "December 2025",
+          "date_iso": "2025-12",
+          "rating": 5,
+          "text": "Such a beautifully designed and well-kept place, peaceful, refreshing, and perfect for our little family getaway. We enjoyed the pool, the pristine beach, and relaxing on the pier while my husband fished. Would definitely recommend."
+        },
+        {
+          "guest_name": "Jason G.",
+          "date": "November 2025",
+          "date_iso": "2025-11",
+          "rating": 5,
+          "text": "La Vida Belize is truly a home away from home. The house is beautiful and well-maintained.  The kitchen has everything you could ever need. The views are amazing and we caught fish just off the beach via the kayak. It was everything the host described and we had a great trip."
+        },
+        {
+          "guest_name": "Jovanny F.",
+          "date": "October 2025",
+          "date_iso": "2025-10",
+          "rating": 5,
+          "text": "Perfect for the occasion and great privacy"
+        },
+        {
+          "guest_name": "Ryan M.",
+          "date": "October 2025",
+          "date_iso": "2025-10",
+          "rating": 5,
+          "text": "This place was wow! Highly recommend! Definitely need transportation if you are looking to leave the place but in all honesty it has everything you need! Love it x1000"
+        },
+        {
+          "guest_name": "Tanya S.",
+          "date": "August 2025",
+          "date_iso": "2025-08",
+          "rating": 5,
+          "text": "Definitely a gem!! Loved the entire setting. Highly recommend.  Will be back."
+        },
+        {
+          "guest_name": "Elizeth M.",
+          "date": "August 2025",
+          "date_iso": "2025-08",
+          "rating": 5,
+          "text": "We absolutely loved staying at La Vida Belize. Brad was super helpful and responsive. Would definitely recommend staying here if you want a peaceful getaway. It felt like home away from home."
+        },
+        {
+          "guest_name": "Tyra S.",
+          "date": "July 2025",
+          "date_iso": "2025-07",
+          "rating": 5,
+          "text": "Absolutely fantastic, clean and incredibly comfortable. The host was welcoming and responsive. The location was perfect, making it easy to explore the area we couldn’t have asked for better stay!"
+        },
+        {
+          "guest_name": "Amanda S.",
+          "date": "July 2025",
+          "date_iso": "2025-07",
+          "rating": 5,
+          "text": "The house, pool, and beach were gorgeous. However we paid $300 extra to have this space instead of another, because it was advirtised as the entire house to ourselves. When we got there we found out that the lower level was occupied with renters.......They were very nice, so it was ok......"
+        },
+        {
+          "guest_name": "Fernando R.",
+          "date": "July 2025",
+          "date_iso": "2025-07",
+          "rating": 5,
+          "text": "excelente\nPositive: todo boen\nNegative: este es un comentario la máquina de hacer café no servía y lo reportamos igual a la televisión del cuarto de niños que no usamos la tv estaba sacada de sus bases y lo reportamos es lo único lo demás excelente"
+        },
+        {
+          "guest_name": "Stacey W.",
+          "date": "June 2025",
+          "date_iso": "2025-06",
+          "rating": 5,
+          "text": "The casa at La Vida Belize was just what we were looking for. The view is beautiful, it’s less than 100 yards to the water, and the pool is great. The kitchen is well-stocked too.\nIt’s a little far from the main area of Placencia (which we knew), so plan to have a rental car if you want to go to restaurants, the grocery store, etc."
+        },
+        {
+          "guest_name": "Ashley G.",
+          "date": "June 2025",
+          "date_iso": "2025-06",
+          "rating": 5,
+          "text": "Our stay at La Vida was a wonderful peaceful 3 day relaxation stop in our 2 weeks in Belize.  The house is absolute perfection in aesthetic and function.  It is beautiful and has many wonderful amenities inside and out.  The kitchen was nicely stocked and wonderful for preparing and cooking meals.  The outdoors offer many areas to relax and unwind.  From the expansive porch, to the pool deck and out to the sea and the lovely dock there is plenty of peace and tranquility to be found at La Vida.  Brad is wonderful to work with and his communication is extremely fast.  If you are looking for a slow down this is the place to be.  We are very thankful to Brad for having us and allowing us to make many memories at La Vida."
+        },
+        {
+          "guest_name": "Lisa N.",
+          "date": "June 2025",
+          "date_iso": "2025-06",
+          "rating": 5,
+          "text": "absolutely a wonderful stay! beach pool pier and seclusion! a great space for a family of 4and if you need there is another casa on property so you can rent both spaces for a family retreat! simply a wonderful perfect place for our family of 4!!! couldn’t have asked for a more perfect space! 30 minutes from placencia but we didn’t want to be in the touristy spot! this was a perfect place for us!"
+        },
+        {
+          "guest_name": "Kiara T.",
+          "date": "May 2025",
+          "date_iso": "2025-05",
+          "rating": 5,
+          "text": "La Vida Belize was just like the pictures. It was very Welcoming and had all the amenities listed- private beach and all. Great central location outside of the bustle of main Placencia and close to Bocawina if looking for other things to do out of the water. Brad's place was a great stay and we enjoyed our time at the pool and at the beach. All bedrooms bathrooms are spacious and were clean. The staff on-site keeps to themselves and were nice and helpful when asked questions. I would definitely recommend staying here and would stay here again. Thank you Brad for hosting us and sharing your place."
+        },
+        {
+          "guest_name": "Derek C.",
+          "date": "March 2025",
+          "date_iso": "2025-03",
+          "rating": 5,
+          "text": "Everything was as advertised and manager and owners were very responsive to questions and quick to fix the ac unit in a bedroom when it went out. Would stay again."
+        },
+        {
+          "guest_name": "Stacie O.",
+          "date": "March 2025",
+          "date_iso": "2025-03",
+          "rating": 5,
+          "text": "We are a family of 5 and recently stayed at La Vida Belize. The house was clean and comfortable with everything we needed for our stay. The plunge pool, beach and dock were the perfect place to relax after a day of adventure. We enjoyed being in a quieter area and didn’t mind the distance from the main area of Placencia. We rented a car and explored several areas in Belize during our stay. We used the guestbook for tips about the area and places to eat near Maya Beach. The grounds keepers were friendly and kept everything nice for us during our stay. The host responded quickly to any questions we had. During our week stay, some of the activities we were able to do included: snorkling with Captain Jak’s, visit the Bocawina Nation Park & Zip-line Adventure, fishing, a Monkey River tour and visit some Mayan Ruins. We also spent a good amount of time relaxing and reading on the beach or by the pool. We recommend staying here."
+        },
+        {
+          "guest_name": "Nikki L.",
+          "date": "March 2025",
+          "date_iso": "2025-03",
+          "rating": 5,
+          "text": "We absolutely loved our stay at La Vida Belize! The property itself is amazing, with a beautiful and peaceful beach, lovely dock, pool area, etc — and the house is equipped with everything you need, very clean, comfortable and modern. The host and property manager were wonderful to work with and very responsive — wouldn’t hesitate to book here again!"
+        },
+        {
+          "guest_name": "Emalee P.",
+          "date": "February 2025",
+          "date_iso": "2025-02",
+          "rating": 5,
+          "text": "This house was an amazing stay! The pool was amazing and clean, short little path down to the beach which was private. Loved the pier and paddle boards and kayaks provided! Lucas called a cab for us to take into town when the number he initially provided didn’t work. They also helped us make accommodations for a group of 8 people. I would absolutely recommend this house to anyone looking!\nBe prepared to drive/taxi about 30 minutes into Placencia if you want to shop or eat dinner, but the privacy and peacefulness was worth it!"
+        },
+        {
+          "guest_name": "Meghan M.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 5,
+          "text": "This was an absolute amazing place to stay to end our short Belize getaway!\nWe had the beach and dock to ourselves the first night and most of the following day as the nearby casita wasn't rented.\nLucas (property manager) came by shortly after we arrived to answer our questions and to take care of a minor repair (a/c in the kitchen).  While it wasn't able to be rectified during ur stay, the weather was nice enough to simply use the fan to keep the place at a comfortable temperature.\nCheck-in was simple and the home is truly wonderful and very comfortable!\nBoth Brad and Lucas were quick to communicate and answer our questions.\nHighly recommend staying at this home if you head to Placencia and don't want to be right in the hustle and bustle of town and want a little privacy for your group!"
+        },
+        {
+          "guest_name": "Rosa A.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 4,
+          "text": "Excelente lugar!"
+        },
+        {
+          "guest_name": "Daniel S.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 5,
+          "text": "My family and I thoroughly enjoyed our stay here. What really stood out was the privacy. We all wanted a quiet getaway from our lives of hustle and bustle. This place provided just that. None of us wanted to leave. We would book this spot again and again."
+        },
+        {
+          "guest_name": "Andreja G.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 5,
+          "text": "Wow!!! This place exceeded our expectations! The beds were so comfortable, the home was extremely clean, kitchen was well stocked. We were so impressed! Property manager, Lucas, qas very kind and knowledgeable. Highly recommend this place"
+        },
+        {
+          "guest_name": "Elizabeth S.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 5,
+          "text": "I stayed a week with two other friends. The place is beautiful, the host is phenomenal and answered all of our questions. The home is super comfy perfect location right on the beach. We celebrated my 40th birthday and made lifetime memories. I would recommend this to anyone and I would totally return and stay again! Belize is magical!"
+        },
+        {
+          "guest_name": "marc b.",
+          "date": "August 2024",
+          "date_iso": "2024-08",
+          "rating": 4,
+          "text": ""
+        },
+        {
+          "guest_name": "Brittany C.",
+          "date": "August 2024",
+          "date_iso": "2024-08",
+          "rating": 5,
+          "text": "Super cute space for a traveling family! Beach access with paddle boards was a super plus."
+        },
+        {
+          "guest_name": "Dwight B.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "La Vida Belize was a great place to stay. All the amenities were fully enjoyed by me and my family and the location was central to get to most of tours and attractions. We would definitely stay at La Vida on a next trip to Belize."
+        },
+        {
+          "guest_name": "Doug R.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "Kids loved having their own pool. Good kitchen. Clean. Good location for day trips.  Nice dock. Kids appreciated the wifi."
+        },
+        {
+          "guest_name": "Develyn M.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "Carla was excellent in giving us recommendations for things to do. Brad has lists of places to eat. The home was wonderful, clean, had everything we needed for our stay plus little extras you may not expect. Totally loves our trip. Highly recommend"
+        },
+        {
+          "guest_name": "Jarelly A.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "I stayed at La Vida Casa - Home Unit for an entire week , the home itself is so beautiful and comfortable. We love the area it’s located on. The place is so peaceful and quiet. Brat is so friendly and answered all our messages quickly. Lucas was so friendly and welcoming to us always checking on us to make sure everything was okay . The place is clean in and out . Love that we got to enjoy the pool and even go fishing. The place is more beautiful in person than in pictures. Not to far from restaurants, resorts and grocery stores.. I totally recommend staying at La Vida Belize when visiting Placencia."
+        },
+        {
+          "guest_name": "Lincoln F.",
+          "date": "June 2024",
+          "date_iso": "2024-06",
+          "rating": 5,
+          "text": "We enjoyed our stay immensely."
+        },
+        {
+          "guest_name": "Sara L.",
+          "date": "June 2024",
+          "date_iso": "2024-06",
+          "rating": 5,
+          "text": "We enjoyed our stay soo much\nWill definitely come back again"
+        },
+        {
+          "guest_name": "Chris M.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": "The La Vida house is located on the north end of Placencia peninsula. The house was perfect for our family with three adult children. Also the house is well equipped and clean with everything you would need, including snorkel gear. Kind of off the beaten path, which is exactly what we were looking for in a rental location. We wanted to get away, but also have restaurants and things to do close by. Loved our entire stay and would definitely book this place again."
+        },
+        {
+          "guest_name": "Athena G.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": "Beautiful property footsteps away from beach. Lovely patio with bbq and pool for evenings. Amazing dock off the sea. (we saw manatees!) comfortable beds and very well appointed kitchen. The location is about 35 min from the tip of Placencia village that has a lot of restaurants and snorkel and dive tours but if you rent a car or a golf cart you’ll be fine. Some days we stocked up on snacks and groceries and enjoyed the amenities the property offered. There are also places that deliver. If you have a family or like peace and quiet and beautiful surroundings I highly recommended!"
+        },
+        {
+          "guest_name": "Marna D.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 5,
+          "text": "Our group of 6 had a wonderful 8 night stay. The home was clean and comfortable, the pool was lovely, and the beach and amenities were great. Karla helped us out with anything we needed. Lucas, the property manager is wonderful - very responsive, knowledgeable and kind. We will stay here again without hesitation! Thank you for helping make our Belize vacation such a great experience!"
+        },
+        {
+          "guest_name": "Julio M.",
+          "date": "March 2024",
+          "date_iso": "2024-03",
+          "rating": 5,
+          "text": "todo muy bonito, en buenas condiciones, recomendado"
+        },
+        {
+          "guest_name": "Brian F.",
+          "date": "March 2024",
+          "date_iso": "2024-03",
+          "rating": 5,
+          "text": "Idyllic location with a  beautiful beach. House and grounds were very nice and exactly as described. Only thing, watch out for bugs on the beach! The sandfly bites are no joke!"
+        },
+        {
+          "guest_name": "Trisha D.",
+          "date": "February 2024",
+          "date_iso": "2024-02",
+          "rating": 5,
+          "text": "This place is beautiful. The house is fantastic with everything you need and more. The pool was fun and the dock was a wonderful place to watch the pelicans and sit and relax. Kayaks and paddle boards were fun. It felt safe and away from crowds."
+        },
+        {
+          "guest_name": "Martyn E.",
+          "date": "February 2024",
+          "date_iso": "2024-02",
+          "rating": 5,
+          "text": "Wat een gewéldige plek! Zee zwembad verschillende plekken om te chillen BBQ volledig uitgeruste keuken en verse kokosnoot! We konden 1 nacht bijboeken. We hebben 5 geweldige dagen gehad, we komen zeker terug! :-)"
+        },
+        {
+          "guest_name": "Wayne W.",
+          "date": "February 2024",
+          "date_iso": "2024-02",
+          "rating": 5,
+          "text": "I loved the place. The arear was amazing. Will go back again."
+        },
+        {
+          "guest_name": "Arianna V.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "Our overnight stay at La Vida was beautiful. The cottage was well stocked, the pool was beautiful, and the beach/dock was well taken care of and highly enjoyed. Placencia was great to see and an ice cream at Tutti Frutti topped off the entire trip. We will be back."
+        },
+        {
+          "guest_name": "Dorian T.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "Great place!!!!!! Comfortable, clean, quiet and relaxing! Heading to Placencia? This is your place!!!!!!"
+        },
+        {
+          "guest_name": "Matthew H.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "fantastic spot and will do it again soon!"
+        },
+        {
+          "guest_name": "Steven N.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "Amazing spot in Placencia! We stayed here for 3 nights in January with our 5 guests and it was everything we wanted. The space is super comfy and everything was very clean. The beach was also maintained every day by their very friendly staff and the beach was gorgeous. The pool was also great and even bigger than in the picture. The property manager did an amazing job at communicating with us during the entire stay.\nThe rooms were wonderful, and we stayed in the master guest room and it was top of the line! Our own bathroom with air conditioning for the hot hot days.\nThere was a friendly couple in the cabin in front of our air b and b and we were able to share the beach/ gazebo that is out on the ocean front. There was also some kayaks and paddle boards that we were all able to use. Also, there was a pile of coconuts on the beach that the host said was available for us to drink!\nIt was definitely a paradise vacation for all guests and would definitely come back again….and again!"
+        },
+        {
+          "guest_name": null,
+          "date": "August 2023",
+          "date_iso": "2023-08",
+          "rating": 5.0,
+          "text": "Good place!"
+        },
+        {
+          "guest_name": null,
+          "date": "July 2023",
+          "date_iso": "2023-07",
+          "rating": 5.0,
+          "text": "Beautiful home. Had everything you could need and more.\nSo happy they were able to accommodate us last minute. Pool was amazing, kids went in for hours at a time everyday. Pier/dock was beautiful, hammock was amazing. Beach was clean. We enjoyed the coconut water from the tree to us. Property is well kept.\nDefinitely would stay again."
+        },
+        {
+          "guest_name": null,
+          "date": "May 2023",
+          "date_iso": "2023-05",
+          "rating": 5.0,
+          "text": "Really great place to stay!!"
+        },
+        {
+          "guest_name": null,
+          "date": "December 2022",
+          "date_iso": "2022-12",
+          "rating": 5.0,
+          "text": "Brad’s place was exceptionally cozy, and a great oasis to spend with a significant other. He were also very responsive and helpful with questions about the place and supplies."
+        }
+      ],
+      "counts": {
+        "images": 42,
+        "amenities": 107,
+        "reviews": 65
+      }
+    },
+    {
+      "key": "casita",
+      "name": "The Casita",
+      "listing_name": "La Vida Belize-Casita",
+      "seo_url": "la-vida-belize-casita",
+      "hostaway_listing_id": 212729,
+      "source_url": "https://www.lavidabelize.com/la-vida-belize-casita-212729",
+      "location": "Placencia, Stann Creek District, Belize",
+      "short_description": "A charming hideaway with a private plunge pool and wooden deck, a few steps from the palms and sea.",
+      "overview": "La Vida Casita, a delightful beachfront cabana, sits just steps from the Caribbean Sea on the Placencia Peninsula. This cozy casita is an ideal escape for friends or romantic couples with a taste for adventure. We offer a perfect balance between easy access to Placencia Village and Maya Beach via a short golf cart or car ride while maintaining a serene distance from the bustling tourist spots, ensuring your private beach oasis awaits.\n\nThe 450-square-foot casita is expertly crafted from Belizean hardwoods sourced from the Maya Mountains, located 20 miles west of our property. Innovative design features have been seamlessly integrated to enhance indoor and outdoor living experience. A fully furnished kitchenette awaits those wanting to create authentic Belizean dishes. The casita comfortably accommodates two guests with a queen bed, and a handcrafted futon can sleep a third person. For added comfort, air conditioning is available for those times when the trade winds may not keep you cool. With the Caribbean Sea just outside your French doors, your stay here promises a private and serene sanctuary, making your Belize trip truly exceptional.\n\nAt La Vida Casita, we aim to ensure your experience meets your expectations. We provide complimentary access to a tandem kayak and bicycles. Right off our beach, you'll find impressive coral heads perfect for honing your snorkeling skills before venturing to the Cayes. Fishing enthusiasts will be delighted to find snapper, snook, jacks, grunts, and Spanish mackerel steps away from the front door, while tarpon and other species can be found across the road in the lagoon. There is a 75-foot pier right off the beach for fishing, swimming, snorkeling, or just soaking up the Caribbean sun.\n\nOur location is conveniently positioned, a brief 5-minute drive north of Maya Beach and just 30 minutes north of Placencia Village. Many tour operators offer complimentary pick-up and drop-off services at La Vida. We highly recommend our guests consider renting a car to explore the region or a golf cart for convenient exploration of the peninsula.\n\nLocated in a neighborhood of private residences.\n\nA rental car is best for transportation. Golf carts are another option.\n\nRental includes the entire Casita and access to the Casita's pool, beach, and pier.\n\nPlease note: The beach consists of two lots and a pier. They are shared with our guests staying at the other rentals on the property. It is large enough for all to have their own private space.\n\nIf you need extra space, the Casita can be booked alongside our Casa (sleeps up to 6) and/or Studio (sleeps 2), accommodating up to eleven guests for an even more memorable stay.",
+      "standard_rate": 173,
+      "local_listed_rate": 148,
+      "live_listed_rate": 173,
+      "currency": "USD",
+      "sleeps": 3,
+      "bedrooms": 1,
+      "beds": 2,
+      "baths": 1,
+      "area_sqft": 450,
+      "area_sqm": 40,
+      "rating": 4.92,
+      "listed_review_count": 89,
+      "feature_image": {
+        "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-9EEaGAvLwWDrbIvQJSZ--1u6TM5Y8LdQplcMQ45QZQT0-655ae19fb1612",
+        "local_path": "content/listings/casita/feature.jpg",
+        "filename": "feature.jpg",
+        "page_banner_url": "https://www.lavidabelize.com/uploads/properties/66b1115c273fa.png"
+      },
+      "gallery": [
+        {
+          "sort_order": 1,
+          "caption": "",
+          "is_feature": true,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-9EEaGAvLwWDrbIvQJSZ--1u6TM5Y8LdQplcMQ45QZQT0-655ae19fb1612",
+          "local_path": "content/listings/casita/gallery/01.jpg",
+          "filename": "01.jpg"
+        },
+        {
+          "sort_order": 2,
+          "caption": "IMG_5144.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-F--TVOf1pgPPJuudQaTXbIcg-jznkhbeTbCYA4R1Q1LM-655ae1dac9bcc",
+          "local_path": "content/listings/casita/gallery/02.jpg",
+          "filename": "02.jpg"
+        },
+        {
+          "sort_order": 3,
+          "caption": "Living room, Kitchen and bedroom",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-1QHJ9hmfLTHcTu6wRpW9cp-7NPEWVfTy3h--sgV2EcUE-65550a06c49a9",
+          "local_path": "content/listings/casita/gallery/03.jpg",
+          "filename": "03.jpg"
+        },
+        {
+          "sort_order": 4,
+          "caption": "Living room with fouton.",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-B8DKVsQfrnnO2qc1t--PW1BCHdoCSaArIJAuFJFrNNVo-65a508c438c09",
+          "local_path": "content/listings/casita/gallery/04.jpg",
+          "filename": "04.jpg"
+        },
+        {
+          "sort_order": 5,
+          "caption": "Casita bedroom",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-53Y9--bs51WuiGC2ImjuYXmK86GX8qwlpVF9r2Urah5M-65550a0c4d390",
+          "local_path": "content/listings/casita/gallery/05.jpg",
+          "filename": "05.jpg"
+        },
+        {
+          "sort_order": 6,
+          "caption": "Kitchen",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-AyAuUjjT-1O7pBKmTDAAtLP2WUlCCNb3ifkQovtx3H8-65a508cab0451",
+          "local_path": "content/listings/casita/gallery/06.jpg",
+          "filename": "06.jpg"
+        },
+        {
+          "sort_order": 7,
+          "caption": "Kitchen",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-8axPh-lEbprHk-bjMf--pT5tsTsK5OxFeBVwPtcMVHVg-65550a120bd35",
+          "local_path": "content/listings/casita/gallery/07.jpg",
+          "filename": "07.jpg"
+        },
+        {
+          "sort_order": 8,
+          "caption": "Beach view from the front of Casita",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-WwQ9ly2soRKrc7ai-R6qBPRYBgEAlqDy4IYcQ0rR--v0-655516e2d733c",
+          "local_path": "content/listings/casita/gallery/08.jpg",
+          "filename": "08.jpg"
+        },
+        {
+          "sort_order": 9,
+          "caption": "",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-JzPDj2o1fDKF9S04VwOHQQvOC3l9jB97MtMKT3fhg94-65550a1b35bae",
+          "local_path": "content/listings/casita/gallery/09.jpg",
+          "filename": "09.jpg"
+        },
+        {
+          "sort_order": 10,
+          "caption": "Bathroom",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-UF-TN1h8qvwl325R--x-BOsNttsI79kYX5y1BDsz--GoA-65550a1e2f0c2",
+          "local_path": "content/listings/casita/gallery/10.jpg",
+          "filename": "10.jpg"
+        },
+        {
+          "sort_order": 11,
+          "caption": "Shower",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-GiZuYYO3--4X-K2kVgmQBgYDGNs2bBURBobC6euY8nnw-65a508d7b96a7",
+          "local_path": "content/listings/casita/gallery/11.jpg",
+          "filename": "11.jpg"
+        },
+        {
+          "sort_order": 12,
+          "caption": "IMG_5139.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-pyyow52Pw9CE-8BJm7QJ7gK--v--vRuilLzDX-AKt0lWE-655ae20626134",
+          "local_path": "content/listings/casita/gallery/12.jpg",
+          "filename": "12.jpg"
+        },
+        {
+          "sort_order": 13,
+          "caption": "IMG_3422.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-vKGhwGkyAafsldOXWchOa7kH1E8-sqJyCW7pqQkWlJA-655ae20ee4f75",
+          "local_path": "content/listings/casita/gallery/13.jpg",
+          "filename": "13.jpg"
+        },
+        {
+          "sort_order": 14,
+          "caption": "Beachfront",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-9RdQvqVf6DaAzJg6sTosonzIIN0sgvNkPz2rP--VRqjg-65a508dbe153b",
+          "local_path": "content/listings/casita/gallery/14.jpg",
+          "filename": "14.jpg"
+        },
+        {
+          "sort_order": 15,
+          "caption": "Approach to Casita from parking",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-zYn---6lv0vnI6ghjAeEq--H1PDJvuYF1SUJluK-gqQDc-65a508df47905",
+          "local_path": "content/listings/casita/gallery/15.jpg",
+          "filename": "15.jpg"
+        },
+        {
+          "sort_order": 16,
+          "caption": "Sunrise on the beach",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729--GSF9GOaJV--8UXzUrZI2kYC1CsDp-os7Gil1Mj5FjhI-65a508e27dfe0",
+          "local_path": "content/listings/casita/gallery/16.jpg",
+          "filename": "16.jpg"
+        },
+        {
+          "sort_order": 17,
+          "caption": "Sunrise on the beach",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-mT2-fB5uA9eVI6pW1--1ZLCHXdDrm2nCBH9jJ80SsrcQ-65550a359d7f8",
+          "local_path": "content/listings/casita/gallery/17.jpg",
+          "filename": "17.jpg"
+        },
+        {
+          "sort_order": 18,
+          "caption": "",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-HQSvOrE37ZKZIYrxHAH7HWFIpGoQB53nlM3sMbXrnWs-65a508e8c2e98",
+          "local_path": "content/listings/casita/gallery/18.jpg",
+          "filename": "18.jpg"
+        },
+        {
+          "sort_order": 19,
+          "caption": "Outside of Casita",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-wpock0dYTDokDrRnncaP7r6-mot6j3ffTWXXN4e6Jls-65550a44a7bd6",
+          "local_path": "content/listings/casita/gallery/19.jpg",
+          "filename": "19.jpg"
+        },
+        {
+          "sort_order": 20,
+          "caption": "Included bicycles",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-kkurQ59nY5OikLctCldZhtjMF3CG9rUZYJO6UddC51c-65a508ed837df",
+          "local_path": "content/listings/casita/gallery/20.jpg",
+          "filename": "20.jpg"
+        },
+        {
+          "sort_order": 21,
+          "caption": "Beach fun",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-7mRACD2KSvEBP69BoTWi7xQ2elT--RGnBCbJfPpziybw-655516ec8c181",
+          "local_path": "content/listings/casita/gallery/21.jpg",
+          "filename": "21.jpg"
+        },
+        {
+          "sort_order": 22,
+          "caption": "Fishing in front of Casita",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-0GZXFikTVKSkroBMo-pE3cNY6Ci0yv3h6E--pgdwJsm8-65a508f336cab",
+          "local_path": "content/listings/casita/gallery/22.jpg",
+          "filename": "22.jpg"
+        },
+        {
+          "sort_order": 23,
+          "caption": "Entrance to property",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-4--UYWphPm6gzvf-SHA2id6t7PJdqKw19N7uWX4OM0V8-65a508f6c8643",
+          "local_path": "content/listings/casita/gallery/23.jpg",
+          "filename": "23.jpg"
+        },
+        {
+          "sort_order": 24,
+          "caption": "Parking",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-k0HrZCkfY5GBIm3yPvEluwvpZCBKpmIrqP8Zjt7aZeo-65a508fa5f4cd",
+          "local_path": "content/listings/casita/gallery/24.jpg",
+          "filename": "24.jpg"
+        },
+        {
+          "sort_order": 25,
+          "caption": "Tubing in nearby river",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-c5wmu3xZa9cOme8yxkDUiyhbAvurYM7nwGR3DQ5qDVc-65a508fce5574",
+          "local_path": "content/listings/casita/gallery/25.jpg",
+          "filename": "25.jpg"
+        },
+        {
+          "sort_order": 26,
+          "caption": "Placencia Village",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-0l6DREGBHZE--Z14JCjCB--UJPdlWEbDvkoNQSsL0BB2A-65a508ffded90",
+          "local_path": "content/listings/casita/gallery/26.jpg",
+          "filename": "26.jpg"
+        },
+        {
+          "sort_order": 27,
+          "caption": "Placencia Village",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-ql--lV0UfCKPxWki36OGyc--k54IKRfxbh73Lg7SSQsjU-65a50902d68a7",
+          "local_path": "content/listings/casita/gallery/27.jpg",
+          "filename": "27.jpg"
+        },
+        {
+          "sort_order": 28,
+          "caption": "Sidewalk in Placencia Village",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-aidvfOpNCUwOKQUt2ILdxN3Aro--l2ndhIIX3LhDAaCA-65a50905c3a75",
+          "local_path": "content/listings/casita/gallery/28.jpg",
+          "filename": "28.jpg"
+        }
+      ],
+      "amenities": [
+        {
+          "sort_order": 1,
+          "name": "Internet",
+          "category": null
+        },
+        {
+          "sort_order": 2,
+          "name": "Wireless",
+          "category": null
+        },
+        {
+          "sort_order": 3,
+          "name": "Air conditioning",
+          "category": null
+        },
+        {
+          "sort_order": 4,
+          "name": "Swimming pool",
+          "category": null
+        },
+        {
+          "sort_order": 5,
+          "name": "Kitchen",
+          "category": null
+        },
+        {
+          "sort_order": 6,
+          "name": "Hair Dryer",
+          "category": null
+        },
+        {
+          "sort_order": 7,
+          "name": "Smoke detector",
+          "category": null
+        },
+        {
+          "sort_order": 8,
+          "name": "Carbon Monoxide Detector",
+          "category": null
+        },
+        {
+          "sort_order": 9,
+          "name": "First aid kit",
+          "category": null
+        },
+        {
+          "sort_order": 10,
+          "name": "Fire Extinguisher",
+          "category": null
+        },
+        {
+          "sort_order": 11,
+          "name": "Essentials",
+          "category": null
+        },
+        {
+          "sort_order": 12,
+          "name": "Shampoo",
+          "category": null
+        },
+        {
+          "sort_order": 13,
+          "name": "Hangers",
+          "category": null
+        },
+        {
+          "sort_order": 14,
+          "name": "TV",
+          "category": null
+        },
+        {
+          "sort_order": 15,
+          "name": "Free parking",
+          "category": null
+        },
+        {
+          "sort_order": 16,
+          "name": "Balcony",
+          "category": null
+        },
+        {
+          "sort_order": 17,
+          "name": "Suitable for children",
+          "category": null
+        },
+        {
+          "sort_order": 18,
+          "name": "Suitable for infants",
+          "category": null
+        },
+        {
+          "sort_order": 19,
+          "name": "Linens",
+          "category": null
+        },
+        {
+          "sort_order": 20,
+          "name": "Outdoor grill",
+          "category": null
+        },
+        {
+          "sort_order": 21,
+          "name": "Toaster",
+          "category": null
+        },
+        {
+          "sort_order": 22,
+          "name": "Microwave",
+          "category": null
+        },
+        {
+          "sort_order": 23,
+          "name": "Coffee/tea maker",
+          "category": null
+        },
+        {
+          "sort_order": 24,
+          "name": "Baby crib",
+          "category": null
+        },
+        {
+          "sort_order": 25,
+          "name": "Stove",
+          "category": null
+        },
+        {
+          "sort_order": 26,
+          "name": "Refrigerator",
+          "category": null
+        },
+        {
+          "sort_order": 27,
+          "name": "High chair",
+          "category": null
+        },
+        {
+          "sort_order": 28,
+          "name": "Kitchen utensils",
+          "category": null
+        },
+        {
+          "sort_order": 29,
+          "name": "Hot water",
+          "category": null
+        },
+        {
+          "sort_order": 30,
+          "name": "Private entrance",
+          "category": null
+        },
+        {
+          "sort_order": 31,
+          "name": "Cooking basics",
+          "category": null
+        },
+        {
+          "sort_order": 32,
+          "name": "Beach essentials",
+          "category": null
+        },
+        {
+          "sort_order": 33,
+          "name": "Baby bath",
+          "category": null
+        },
+        {
+          "sort_order": 34,
+          "name": "Pack n play travel crib",
+          "category": null
+        },
+        {
+          "sort_order": 35,
+          "name": "Beach",
+          "category": null
+        },
+        {
+          "sort_order": 36,
+          "name": "Waterfront",
+          "category": null
+        },
+        {
+          "sort_order": 37,
+          "name": "Kayak canoe",
+          "category": null
+        },
+        {
+          "sort_order": 38,
+          "name": "Luggage dropoff allowed",
+          "category": null
+        },
+        {
+          "sort_order": 39,
+          "name": "Long term stays allowed",
+          "category": null
+        },
+        {
+          "sort_order": 40,
+          "name": "Private pool",
+          "category": null
+        },
+        {
+          "sort_order": 41,
+          "name": "Free WiFi",
+          "category": null
+        },
+        {
+          "sort_order": 42,
+          "name": "WiFi speed (50+ Mbps)",
+          "category": null
+        },
+        {
+          "sort_order": 43,
+          "name": "Private dock",
+          "category": null
+        },
+        {
+          "sort_order": 44,
+          "name": "Outdoor furniture",
+          "category": null
+        },
+        {
+          "sort_order": 45,
+          "name": "Pool",
+          "category": null
+        },
+        {
+          "sort_order": 46,
+          "name": "Safe",
+          "category": null
+        },
+        {
+          "sort_order": 47,
+          "name": "Cleaning products",
+          "category": null
+        },
+        {
+          "sort_order": 48,
+          "name": "Body soap",
+          "category": null
+        },
+        {
+          "sort_order": 49,
+          "name": "Conditioner",
+          "category": null
+        },
+        {
+          "sort_order": 50,
+          "name": "Shower gel",
+          "category": null
+        },
+        {
+          "sort_order": 51,
+          "name": "Drying rack for clothing",
+          "category": null
+        },
+        {
+          "sort_order": 52,
+          "name": "Board games",
+          "category": null
+        },
+        {
+          "sort_order": 53,
+          "name": "Ceiling fan",
+          "category": null
+        },
+        {
+          "sort_order": 54,
+          "name": "Portable fans",
+          "category": null
+        },
+        {
+          "sort_order": 55,
+          "name": "Baking sheet",
+          "category": null
+        },
+        {
+          "sort_order": 56,
+          "name": "Blender",
+          "category": null
+        },
+        {
+          "sort_order": 57,
+          "name": "Coffee",
+          "category": null
+        },
+        {
+          "sort_order": 58,
+          "name": "Freezer",
+          "category": null
+        },
+        {
+          "sort_order": 59,
+          "name": "Wine glasses",
+          "category": null
+        },
+        {
+          "sort_order": 60,
+          "name": "Hammock",
+          "category": null
+        }
+      ],
+      "reviews": [
+        {
+          "guest_name": "Jenna P.",
+          "date": "September 2026",
+          "date_iso": "2026-09",
+          "rating": 5,
+          "text": "Amazing property, great communication! We had an amazing honeymoon!"
+        },
+        {
+          "guest_name": "Alexis P.",
+          "date": "September 2026",
+          "date_iso": "2026-09",
+          "rating": 4,
+          "text": "The Casita at La Vida Belize was exactly as listed. Beautiful location and a very nice property. Great service from the property manager Lucas who hooked me up with excursion ideas and set me up on a really cool boat tour to some private islands with a group.\nDefinitely keep in mind though that low season is September through November and they mean it lol. There were multiple restaurants I went to where I was the only person in the place. So if isolation is what you’re looking for this is ideal!"
+        },
+        {
+          "guest_name": "Devon B.",
+          "date": "July 2026",
+          "date_iso": "2026-07",
+          "rating": 5,
+          "text": "Great stay! Would recommend and definitely go back!"
+        },
+        {
+          "guest_name": "Wyatt S.",
+          "date": "July 2026",
+          "date_iso": "2026-07",
+          "rating": 5,
+          "text": "Brad's place was incredible. It was exactly what we were looking for. Private and just far enough from town that it was quiet and peaceful. The house was great for the two of us and it was spotless. Plenty of food and things to do within a 30 minute drive either direction. Brad and his crews communication was great and the grounds keepers were there almost every day keeping everything perfect. Highly recommend."
+        },
+        {
+          "guest_name": "Toby L.",
+          "date": "June 2026",
+          "date_iso": "2026-06",
+          "rating": 5,
+          "text": "Lovely beach view, great people, and the coziest little house. We enjoyed every minute of our honeymoon here!!"
+        },
+        {
+          "guest_name": "Daniel S.",
+          "date": "June 2026",
+          "date_iso": "2026-06",
+          "rating": 5,
+          "text": "No real issues at all. Everything was great. If any advice, it’s maybe just bring a lighter or matches if you want to use the grill. Fantastic spot."
+        },
+        {
+          "guest_name": "Tanya S.",
+          "date": "June 2026",
+          "date_iso": "2026-06",
+          "rating": 5,
+          "text": "2nd time back and absolutely love it. Highly recommend and we will be back.\nThanks for always being so accommodating Brad!!"
+        },
+        {
+          "guest_name": "Hosam A.",
+          "date": "May 2026",
+          "date_iso": "2026-05",
+          "rating": 5,
+          "text": "This place is breathtakingly beautiful! We enjoyed our stay and Brad was very responsive and a great host! The place is as described and so peaceful. We had a wonderful time and hope to be back :)"
+        },
+        {
+          "guest_name": "Jared H.",
+          "date": "May 2026",
+          "date_iso": "2026-05",
+          "rating": 5,
+          "text": "Beautiful place! Definitely recommend"
+        },
+        {
+          "guest_name": "Gerard W.",
+          "date": "April 2026",
+          "date_iso": "2026-04",
+          "rating": 5,
+          "text": "We loved our stay here! Description is accurate, nicely groomed beach, owners were quick to respond as well.  Highly recommend!"
+        },
+        {
+          "guest_name": "Jordan H.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 5,
+          "text": "We had a lovely stay at Brads for my 40th birthday. Quiet, private and peaceful yet close enough to adventure and downtown; the perfect combination! We loved enjoying the pool, sitting in the dock with our coffee in the morning, watching the birds, and riding the beach cruisers into town. We look forward to returning!"
+        },
+        {
+          "guest_name": "Nicole H.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 5,
+          "text": "This place was absolutely gorgeous and peaceful! It was perfect for my husband and I. I wish we could’ve stayed longer, four days was not enough."
+        },
+        {
+          "guest_name": "Wayne N.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 5,
+          "text": "Great stay at Brad’s place. The location was convenient and made it easy to enjoy the area. Communication was smooth and everything went as expected. Would definitely stay again."
+        },
+        {
+          "guest_name": "Tom H.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 5,
+          "text": "This is a beautiful property in a great location. The house and grounds are well cared for by the on hand and friendly staff. The sunrise, the birds, the view  and warm breezes are hard to beat! Thanks to Brad and his wife for sharing this amazing property."
+        },
+        {
+          "guest_name": "Sydney J.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 4,
+          "text": "Nice secluded slice of beach!Absolutely loved the pool on the deck, which was bigger than it seems in the pictures! We visited during the first week of March, with winds coming in from the NE, so the beach wasn’t nice to swim in. Tons of seaweed washed up on the beach, and the water was super warm and very brown so you couldn’t see the bottom. I imagine it clears up when the winds come from a different direction, but we didn’t hangout much at the beach much during our stay. Saw some cool birds, lots of pelicans, and watch out for coatis on the road in!The place had everything we needed, A/C, fans, nice shower, comfy bed, blender for pina coladas! The palapa at the end of the dock was often windy but super nice to lounge on the hammock and feel the warm breeze. The casita is located about 20min north of Placencia, which was nice and quiet. Lots of delicious food options within 10-20 minutes. We loved the breakfast at Maya Beach Resort, so delicious."
+        },
+        {
+          "guest_name": "Ruth P.",
+          "date": "February 2026",
+          "date_iso": "2026-02",
+          "rating": 5,
+          "text": "Absolutely wonderful. We had the beach and dock to ourselves most of the time. The host was accommodating. The groundskeeper and house cleaner did an amazing job keeping everything 5 stars. Definitely would love to go back."
+        },
+        {
+          "guest_name": "Chris C.",
+          "date": "February 2026",
+          "date_iso": "2026-02",
+          "rating": 5,
+          "text": "Had a delightful stay at La Vida Belize - check-in was a breeze and the casita was exactly as shown.  The location was spectacular with ample food and activities close by.  This was a great spot for a couple to stay to enjoy privacy on the beach and close proximity to other amenities."
+        },
+        {
+          "guest_name": "Christa G.",
+          "date": "January 2026",
+          "date_iso": "2026-01",
+          "rating": 5,
+          "text": "We stayed at the Casita for 5 wonderful days. The home and property were immaculate with everything you would need for a relaxing vacation. We loved hanging out, fishing and relaxing on the private dock and even caught fish to grill up one evening for dinner at the casita. Wonderful location, just a quick 25 minute drive into Placencia. When we return to Belize we will definitely book the house again."
+        },
+        {
+          "guest_name": "KAREN D.",
+          "date": "January 2026",
+          "date_iso": "2026-01",
+          "rating": 5,
+          "text": "The casita was perfect! The hosts were unbelievably responsive to all inquiries and requests. Pablo was so great to have around the property and made us feel catered to with fresh coconuts to drink. The beach and palapa were amazing!"
+        },
+        {
+          "guest_name": "Suzanne M.",
+          "date": "January 2026",
+          "date_iso": "2026-01",
+          "rating": 5,
+          "text": "Very nice stay. Property looks just like the photos. We loved the little pool and the pier!"
+        },
+        {
+          "guest_name": "Jean-Pierre B.",
+          "date": "December 2025",
+          "date_iso": "2025-12",
+          "rating": 5,
+          "text": "Décor incroyable ! Décidément l’océan à quelques mètres de la porte.\nPablo, le jardinier/homme d’entretien est gentil, disponible et toujours souriant.\nPensez à réserver les E-Bike, super approprié pour se rendre au bout de la péninsule."
+        },
+        {
+          "guest_name": "Jacinda M.",
+          "date": "December 2025",
+          "date_iso": "2025-12",
+          "rating": 5,
+          "text": "Brad was a great host! The Bungalow on the beach was very peaceful and private. Brad was very accommodating when we requested an early check in and very responsive with every question asked. Would definitely recommend this location, as it is far enough from the hustle and bustle of the City, yet close enough to access. For future travelers…rent a vehicle!"
+        },
+        {
+          "guest_name": "Jo-Anne R.",
+          "date": "December 2025",
+          "date_iso": "2025-12",
+          "rating": 5,
+          "text": "A piece of heaven!!! Private, well maintained property, kitchen is very well stocked. Cute property. Private clean beach to swim in, or you can dip in the private pool solely for the casita. Staff was very friendly and helpful. Brad responded quickly to all messages I sent him.We can't wait to stay here again!"
+        },
+        {
+          "guest_name": "Tabitha N.",
+          "date": "November 2025",
+          "date_iso": "2025-11",
+          "rating": 5,
+          "text": ""
+        },
+        {
+          "guest_name": "Abigale D.",
+          "date": "November 2025",
+          "date_iso": "2025-11",
+          "rating": 5,
+          "text": "Beautiful private start to our honeymoon! Fishing out front was awesome, and we loved the cutie agouti that hung out by our casita. It was very peaceful and far enough away from the hustle and bustle of Placencia town."
+        },
+        {
+          "guest_name": "Michael B.",
+          "date": "November 2025",
+          "date_iso": "2025-11",
+          "rating": 5,
+          "text": "After four days hiking in the mountains and jungle, we were ready to slow down. From the moment we saw the casita, we knew we chose the right spot. Perfectly tended and welcoming… from the tumbled stone path and the blooming hibiscus to the reviving plunge pool and coconut palms gently swaying on the very private beach… we felt as if it was our own oasis. The private pier, complete with palapa, was our go to spot for spectacular sunrises and astoundingly stargazing. Highly recommended."
+        },
+        {
+          "guest_name": "Alyssa T.",
+          "date": "October 2025",
+          "date_iso": "2025-10",
+          "rating": 5,
+          "text": "THE BEST Airbnb we ever stayed at. Came here for our honeymoon and it was everything we could’ve imagined and more… close enough drive to the restaurants and the village, but far enough away for total and complete privacy. Pablo the groundskeeper was absolutely amazing for anything we needed . the small details that this place provided were unlike any place we stayed at before and really set it apart. the pool was amazing and we picked and cracked coconuts every morning right from the property for our smoothies (best local fruit you could ever ask for ) . Everything about the property was amazing and we will definitely be back."
+        },
+        {
+          "guest_name": "Shawn H.",
+          "date": "October 2025",
+          "date_iso": "2025-10",
+          "rating": 5,
+          "text": "Stayed in off season, in casita. We had the place to ourselves,  very quiet and peaceful.  Everything was great.  House had everything you could need.  Seen needlefish and stingrays right off the dock."
+        },
+        {
+          "guest_name": "Aaron W.",
+          "date": "September 2025",
+          "date_iso": "2025-09",
+          "rating": 5,
+          "text": "Pretty cool, listening to the howler monkeys in the jungle at night. Even without air-conditioning, the place slept very comfortably."
+        },
+        {
+          "guest_name": "Tyler B.",
+          "date": "August 2025",
+          "date_iso": "2025-08",
+          "rating": 5,
+          "text": "Great property! This particular week, the larger house on the property was empty, including at least the next 3 houses on either side! The sand in front is great, albeit a little hard due to rains, and I'm not sure how often, but the property manager even kept it raked several days! The chairs down under the palm tree were great, and they were still just within range of the casita's WiFi. Bed inside was very comfortable; kitchen was great, had everything needed. Hot shower; supplied shampoo, conditioner, and body wash; bug spray & sunscreen - very appreciated! If you're planning on going all the way to the village/bottom of peninsula, a rental car is probably better than a golfcart/bicycle, as it will take around 25-30 minutes by car, given the road you can only drive around 25-30 mph - and be on the lookout for the pedestrian bumps/crosswalks as they can sometimes come out of nowhere! Great location, quiet, away from all noise. The dock was also great to have - a school of fish stayed under almost every time I checked. For this time of year, the Sargassum (kelp) seemed to always roll in onto the beach around 2-3pm, but in the morning, tides would clear it. Given the time of the year is start of rainy season (even though it was clear my entire week), it seemed like many many restaurants were closed temporarily, even some of the resorts, so food were a bit hard to find. Publics grocery store is great & close!Was a wonderful trip and will love to come back again!"
+        },
+        {
+          "guest_name": "Tanya S.",
+          "date": "August 2025",
+          "date_iso": "2025-08",
+          "rating": 5,
+          "text": "Can’t say enough about this place. Highly recommend.  The most charming little cottage ever. Truly enjoyed our time there."
+        },
+        {
+          "guest_name": "Angela M.",
+          "date": "July 2025",
+          "date_iso": "2025-07",
+          "rating": 5,
+          "text": "LaVida was beautiful, serene and pretty secluded. The private dock and beach made the stay peaceful and we were able to fish right off of the dock. The plunge pool was nice and relaxing, too. Nearby markets and restaurants were very convenient and we were able to cook a couple of meals when we wanted to just stay in. Overall, the property was beautiful and the owners and grounds keeper were available for any needs! Thank you for sharing such a romantic, secluded villa to celebrate our 25th Anniversary! We'll be back, for sure!"
+        },
+        {
+          "guest_name": "Sean H.",
+          "date": "July 2025",
+          "date_iso": "2025-07",
+          "rating": 5,
+          "text": "What a great little spot to stay. The house was furnished nicely and super clean. The plunge pool is also nice to have and clean. Unfortunately the seaweed was too bad to get in the ocean, but the view was worth it. Privacy isn’t an issue. We will be back."
+        },
+        {
+          "guest_name": "Shelby T.",
+          "date": "July 2025",
+          "date_iso": "2025-07",
+          "rating": 5,
+          "text": "Excellent place!\nThe amenities: The pool is a plunge pool and is 4.5ft deep with a shelf to sit on. Most importantly- it's private and right on the beach! The kitchen had more amenities than shown-  a toaster oven, separate toaster, instapot, etc. More than well enough equipped- and I love to cook, even on vacation! The AC works amazingly well- trust me, I like to keep my home at 64°F when I sleep and I had no issues. Plus there was an extra oscillating floor fan. They even had extra books, games, and a puzzle! We came during rainy season but it only rained once while we were awake and it was so quick! The hammock, dock, and kayak are excellent extras that we used!\nCleanliness: I'm the kind of person that brings mh own pillow cases and wears shower shoes no matter what... and this place exceeded all my expectations.\nHosts: very friendly and responsive! Excellent recommendations!\nOverall: This was truly the peaceful, private vacation we hoped for. You cannot ask for much more!"
+        },
+        {
+          "guest_name": "Katherine H.",
+          "date": "June 2025",
+          "date_iso": "2025-06",
+          "rating": 5,
+          "text": "This place is even better than advertised! Stunning location. Hosts are awesome. Highly recommended!"
+        },
+        {
+          "guest_name": "Elizabeth E.",
+          "date": "June 2025",
+          "date_iso": "2025-06",
+          "rating": 5,
+          "text": "We loved our stay at La Vida Belize. The Casita had everything we needed to enjoy our stay. The location was beautiful and easy to get around via rental car. The host was very responsive and provided detailed information and recommendations. We would recommend La Vida Belize if you are considering a stay in Placencia."
+        },
+        {
+          "guest_name": "Jill M.",
+          "date": "June 2025",
+          "date_iso": "2025-06",
+          "rating": 4,
+          "text": "Right on the beach with a dock. Can't beat that"
+        },
+        {
+          "guest_name": "Alexandra P.",
+          "date": "June 2025",
+          "date_iso": "2025-06",
+          "rating": 5,
+          "text": "Endroit calme pour profiter d’un bon moment à deux. La piscine privée et la plage partagée avec l’autre logement (derrière) étaient paisibles. Prévoir un moyen de transport pour accéder aux restaurants et activités. Nous recommandons!!!"
+        },
+        {
+          "guest_name": "Valerie H.",
+          "date": "May 2025",
+          "date_iso": "2025-05",
+          "rating": 5,
+          "text": "The location on the Caribbean is great - the beach is pretty much private for the few casas right there! And when the sea was too active, we just got in the small pool and watched it. Great for stargazing, watching the birds, just relaxing in general. Easy access to restaurants and grocery stores. Driving distance to many activities/preserves if you want to have a day of exploration. We thoroughly enjoyed our stay there. We had to leave a day earlier than planned because of our flight schedule but it was hard to leave because it was so beautiful and peaceful."
+        },
+        {
+          "guest_name": "Clark W.",
+          "date": "April 2025",
+          "date_iso": "2025-04",
+          "rating": 5,
+          "text": "We had the best time at this beautiful location! All the amenities were perfect, we spent a lot of time in the ocean using almost everything provided. our hosts were responsive and got us everything we needed. the dock was beautiful, with even better views."
+        },
+        {
+          "guest_name": "Tony K.",
+          "date": "April 2025",
+          "date_iso": "2025-04",
+          "rating": 5,
+          "text": "The property was fantastic. Right on the beach, very quiet and private. Close enough to Maya Beach and Placencia that you could get there quickly but far enough away."
+        },
+        {
+          "guest_name": "Jessica A.",
+          "date": "April 2025",
+          "date_iso": "2025-04",
+          "rating": 5,
+          "text": "The casita at La Vida Belize was an absolute treasure! It is very hard to find words to express our gratitude and delight during our stay. The surroundings were just magical, you must experience it for yourself! My only recommendation would be to rent a vehicle as you cannot get around enough by foot or bicycle to truly appreciate what the peninsula of Placencia has to offer."
+        },
+        {
+          "guest_name": "David H.",
+          "date": "February 2025",
+          "date_iso": "2025-02",
+          "rating": 5,
+          "text": "Beautiful beach location.  Simple clean room with everything necessary.\nNice plunge pool"
+        },
+        {
+          "guest_name": "Janna J.",
+          "date": "February 2025",
+          "date_iso": "2025-02",
+          "rating": 4.5,
+          "text": "Would absolutely recommend for any couple wanting a beautiful view and lovely accommodations!\nPositive: The casita is lovely and located right near the water with options for hanging out to view the sunrise each day and chill on the deck in the afternoon. The plunge pool is an added bonus on hotter days! Kitchen has everything you need and the bed was super comfortable. We loved it here!\nNegative: I do think this would be a tight squeeze for more than two people - the extra sleeping spot is a futon I believe. We LOVED hanging out at the casita! I’d say that as you head to placencia the overbuilt-up landscape covered in mansions is a bummer. The village itself is great though!"
+        },
+        {
+          "guest_name": "Charell P.",
+          "date": "February 2025",
+          "date_iso": "2025-02",
+          "rating": 4.5,
+          "text": ""
+        },
+        {
+          "guest_name": "Jeremiah E.",
+          "date": "February 2025",
+          "date_iso": "2025-02",
+          "rating": 5,
+          "text": "Loved this place. What you see in the pictures is what you get. Very charming, clean,  comfortable, with beautiful sunrises. Having a car is a MUST. It’s about 30 minutes outside of Placencia and while there are some restaurants and stores on the way to town, it’s all driving distance. Brad was very responsive to any questions we had and was able to work with us to extend our stay an extra night."
+        },
+        {
+          "guest_name": "Adrienne T.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 5,
+          "text": "We just came home after staying for two weeks. This was the perfect little beach house for us - very clean with a well-stocked kitchen. The Casita, white sand beach, plunge pool and dock make this place a perfect little paradise. We can't wait to go back. Thank you Brad and Lucas!"
+        },
+        {
+          "guest_name": "Emily C.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 4,
+          "text": "Beautiful location. Very private and calm environment. It rained quite frequently during our stay and we loved having the option to sit on the porch and watch, while staying dry.\nGreat place for a family, the baby accommodations were appreciated. By car we were a very reasonable distance from multiple attractions (Placencia, Hopkins, Butterfly Farm, Jaguar Sanctuary)."
+        },
+        {
+          "guest_name": "David W.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 5,
+          "text": "The casita, it's plunge pool, and the access to the private beach make for a fantastic - feels like it's away from everything - vacation spot.  The nearby restaurants are affordable, welcoming, and delicious.  The drive to slight further flung sites is easy once you get the rhythm of driving in Belize.  My family is already talking about future trips after our stay with Brad."
+        },
+        {
+          "guest_name": "Cindy S.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 4,
+          "text": "Gorgeous view and  picture perfect grounds! We chose this place for privacy while celebrating our anniversary. The 1st day we had the entire grounds to ourself, exactly what we wanted. On the second day, the main house behind us rented & then the studio beside it rented also. only 3 parking spaces for all 3 rentals. It had a common area (bigger pool & grill) which we were unable to use do to the main house occupying it with all of their things left out EVERYWHERE & the grill was either being used or left too nasty for us to use. No oven, so we were unable to cook the special dinner  that we had planned. This place is VERY small. ZERO drawers or places to unpack leaving us living out of our suitcases for the entire week. Making for terrible pictures of our stay there were way too many & huge sign above the kitchen sink saying NO SMOKING, cheap & tacky looking considering it stated it in our rental agreement."
+        },
+        {
+          "guest_name": "Jacklyn B.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 5,
+          "text": "We loved staying at the Casita! The view is beautiful. We saw plenty of cool birds, lizards, fish, and other wildlife all while we were on property. Loved having access to their E-bikes, which made for a fun trip to Maya Beach.\nWe would definitely come back next time we visit!!"
+        },
+        {
+          "guest_name": "Paige C.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 5,
+          "text": "Epic location!"
+        },
+        {
+          "guest_name": "Kelsy M.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 5,
+          "text": "We had a wonderful 8 day stay at Brad's casita. Even with the trade winds and rain, it was a magical place, and once the sun came out - the snorkeling, kayaking and paddle boarding were perfect! We had everything we needed to enjoy ourselves at this gorgeous property.\nWe weren't familiar with the area before we arrived, so finding the address in the dark was quite the task but once we did, it was everything that was promised in the airbnb listing.\nWe would highly recommend renting a car to get around, as there are no Ubers, etc. You can rent one in Belize City and drive to La Vida Belize (the casita) for two hours, or hop on the Maya airlines and take a quick 25 minute flight. Golf carts are available for rent but would take at least 40+ minutes to get to the beach town of Placencia from the casita. In our car, it took about 20.\nThanks Brad, Gaylyn and Lucas! It was perfect!"
+        },
+        {
+          "guest_name": "Christine F.",
+          "date": "November 2024",
+          "date_iso": "2024-11",
+          "rating": 5,
+          "text": "We had a wonderful & much-needed peaceful visit at Brad’s casita and highly recommend this rental. We had a few stumbles with the storm/travel but Brad helped us at every turn, and they made us feel welcome and watched out for. The casita is beautifully built and feels much bigger than it is. We immediately felt at home & comfortable!"
+        },
+        {
+          "guest_name": "Roger M.",
+          "date": "November 2024",
+          "date_iso": "2024-11",
+          "rating": 5,
+          "text": "Place was just as pictures, private pool was great. Nice way to relax and watch sun rises."
+        },
+        {
+          "guest_name": "Eric M.",
+          "date": "October 2024",
+          "date_iso": "2024-10",
+          "rating": 5,
+          "text": "This is a beautiful property in paradise!  We'll be back..."
+        },
+        {
+          "guest_name": "David A.",
+          "date": "September 2024",
+          "date_iso": "2024-09",
+          "rating": 5,
+          "text": "Absolutely beautiful place. Very private and perfect for 2. If we ever come back to Belize we will definitely stay there again."
+        },
+        {
+          "guest_name": "Nicole K.",
+          "date": "August 2024",
+          "date_iso": "2024-08",
+          "rating": 5,
+          "text": "I cannot say enough about how wonderful our stay at La Vida Belize was.  The property exceeded all expectations.  absolutely beautiful, private and welcoming.  Just a short drive to the placencia sidewalk and shopping/restaurants. Highly recommend!"
+        },
+        {
+          "guest_name": "Alexa M.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "Very nice place!"
+        },
+        {
+          "guest_name": "Christel A.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "The Casita was perfect for us. we were able to enjoy our private beach and pool. Easy to cook small meals or drive into town for a restaurant. We loved it."
+        },
+        {
+          "guest_name": "Dorian T.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "Simply perfect!"
+        },
+        {
+          "guest_name": "Carrie T.",
+          "date": "June 2024",
+          "date_iso": "2024-06",
+          "rating": 5,
+          "text": "I ended up at Brad's place because the resort the rest of my group was staying at was fully booked. How lucky for me because this place is fabulous.  Woke up my first morning and grabbed a paddle board to have a leisurely float over the reef just out past the pier. Beautiful! The bed is comfortable and you'll wake up to a great view! Everything is tidy, plenty of soft towels and 2 pools to relax in. Definitely would stay here again and wish my stay was longer."
+        },
+        {
+          "guest_name": "Michael Z.",
+          "date": "June 2024",
+          "date_iso": "2024-06",
+          "rating": 5,
+          "text": "Great location, wonderful stay."
+        },
+        {
+          "guest_name": "Skyler S.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": ""
+        },
+        {
+          "guest_name": "Gordon R.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": "Our stay was absolutely perfect in every way! From the Casita and the pool to the pier with the amazing view and breeze! Already looking into our next trip down and renting both the house and Casita! Can't wait to experience the tranquil setting and relaxation again!"
+        },
+        {
+          "guest_name": "Tiffany S.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": "We really enjoyed our stay at La Vida Belize and hope to stay there again soon. It was our first trip to Belize and I’m so glad we stayed here instead of a resort. The studio felt super spacious, was extremely cute/functional, had amazing AC (a must), and the grounds were just as beautiful. We loved hanging out in the pool and on the dock. I’m not sure how the weather is at other times of the year (we stayed in mid May),  but we didn’t get the clear water you might expect at the beach as it had a lot of grasses and garbage blown in with the winds. This is obviously no fault of the owners and wouldn’t deter us from staying again, just want to share as a heads up.\nI have to say the recommendations, quick response to our planning questions ahead of time, and the amenities were spot on. Great stay and great hosts - I highly recommend."
+        },
+        {
+          "guest_name": "Caroline T.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": "What a stunning and serene spot for a getaway! The Casita has everything you need if you’re looking for a quiet time to enjoy all that Placencia has to offer. You’ll wake up in the morning to birds singing and can then enjoy a nice dip in the pool while listening to palm fronds in the wind and waves. We enjoyed the addition of the beach hammocks and had fun trying our hand at cornhole. Inside, the WiFi works great and the AC keeps things cool when you need a break from the heat. Everything was thoughtfully prepared for our arrival and Brad and Lucas were very communicative and accessible if we had questions. Overall, I highly recommend this spot!"
+        },
+        {
+          "guest_name": "Mitch B.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 4,
+          "text": "Had a great stay at Brad’s place. Excellent lounge pool, grounds, and amazing interior. Brad and the staff were very responsive and helpful in getting us checked in and answering some questions we had!  The location was a little further north on the peninsula so it’s not super central but other than that everything was perfect!"
+        },
+        {
+          "guest_name": "Charissa D.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 5,
+          "text": "The Casita was absolutely beautiful, and perfect for so many reasons. It felt like we had our own little slice of paradise! The private and well appointed space, views, proximity to delicious food, and activities was more than we had hoped for. Our host and his team were very friendly, had excellent communication, and went above and beyond to make our stay in Belize amazing. Thank you!"
+        },
+        {
+          "guest_name": "Gayle L.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 5,
+          "text": "This was our first time in Belize and the first place we stayed while here. This was the perfect way to start our trip.  It was so\nrelaxing.  The accommodations were just what we wanted and we loved the access to the ocean and the use of the pier.  We saw turtles every morning😍 The restaurant recommendations were great and so close.  Lucas also went above and beyond in assisting us in getting our car out of a sandy parking spot near one of the restaurants.  He made that situation so much less stressful.  We so appreciated his help.  Thanks for the great start to our trip.  We would definitely come back!!"
+        },
+        {
+          "guest_name": "Shane C.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 5,
+          "text": "Just perfect! We really enjoyed our time at La Vida - everything we needed. Some might think it’s a bit far from Placencia center, but for us it worked well to explore other areas (rental car a must). Buy roadside tamales in Maya Center! Visit Cockscomb Wildlife Sanctuary and Bocawina!"
+        },
+        {
+          "guest_name": "Tiffany G.",
+          "date": "March 2024",
+          "date_iso": "2024-03",
+          "rating": 5,
+          "text": "The Casita is beautiful and SO peaceful. It was a comfortable and relaxing stay, and we found Lucas to be very friendly and responsive when we had questions. We made use of the restaurant recommendations, pool, hammock, seating on the pier, snorkeling equipment, paddle boards, and kayak. There’s not a great place to ride bikes, although we did see people biking on the main road. Our favorite thing to do was just chill at the little table on the porch while reading, playing cards, or eating in our semi-private slice of paradise. Highly recommended!"
+        },
+        {
+          "guest_name": "Chris G.",
+          "date": "March 2024",
+          "date_iso": "2024-03",
+          "rating": 5,
+          "text": "Great stay, beautiful ocean views, tropical birds, and the little pool was fantastic."
+        },
+        {
+          "guest_name": "Daniel N.",
+          "date": "February 2024",
+          "date_iso": "2024-02",
+          "rating": 5,
+          "text": "We loved our stay at La Vida. We wanted a week away from our cold winter and this was perfect!"
+        },
+        {
+          "guest_name": "Jason C.",
+          "date": "February 2024",
+          "date_iso": "2024-02",
+          "rating": 5,
+          "text": "Amazing place."
+        },
+        {
+          "guest_name": "Renee W.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "Place was amazing, just what we were looking for.  Private area with options for eating and groceries within a 10 minute drive.   The little pool on the front deck was perfect for cooling off on hot days and the dock was a great place to watch the sunrise.   A little slice of heaven."
+        },
+        {
+          "guest_name": "Nicole A.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "We loved the bungalow! It was perfect for our needs."
+        },
+        {
+          "guest_name": "Kate G.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "We LOVED la Vida! A totally relaxing spot with everything we needed. Would recommend a stay here."
+        },
+        {
+          "guest_name": "Melanie M.",
+          "date": "December 2023",
+          "date_iso": "2023-12",
+          "rating": 5,
+          "text": "Brad’s place was a slice of paradise. It’s such a peaceful location with gorgeous views. The beach was amazing and just steps away.  There’s great food, stores, and restaurants a short drive away"
+        },
+        {
+          "guest_name": "Veronica V.",
+          "date": "December 2023",
+          "date_iso": "2023-12",
+          "rating": 5,
+          "text": "A very beautiful stay. Would recommend to others."
+        },
+        {
+          "guest_name": null,
+          "date": "September 2023",
+          "date_iso": "2023-09",
+          "rating": 5,
+          "text": "Brad’s place is perfect if you’re wanting privacy and a place to relax. Sits about 15 min away from Maya Beach where all the restaurants and a grocery store is. The Green Parrot was our favorite local spot to eat. Definitely bring bug spray, they’re ruthless out there!\nThe hosts communicate very well and helped us with all we needed, along with tour booking.  I would definitely recommend LaVida!"
+        },
+        {
+          "guest_name": null,
+          "date": "August 2023",
+          "date_iso": "2023-08",
+          "rating": 5,
+          "text": "We had an amazing stay!  The property was easy to get to, check in was a breeze and  we were welcomed with fresh coconuts.  The place is perfect in size and accommodations.  The beach starts right at the bottom step.  Sunrises on the beach are incredible.  The dock had a beautiful cabana where you can relax and feel the ocean breeze.  I will surely stay here again.   I highly recommend staying here if you are looking for a relaxing romantic getaway."
+        },
+        {
+          "guest_name": null,
+          "date": "May 2023",
+          "date_iso": "2023-05",
+          "rating": 5,
+          "text": "We had such a great time at LaVida.  First vacation I believe that I came back fully rested.  The area was so quiet; no traffic, no loud sounds, just the sound of the waves rolling in.   Having fresh cocunut water from the palms in the back yard everyday was so refreshing.   The PM, Lucas was super helpful and friendly.   Thanks for a great visit! We'll do our best to get back."
+        },
+        {
+          "guest_name": null,
+          "date": "April 2023",
+          "date_iso": "2023-04",
+          "rating": 5,
+          "text": "Great place to stay close to Placencia with plenty of privacy. We enjoyed the beautiful views from the dock and all the lizards!!"
+        },
+        {
+          "guest_name": null,
+          "date": "April 2023",
+          "date_iso": "2023-04",
+          "rating": 5,
+          "text": "It is as beautiful as the pictures and felt like we were on a private beach."
+        },
+        {
+          "guest_name": null,
+          "date": "April 2023",
+          "date_iso": "2023-04",
+          "rating": 5,
+          "text": "Amazing stay! Just like the pictures, we felt at home and relaxed a lot!\nLucas, the property manager was great, responsive and gave us recommendations.\nWould love to be back soon!"
+        },
+        {
+          "guest_name": null,
+          "date": "March 2023",
+          "date_iso": "2023-03",
+          "rating": 5,
+          "text": "Perfect place to enjoy the sun and relax. The space was very clean, exactly as described. Easy to get to and driving distance to everything. Definitely recommend!"
+        },
+        {
+          "guest_name": null,
+          "date": "December 2022",
+          "date_iso": "2022-12",
+          "rating": 5,
+          "text": "We had a truly great experience at La Vida Belize!  It’s always a little daunting traveling in another country for the first time, but Lucas and Brad’s communication was fabulous and proactive, which made the entire trip more enjoyable.  The bungalow was perfect for my wife and I, and we thoroughly enjoyed the beach, pool and pier.  The bungalow and grounds were clean and well kept.  We did quite a bit of cooking ourselves.  Groceries and restaurants were nearby, and excursions were a bit farther away (1-2.5 hours), but we didn’t mind that.  The area is quiet, which is exactly what we were looking for.  Thanks for your Belizean hospitality Brad and Lucas!"
+        },
+        {
+          "guest_name": null,
+          "date": "December 2022",
+          "date_iso": "2022-12",
+          "rating": 5,
+          "text": "I could write pages of how wonderful this whole experience was, but I’ll leave it at this. My wife and I could not have picked a better place to spend our anniversary (first trip ever without kids, lol). The host and everyone involved with the property are amazing. The setting, scenery and people are as beautiful as anyone could ask for. Michael 602-4768 was a great taxi / guide. We loved cruising in our rented golf cart as well. Thanks for the memories or a lifetime.\nAll the best,\nJoshua and Feleisa"
+        },
+        {
+          "guest_name": null,
+          "date": "November 2022",
+          "date_iso": "2022-11",
+          "rating": 4,
+          "text": "A lovely little spot with near-private beach and convenient location for great snorkeling. Hosts were kind and responsive.\nUnfortunately, there was construction next door from 6am-6pm each day of our stay."
+        },
+        {
+          "guest_name": null,
+          "date": "November 2022",
+          "date_iso": "2022-11",
+          "rating": 5,
+          "text": "We had a great one week stay at the casita. Great location, great private beach/ocean area and the casita was perfect for two people."
+        }
+      ],
+      "counts": {
+        "images": 28,
+        "amenities": 60,
+        "reviews": 91
+      }
+    },
+    {
+      "key": "studio",
+      "name": "The Studio",
+      "listing_name": "La Vida Belize - Studio",
+      "seo_url": "la-vida-belize-studio",
+      "hostaway_listing_id": 213571,
+      "source_url": "https://www.lavidabelize.com/la-vida-belize---studio-213571",
+      "location": "Placencia, Stann Creek District, Belize",
+      "short_description": "Comfortable and simple, with an open living area and shaded patio. A home base for two.",
+      "overview": "Step into the allure of La Vida Belize Placencia, where opulence seamlessly blends with tropical bliss! Situated in the heart of Belize, this recently constructed 390-square-foot studio apartment is meticulously crafted to provide an exquisite fusion of comfort and sophistication.\n\nThe studio features a contemporary open-concept living space, adorned with a queen-sized bed, two inviting loungers, a 55-inch Smart TV for your entertainment, and a fully equipped kitchen with a convenient bar—perfect for savoring meals or indulging in your favorite beverages. The bathroom is a luxurious retreat with its expansive walk-in shower, adding a touch of indulgence to your stay.\n\nLa Vida Belize Placencia extends beyond mere accommodation; it offers a lifestyle to embrace. Immerse yourself in the breathtaking beauty of Belize, and allow this carefully curated studio apartment to become your idyllic retreat in this tropical paradise. Welcome to La Vida Belize!\n\nRental includes the entire Studio and porch area and access to the beach and pier.\n\nPlease note: The beach consists of two lots and a pier. They are shared with our guests staying at the other rentals on the property. It is large enough for all to have their own private space.\n\nIf you need extra space, the Studio can be booked alongside our Casa (sleeps up to 6) and/or Casita (sleeps up to 3), accommodating up to eleven guests for an even more memorable stay.",
+      "standard_rate": 89,
+      "local_listed_rate": 89,
+      "live_listed_rate": 89,
+      "currency": "USD",
+      "sleeps": 2,
+      "bedrooms": 1,
+      "beds": 1,
+      "baths": 1,
+      "area_sqft": 390,
+      "area_sqm": 36,
+      "rating": 4.8,
+      "listed_review_count": 35,
+      "feature_image": {
+        "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-yRJeqG0zx4--n7MlWPXk4jcxdhKr3owmMpe17W--alGVE-6557f6d3631d1",
+        "local_path": "content/listings/studio/feature.jpg",
+        "filename": "feature.jpg",
+        "page_banner_url": "https://www.lavidabelize.com/uploads/properties/66b111506d23d.png"
+      },
+      "gallery": [
+        {
+          "sort_order": 1,
+          "caption": "",
+          "is_feature": true,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-yRJeqG0zx4--n7MlWPXk4jcxdhKr3owmMpe17W--alGVE-6557f6d3631d1",
+          "local_path": "content/listings/studio/gallery/01.jpg",
+          "filename": "01.jpg"
+        },
+        {
+          "sort_order": 2,
+          "caption": "Studio Outside.jpg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-P0Xdkr4XuyZM8eUbkRPhAeY3M5Zz2Jhk2OrZkV0Nyic-658372f3b07b6",
+          "local_path": "content/listings/studio/gallery/02.jpg",
+          "filename": "02.jpg"
+        },
+        {
+          "sort_order": 3,
+          "caption": "IMG_4933.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-gsZ7-Sx5jbmWkU09aU4IiacZrqHfDxAqrFqDJEZ--5hY-6557f6d6d4c66",
+          "local_path": "content/listings/studio/gallery/03.jpg",
+          "filename": "03.jpg"
+        },
+        {
+          "sort_order": 4,
+          "caption": "IMG_4936.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-DT5ixP--zcpHmIGO33oZ8rFN39t--LVGFmTSyFwUvd1NA-6557f6da3421b",
+          "local_path": "content/listings/studio/gallery/04.jpg",
+          "filename": "04.jpg"
+        },
+        {
+          "sort_order": 5,
+          "caption": "IMG_4934.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-s3K5q4sHLjyWXOD1T0wwtCeKy0QeWSTpxsiiFRIRDEA-6557f6de74ef8",
+          "local_path": "content/listings/studio/gallery/05.jpg",
+          "filename": "05.jpg"
+        },
+        {
+          "sort_order": 6,
+          "caption": "IMG_4930.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-764XXIx9nnnx2sB-lV51y09t-VhIfA9FuqVXUNTeBEU-6557f6e1e9b1d",
+          "local_path": "content/listings/studio/gallery/06.jpg",
+          "filename": "06.jpg"
+        },
+        {
+          "sort_order": 7,
+          "caption": "IMG_4929.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-0fdVWSaA1xEd1EHuYRE1BmZCq7xdFTWkmZ4-UTib0qc-6557f6e60514c",
+          "local_path": "content/listings/studio/gallery/07.jpg",
+          "filename": "07.jpg"
+        },
+        {
+          "sort_order": 8,
+          "caption": "IMG_4938.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-ksGR41pNK54whC8ih54T5EpoxfGVQnYed-6zaBAKR6U-6557f6e939c6d",
+          "local_path": "content/listings/studio/gallery/08.jpg",
+          "filename": "08.jpg"
+        },
+        {
+          "sort_order": 9,
+          "caption": "IMG_4937.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-RPOKNlcvn--PGOHzgGJIcH0X3KqFYS1ZcssM1F-hFOU8-6557f6ed251b7",
+          "local_path": "content/listings/studio/gallery/09.jpg",
+          "filename": "09.jpg"
+        },
+        {
+          "sort_order": 10,
+          "caption": "IMG_4486.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-aBFoKvvBRI5jhco54-Tke--5azO3u8tjWlGiGyJUNX2c-6557f6f0b94b9",
+          "local_path": "content/listings/studio/gallery/10.jpg",
+          "filename": "10.jpg"
+        },
+        {
+          "sort_order": 11,
+          "caption": "IMG_4485.jpeg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-UnpGz1lCA5ergvb0s9AWU3QNCUbJCtxQxi3Ts5vVWYk-6557f6f4a355d",
+          "local_path": "content/listings/studio/gallery/11.jpg",
+          "filename": "11.jpg"
+        },
+        {
+          "sort_order": 12,
+          "caption": "Studio Outside 2.jpg",
+          "is_feature": false,
+          "source_url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-aP6JnmwQjICg71wX03Lu76u8-GX7tWPU--jv01PAWdUc-658372f8c61c7",
+          "local_path": "content/listings/studio/gallery/12.jpg",
+          "filename": "12.jpg"
+        }
+      ],
+      "amenities": [
+        {
+          "sort_order": 1,
+          "name": "Internet",
+          "category": null
+        },
+        {
+          "sort_order": 2,
+          "name": "Wireless",
+          "category": null
+        },
+        {
+          "sort_order": 3,
+          "name": "Air conditioning",
+          "category": null
+        },
+        {
+          "sort_order": 4,
+          "name": "Kitchen",
+          "category": null
+        },
+        {
+          "sort_order": 5,
+          "name": "Hair Dryer",
+          "category": null
+        },
+        {
+          "sort_order": 6,
+          "name": "Carbon Monoxide Detector",
+          "category": null
+        },
+        {
+          "sort_order": 7,
+          "name": "Essentials",
+          "category": null
+        },
+        {
+          "sort_order": 8,
+          "name": "Shampoo",
+          "category": null
+        },
+        {
+          "sort_order": 9,
+          "name": "Hangers",
+          "category": null
+        },
+        {
+          "sort_order": 10,
+          "name": "TV",
+          "category": null
+        },
+        {
+          "sort_order": 11,
+          "name": "Private living room",
+          "category": null
+        },
+        {
+          "sort_order": 12,
+          "name": "Suitable for children",
+          "category": null
+        },
+        {
+          "sort_order": 13,
+          "name": "Suitable for infants",
+          "category": null
+        },
+        {
+          "sort_order": 14,
+          "name": "Linens",
+          "category": null
+        },
+        {
+          "sort_order": 15,
+          "name": "Toaster",
+          "category": null
+        },
+        {
+          "sort_order": 16,
+          "name": "Microwave",
+          "category": null
+        },
+        {
+          "sort_order": 17,
+          "name": "Oven",
+          "category": null
+        },
+        {
+          "sort_order": 18,
+          "name": "Coffee/tea maker",
+          "category": null
+        },
+        {
+          "sort_order": 19,
+          "name": "Shower",
+          "category": null
+        },
+        {
+          "sort_order": 20,
+          "name": "Stove",
+          "category": null
+        },
+        {
+          "sort_order": 21,
+          "name": "Refrigerator",
+          "category": null
+        },
+        {
+          "sort_order": 22,
+          "name": "Towels",
+          "category": null
+        },
+        {
+          "sort_order": 23,
+          "name": "High chair",
+          "category": null
+        },
+        {
+          "sort_order": 24,
+          "name": "Kitchen utensils",
+          "category": null
+        },
+        {
+          "sort_order": 25,
+          "name": "Hot water",
+          "category": null
+        },
+        {
+          "sort_order": 26,
+          "name": "Private entrance",
+          "category": null
+        },
+        {
+          "sort_order": 27,
+          "name": "Beach essentials",
+          "category": null
+        },
+        {
+          "sort_order": 28,
+          "name": "Toilet",
+          "category": null
+        },
+        {
+          "sort_order": 29,
+          "name": "Car recommended",
+          "category": null
+        },
+        {
+          "sort_order": 30,
+          "name": "Baby bath",
+          "category": null
+        },
+        {
+          "sort_order": 31,
+          "name": "Pack n play travel crib",
+          "category": null
+        },
+        {
+          "sort_order": 32,
+          "name": "Beach",
+          "category": null
+        },
+        {
+          "sort_order": 33,
+          "name": "Bicycle",
+          "category": null
+        },
+        {
+          "sort_order": 34,
+          "name": "Kayak canoe",
+          "category": null
+        },
+        {
+          "sort_order": 35,
+          "name": "Water sports gear",
+          "category": null
+        },
+        {
+          "sort_order": 36,
+          "name": "Luggage dropoff allowed",
+          "category": null
+        },
+        {
+          "sort_order": 37,
+          "name": "Long term stays allowed",
+          "category": null
+        },
+        {
+          "sort_order": 38,
+          "name": "Deadbolt lock",
+          "category": null
+        },
+        {
+          "sort_order": 39,
+          "name": "Outdoor lighting",
+          "category": null
+        },
+        {
+          "sort_order": 40,
+          "name": "Cleaning included",
+          "category": null
+        },
+        {
+          "sort_order": 41,
+          "name": "Massage",
+          "category": null
+        },
+        {
+          "sort_order": 42,
+          "name": "Fishing",
+          "category": null
+        },
+        {
+          "sort_order": 43,
+          "name": "Kayaking",
+          "category": null
+        },
+        {
+          "sort_order": 44,
+          "name": "Pier fishing",
+          "category": null
+        },
+        {
+          "sort_order": 45,
+          "name": "Scuba or snorkeling",
+          "category": null
+        },
+        {
+          "sort_order": 46,
+          "name": "Snorkeling",
+          "category": null
+        },
+        {
+          "sort_order": 47,
+          "name": "Snorkeling diving",
+          "category": null
+        },
+        {
+          "sort_order": 48,
+          "name": "Swimming",
+          "category": null
+        },
+        {
+          "sort_order": 49,
+          "name": "Enhanced Cleaning Practices",
+          "category": null
+        },
+        {
+          "sort_order": 50,
+          "name": "Contactless Check-In/Out",
+          "category": null
+        },
+        {
+          "sort_order": 51,
+          "name": "Free WiFi",
+          "category": null
+        },
+        {
+          "sort_order": 52,
+          "name": "WiFi speed (50+ Mbps)",
+          "category": null
+        },
+        {
+          "sort_order": 53,
+          "name": "Smart TV",
+          "category": null
+        },
+        {
+          "sort_order": 54,
+          "name": "Outdoor furniture",
+          "category": null
+        },
+        {
+          "sort_order": 55,
+          "name": "Safe",
+          "category": null
+        },
+        {
+          "sort_order": 56,
+          "name": "Security system",
+          "category": null
+        },
+        {
+          "sort_order": 57,
+          "name": "Body soap",
+          "category": null
+        },
+        {
+          "sort_order": 58,
+          "name": "Conditioner",
+          "category": null
+        },
+        {
+          "sort_order": 59,
+          "name": "Shower gel",
+          "category": null
+        },
+        {
+          "sort_order": 60,
+          "name": "Clothing storage",
+          "category": null
+        },
+        {
+          "sort_order": 61,
+          "name": "Ceiling fan",
+          "category": null
+        },
+        {
+          "sort_order": 62,
+          "name": "Baking sheet",
+          "category": null
+        },
+        {
+          "sort_order": 63,
+          "name": "Coffee",
+          "category": null
+        },
+        {
+          "sort_order": 64,
+          "name": "Freezer",
+          "category": null
+        },
+        {
+          "sort_order": 65,
+          "name": "Wine glasses",
+          "category": null
+        }
+      ],
+      "reviews": [
+        {
+          "guest_name": "Lorenzo R.",
+          "date": "August 2026",
+          "date_iso": "2026-08",
+          "rating": 4.5,
+          "text": ""
+        },
+        {
+          "guest_name": "Venessa S.",
+          "date": "June 2026",
+          "date_iso": "2026-06",
+          "rating": 5,
+          "text": "We loved this place so much we came back for a second time, after adventuring to various towns during our Belize motorbike trip. We are so happy to have had the opportunity to enjoy this wonderful property. It was one of the most comfortable stays during our whole trip."
+        },
+        {
+          "guest_name": "Venessa S.",
+          "date": "June 2026",
+          "date_iso": "2026-06",
+          "rating": 5,
+          "text": "We had a wonderful stay at this studio. It felt private and peaceful while still being conveniently close to the main highway.\nThe studio was thoughtfully designed, comfortable, and beautifully crafted. We especially appreciated how cool and comfortable the space stayed, even after a day out exploring. The bed was easily one of the most comfortable I've ever slept in.\nThe hosts were welcoming and thoughtful, with refreshments waiting for us on arrival, and Lucas shared some great local recommendations. One of my favorite parts of the stay was relaxing on the dock, watching the ocean, and enjoying the breeze.\nWe truly enjoyed our time here and would happily stay again."
+        },
+        {
+          "guest_name": "Robert A.",
+          "date": "April 2026",
+          "date_iso": "2026-04",
+          "rating": 5,
+          "text": "Great location and place. Modern and property groujnds were kept immaculate."
+        },
+        {
+          "guest_name": "Heather S.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 4,
+          "text": "This is a small suite, ground floor of the main 2 story. Although the property is on the ocean, the patio area looks onto the neighbors yard and the ocean is not in view. It is cozy, and we were offered the use of dock and dip pool when no one else was using them, as the host was present when we were there.  It is on the main road into Placencia, so easy to find. You would need transportation to do anything.\nWe had a nice stay and Brad and family were very friendly. I would recommend"
+        },
+        {
+          "guest_name": "Sheryl U.",
+          "date": "March 2026",
+          "date_iso": "2026-03",
+          "rating": 5,
+          "text": "Nice place.\nthanks."
+        },
+        {
+          "guest_name": "Ken N.",
+          "date": "February 2026",
+          "date_iso": "2026-02",
+          "rating": 5,
+          "text": "Very nice place, that was especially well stocked for the beach lifestyle. The beach towels, cooler, and foot washer outside were all very helpful. The only possible downside was how far the location is from Placencia proper. This can also be viewed as a positive depending on your attitude. Overall great experience."
+        },
+        {
+          "guest_name": "Tonita S.",
+          "date": "February 2026",
+          "date_iso": "2026-02",
+          "rating": 5,
+          "text": "Brad's space was perfect for us. This was the beat vacation I have ever had. the grounds and beach are beautiful. you will be very happy staying here"
+        },
+        {
+          "guest_name": "John R.",
+          "date": "January 2026",
+          "date_iso": "2026-01",
+          "rating": 5,
+          "text": "If you’re looking for a little slice of paradise, then you need to stay at this property. Peaceful with a beach and wharf that welcome you to the Waters edge. You can spend days swimming, relaxing in the sand or lounging on the dock and watching the pelicans fish. We will be back again."
+        },
+        {
+          "guest_name": "Juan C.",
+          "date": "January 2026",
+          "date_iso": "2026-01",
+          "rating": 5,
+          "text": "Tuvimos una estancia maravillosa en este estudio en Placencia. El espacio es muy lindo, cómodo y cuidadosamente mantenido, ideal para descansar y desconectarse. La playa privada es simplemente espectacular: limpia, tranquila y prácticamente para uno solo, lo que hace que el lugar se sienta verdaderamente paradisíaco.\nEs el sitio perfecto para relajarse, disfrutar del mar y la naturaleza, Sin duda, volveríamos y lo recomendamos al 100%."
+        },
+        {
+          "guest_name": "Lorilee S.",
+          "date": "November 2025",
+          "date_iso": "2025-11",
+          "rating": 5,
+          "text": "Lovely place to stay!\nNice and clean!\nComfortable!\nFelt safe!\nWe’ll be back 😉"
+        },
+        {
+          "guest_name": "Ingrid A.",
+          "date": "April 2025",
+          "date_iso": "2025-04",
+          "rating": 5,
+          "text": "Great place to stay."
+        },
+        {
+          "guest_name": "Beva L.",
+          "date": "February 2025",
+          "date_iso": "2025-02",
+          "rating": 5,
+          "text": "The Studio was just perfect for my husband and I.  Beautiful space, clean, great shower and the Entrance was away from all the other ones so it was quite private.\nA very short walk to the Beach and you had your feet in the Beautiful Caribbean Sea.  This was a great find!\nDriving into Placencia Village takes about 25 minutes but it is a beautiful drive! The Village has wonderful restaurants and shops right on the beach.\nIf you are looking for something fast paced, nightlife and such, Placencia isn't for you.\nIt is a peaceful laid back Village. We found it to be wonderful."
+        },
+        {
+          "guest_name": "Prashant G.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 5,
+          "text": "I appreciated and enjoyed staying at La Vida Belize.  Brad is a friendly, responsive and supportive host.  He went out of his way to help me on both check in and check out days with logistics.\nThe beach is 10m outside the door and gorgeous and calm.  There is a plunge pool literally right outside.  The studio has a chic, modern aesthetic that suits my taste.\nPlacencia is about 25 mins away.  Brad rented me a new and fun e-bike at a quite reasonable rate for the entire duration which was fun to get around on.  I enjoyed the restaurants that are around.\nA few more miscellaneous points for those considering it.  Brad’s helpers onsite are friendly and helpful.  La Vida Belize sits pretty directly on the main road, with some traffic noise. There are two other airbnbs on the property.\nAll in all, really cool stay.  Grateful I found this as an option.  Served me really well."
+        },
+        {
+          "guest_name": "Aaron W.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 4,
+          "text": "Nice place. Good little kitchen."
+        },
+        {
+          "guest_name": "Kyla H.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 5,
+          "text": "The place was wonderful—a perfect spot to relax. The private beach and pier was truly a highlight, offering a beautiful place to enjoy.  We loved that it was just a leisurely 30-40 minute drive into town, making it easy to explore. The studio had a well-stocked kitchen, which was great because we ended up cooking quite a lot. Overall, we thoroughly enjoyed our time and appreciated how helpful and responsive Brad was."
+        },
+        {
+          "guest_name": "Anne-Sophie R.",
+          "date": "January 2025",
+          "date_iso": "2025-01",
+          "rating": 5,
+          "text": "The studio was really nice! Beautiful beach, and Brad was very reactive!\nThank you!"
+        },
+        {
+          "guest_name": "Felipe P.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 2,
+          "text": "Cons:\n- the property is 30-35 mins away from the airport and is located in a very isolated part of the island. The nearest store is about a 20min drive away and the nearest restaurant (resort) is about a 7min drive - NOTHING COMMERCIAL IS WALKABLE to the property. Downtown Placencia is about 40mins away\n- there was no grounds keeping on site to welcome us or help us during our entire stay, as mentioned in other comments\n- most of the inside of the property, is as advertised; however, the bed is not comfortable and there was a sewage/piping issue that kept erupting horrendous smells from the toilet\n- the power kept randomly turning off at various times throughout the night, the entire stay\nIf your goal is to escape humanity and you thoroughly prepare for the transportation and food challenges, then this place is for you. However, if you want to explore the island, take in its sights and culture, and not spend 1/3 of your time commuting up and down Placencia, then explore other option"
+        },
+        {
+          "guest_name": "Thomas M.",
+          "date": "December 2024",
+          "date_iso": "2024-12",
+          "rating": 4,
+          "text": "The space and property is pristine. If you’re looking for a nice quiet getaway this is the perfect spot. Make sure you’re more prepared than me as I assumed the location was in the town. It’s about a 25 drive by car north of town so you’ll need transportation. Brad was kind enough to offer an e-bike for me to get to a grocery store as the local cart and car rental business’ were closed on the weekend and sold out during my stay.\nThe beach is beautiful, I was able to use one of the pools when the other units weren’t occupied. The property manager Lucas was very responsive and a real nice fella.\nI would absolutely stay again but would rent a car in Belize city for my stay in Placencia."
+        },
+        {
+          "guest_name": "Vivian H.",
+          "date": "November 2024",
+          "date_iso": "2024-11",
+          "rating": 5,
+          "text": "Great location an a peaceful setting."
+        },
+        {
+          "guest_name": "Glenn T.",
+          "date": "August 2024",
+          "date_iso": "2024-08",
+          "rating": 5,
+          "text": "Brad and staff were incredible. Second time here and everything was perfect. Highly recommend!!!"
+        },
+        {
+          "guest_name": "Susan L.",
+          "date": "August 2024",
+          "date_iso": "2024-08",
+          "rating": 5,
+          "text": "Really relaxing and nice place.\nThank you Brad!"
+        },
+        {
+          "guest_name": "Peter T.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "Very nice stay! From what I could tell, there was pretty much a full time grounds keeper who took very good care of the grounds. The care taker and house keeper were very nice as well. Thanks Brad👍"
+        },
+        {
+          "guest_name": "Dax S.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "Amazing space everything was as expected. Would come again"
+        },
+        {
+          "guest_name": "Dorian T.",
+          "date": "July 2024",
+          "date_iso": "2024-07",
+          "rating": 5,
+          "text": "Great like always!"
+        },
+        {
+          "guest_name": "Glenn T.",
+          "date": "June 2024",
+          "date_iso": "2024-06",
+          "rating": 5,
+          "text": "the place was incredible. Staff was great."
+        },
+        {
+          "guest_name": "Andrea M.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": "Cute space, thoughtful layout with functional kitchen. Had a few minor issues that were promptly resolved once the host was contacted. Quiet area, really enjoyed that solar panels were being used on the property as well."
+        },
+        {
+          "guest_name": "Natasha A.",
+          "date": "May 2024",
+          "date_iso": "2024-05",
+          "rating": 5,
+          "text": "Such a great spot! Brad’s Airbnb is modern and clean. The shower is huge and super nice. We had an amazing few nights. The beach is peaceful and we love the hammocks. Would definitely recommend to family and friends!"
+        },
+        {
+          "guest_name": "Lacy H.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 5,
+          "text": "Absolutely wonderful. I made great use of the very close private beach to watch the sunrise."
+        },
+        {
+          "guest_name": "Gilbert Y.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 5,
+          "text": "Private beach, chill vibes, good views. They've got kayaks, bikes, & even cold beers in the fridge as a welcome gesture!"
+        },
+        {
+          "guest_name": "Leah S.",
+          "date": "April 2024",
+          "date_iso": "2024-04",
+          "rating": 5,
+          "text": "Great peaceful location with clean modern looking studio. The kitchen was great with a fancy induction cooktop. They had two beers and a full bag of fresh ice in the fridge for us! The AC was nice and cold and the water pressure was great! The starlink high speed internet was a nice perk too. A beautiful private sand beach with a dock. We will definitely come back and probably book the main house with some friends next time!"
+        },
+        {
+          "guest_name": "Sara L.",
+          "date": "March 2024",
+          "date_iso": "2024-03",
+          "rating": 5,
+          "text": "We totally enjoyed our stay 💯\nNice and private place !\nThe room was clean and fresh"
+        },
+        {
+          "guest_name": "Aaron W.",
+          "date": "March 2024",
+          "date_iso": "2024-03",
+          "rating": 4,
+          "text": "The grounds were amazingly clean and well cared for. This studio was on the first floor with another unit above. We thought this stay was going to be more private from what we had perceived from the listing."
+        },
+        {
+          "guest_name": "Shawn C.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "The Studio was a nice place for the short stay that I had.  The accommodations were very nicely done.  Perfect for two people at a fairly reasonable price.   Everything was very clean and up to date.  The studio is a little farther north on the peninsula.   I always have a car when I’m in the area so it didn’t matter to me, but if you want to enjoy other areas of the peninsula…. And you should, you will need a vehicle.   Over all a great place and I will stay there again in the future."
+        },
+        {
+          "guest_name": "Hava C.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "We had such a lovely time here! The studio was really comfortable and we were so lucky to have easy access to the ocean and a pool! The hosts had great communication and were very accommodating. Thanks so much!"
+        },
+        {
+          "guest_name": "Darian W.",
+          "date": "January 2024",
+          "date_iso": "2024-01",
+          "rating": 5,
+          "text": "This place is an absolute PARADISE!! There's no other way to describe it. The Airbnb has everything you could possibly need and more. I don't think I've ever stayed in a place with such a great kitchen. It's a bit outside of town-- but not too far from anything at all. The location is the best part in my opinion. This place is truly serene. You have the beach, the doc, the ocean and the stars all to yourself. The beach is pristine-- like an aquarium. Every day we sat on the doc for hours watching the fish. There are free kayaks, snorkels and paddle boards. We went out and saw stingrays, nurse sharks and jellyfish. No need to pay for any tours! They have cornhole on the beach, greeted us with cold beers in the fridge and a beautiful pool with ocean views. I'll be coming here again and again. And the hosts are great! So responsive and attentive. Thank you so much for everything :)"
+        }
+      ],
+      "counts": {
+        "images": 12,
+        "amenities": 65,
+        "reviews": 36
+      }
+    }
+  ],
+  "totals": {
+    "properties": 3,
+    "images": 82,
+    "amenities": 232,
+    "reviews": 192
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "listing": "casita",
+  "downloaded": 28,
+  "failed": [],
+  "files": [
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\01.jpg",
+      "bytes": 586474,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-9EEaGAvLwWDrbIvQJSZ--1u6TM5Y8LdQplcMQ45QZQT0-655ae19fb1612",
+      "sort_order": 1,
+      "caption": ""
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\02.jpg",
+      "bytes": 497123,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-F--TVOf1pgPPJuudQaTXbIcg-jznkhbeTbCYA4R1Q1LM-655ae1dac9bcc",
+      "sort_order": 2,
+      "caption": "IMG_5144.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\03.jpg",
+      "bytes": 431275,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-1QHJ9hmfLTHcTu6wRpW9cp-7NPEWVfTy3h--sgV2EcUE-65550a06c49a9",
+      "sort_order": 3,
+      "caption": "Living room, Kitchen and bedroom"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\04.jpg",
+      "bytes": 229575,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-B8DKVsQfrnnO2qc1t--PW1BCHdoCSaArIJAuFJFrNNVo-65a508c438c09",
+      "sort_order": 4,
+      "caption": "Living room with fouton."
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\05.jpg",
+      "bytes": 438180,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-53Y9--bs51WuiGC2ImjuYXmK86GX8qwlpVF9r2Urah5M-65550a0c4d390",
+      "sort_order": 5,
+      "caption": "Casita bedroom"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\06.jpg",
+      "bytes": 415169,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-AyAuUjjT-1O7pBKmTDAAtLP2WUlCCNb3ifkQovtx3H8-65a508cab0451",
+      "sort_order": 6,
+      "caption": "Kitchen"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\07.jpg",
+      "bytes": 433927,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-8axPh-lEbprHk-bjMf--pT5tsTsK5OxFeBVwPtcMVHVg-65550a120bd35",
+      "sort_order": 7,
+      "caption": "Kitchen"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\08.jpg",
+      "bytes": 487272,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-WwQ9ly2soRKrc7ai-R6qBPRYBgEAlqDy4IYcQ0rR--v0-655516e2d733c",
+      "sort_order": 8,
+      "caption": "Beach view from the front of Casita"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\09.jpg",
+      "bytes": 256274,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-JzPDj2o1fDKF9S04VwOHQQvOC3l9jB97MtMKT3fhg94-65550a1b35bae",
+      "sort_order": 9,
+      "caption": ""
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\10.jpg",
+      "bytes": 344559,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-UF-TN1h8qvwl325R--x-BOsNttsI79kYX5y1BDsz--GoA-65550a1e2f0c2",
+      "sort_order": 10,
+      "caption": "Bathroom"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\11.jpg",
+      "bytes": 321821,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-GiZuYYO3--4X-K2kVgmQBgYDGNs2bBURBobC6euY8nnw-65a508d7b96a7",
+      "sort_order": 11,
+      "caption": "Shower"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\12.jpg",
+      "bytes": 303600,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-pyyow52Pw9CE-8BJm7QJ7gK--v--vRuilLzDX-AKt0lWE-655ae20626134",
+      "sort_order": 12,
+      "caption": "IMG_5139.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\13.jpg",
+      "bytes": 198911,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-vKGhwGkyAafsldOXWchOa7kH1E8-sqJyCW7pqQkWlJA-655ae20ee4f75",
+      "sort_order": 13,
+      "caption": "IMG_3422.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\14.jpg",
+      "bytes": 351951,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-9RdQvqVf6DaAzJg6sTosonzIIN0sgvNkPz2rP--VRqjg-65a508dbe153b",
+      "sort_order": 14,
+      "caption": "Beachfront"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\15.jpg",
+      "bytes": 420554,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-zYn---6lv0vnI6ghjAeEq--H1PDJvuYF1SUJluK-gqQDc-65a508df47905",
+      "sort_order": 15,
+      "caption": "Approach to Casita from parking"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\16.jpg",
+      "bytes": 151598,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729--GSF9GOaJV--8UXzUrZI2kYC1CsDp-os7Gil1Mj5FjhI-65a508e27dfe0",
+      "sort_order": 16,
+      "caption": "Sunrise on the beach"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\17.jpg",
+      "bytes": 346062,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-mT2-fB5uA9eVI6pW1--1ZLCHXdDrm2nCBH9jJ80SsrcQ-65550a359d7f8",
+      "sort_order": 17,
+      "caption": "Sunrise on the beach"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\18.jpg",
+      "bytes": 429758,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-HQSvOrE37ZKZIYrxHAH7HWFIpGoQB53nlM3sMbXrnWs-65a508e8c2e98",
+      "sort_order": 18,
+      "caption": ""
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\19.jpg",
+      "bytes": 328505,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-wpock0dYTDokDrRnncaP7r6-mot6j3ffTWXXN4e6Jls-65550a44a7bd6",
+      "sort_order": 19,
+      "caption": "Outside of Casita"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\20.jpg",
+      "bytes": 451767,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-kkurQ59nY5OikLctCldZhtjMF3CG9rUZYJO6UddC51c-65a508ed837df",
+      "sort_order": 20,
+      "caption": "Included bicycles"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\21.jpg",
+      "bytes": 417548,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-7mRACD2KSvEBP69BoTWi7xQ2elT--RGnBCbJfPpziybw-655516ec8c181",
+      "sort_order": 21,
+      "caption": "Beach fun"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\22.jpg",
+      "bytes": 297339,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-0GZXFikTVKSkroBMo-pE3cNY6Ci0yv3h6E--pgdwJsm8-65a508f336cab",
+      "sort_order": 22,
+      "caption": "Fishing in front of Casita"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\23.jpg",
+      "bytes": 353129,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-4--UYWphPm6gzvf-SHA2id6t7PJdqKw19N7uWX4OM0V8-65a508f6c8643",
+      "sort_order": 23,
+      "caption": "Entrance to property"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\24.jpg",
+      "bytes": 429294,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-k0HrZCkfY5GBIm3yPvEluwvpZCBKpmIrqP8Zjt7aZeo-65a508fa5f4cd",
+      "sort_order": 24,
+      "caption": "Parking"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\25.jpg",
+      "bytes": 321105,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-c5wmu3xZa9cOme8yxkDUiyhbAvurYM7nwGR3DQ5qDVc-65a508fce5574",
+      "sort_order": 25,
+      "caption": "Tubing in nearby river"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\26.jpg",
+      "bytes": 535825,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-0l6DREGBHZE--Z14JCjCB--UJPdlWEbDvkoNQSsL0BB2A-65a508ffded90",
+      "sort_order": 26,
+      "caption": "Placencia Village"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\27.jpg",
+      "bytes": 598774,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-ql--lV0UfCKPxWki36OGyc--k54IKRfxbh73Lg7SSQsjU-65a50902d68a7",
+      "sort_order": 27,
+      "caption": "Placencia Village"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\gallery\\28.jpg",
+      "bytes": 518743,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-212729-aidvfOpNCUwOKQUt2ILdxN3Aro--l2ndhIIX3LhDAaCA-65a50905c3a75",
+      "sort_order": 28,
+      "caption": "Sidewalk in Placencia Village"
+    }
+  ],
+  "feature": {
+    "ok": true,
+    "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\casita\\feature.png",
+    "bytes": 268954,
+    "content_type": "image/png",
+    "url": "https://www.lavidabelize.com/uploads/properties/66b1115c273fa.png"
+  }
+}

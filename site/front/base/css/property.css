@@ -1,0 +1,13 @@
+.booking-bar {
+
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 5rem;
+    margin-bottom: -7rem;
+}
+
+.bb-field {
+
+    text-align: left;
+}

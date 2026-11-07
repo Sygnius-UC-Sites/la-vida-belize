@@ -1,0 +1,122 @@
+{
+  "listing": "studio",
+  "downloaded": 12,
+  "failed": [],
+  "files": [
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\01.jpg",
+      "bytes": 344512,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-yRJeqG0zx4--n7MlWPXk4jcxdhKr3owmMpe17W--alGVE-6557f6d3631d1",
+      "sort_order": 1,
+      "caption": ""
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\02.jpg",
+      "bytes": 568533,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-P0Xdkr4XuyZM8eUbkRPhAeY3M5Zz2Jhk2OrZkV0Nyic-658372f3b07b6",
+      "sort_order": 2,
+      "caption": "Studio Outside.jpg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\03.jpg",
+      "bytes": 356289,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-gsZ7-Sx5jbmWkU09aU4IiacZrqHfDxAqrFqDJEZ--5hY-6557f6d6d4c66",
+      "sort_order": 3,
+      "caption": "IMG_4933.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\04.jpg",
+      "bytes": 200121,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-DT5ixP--zcpHmIGO33oZ8rFN39t--LVGFmTSyFwUvd1NA-6557f6da3421b",
+      "sort_order": 4,
+      "caption": "IMG_4936.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\05.jpg",
+      "bytes": 300696,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-s3K5q4sHLjyWXOD1T0wwtCeKy0QeWSTpxsiiFRIRDEA-6557f6de74ef8",
+      "sort_order": 5,
+      "caption": "IMG_4934.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\06.jpg",
+      "bytes": 332429,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-764XXIx9nnnx2sB-lV51y09t-VhIfA9FuqVXUNTeBEU-6557f6e1e9b1d",
+      "sort_order": 6,
+      "caption": "IMG_4930.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\07.jpg",
+      "bytes": 359818,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-0fdVWSaA1xEd1EHuYRE1BmZCq7xdFTWkmZ4-UTib0qc-6557f6e60514c",
+      "sort_order": 7,
+      "caption": "IMG_4929.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\08.jpg",
+      "bytes": 161405,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-ksGR41pNK54whC8ih54T5EpoxfGVQnYed-6zaBAKR6U-6557f6e939c6d",
+      "sort_order": 8,
+      "caption": "IMG_4938.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\09.jpg",
+      "bytes": 150682,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-RPOKNlcvn--PGOHzgGJIcH0X3KqFYS1ZcssM1F-hFOU8-6557f6ed251b7",
+      "sort_order": 9,
+      "caption": "IMG_4937.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\10.jpg",
+      "bytes": 273482,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-aBFoKvvBRI5jhco54-Tke--5azO3u8tjWlGiGyJUNX2c-6557f6f0b94b9",
+      "sort_order": 10,
+      "caption": "IMG_4486.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\11.jpg",
+      "bytes": 148476,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-UnpGz1lCA5ergvb0s9AWU3QNCUbJCtxQxi3Ts5vVWYk-6557f6f4a355d",
+      "sort_order": 11,
+      "caption": "IMG_4485.jpeg"
+    },
+    {
+      "ok": true,
+      "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\gallery\\12.jpg",
+      "bytes": 591951,
+      "content_type": "image/jpeg",
+      "url": "https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/82342-213571-aP6JnmwQjICg71wX03Lu76u8-GX7tWPU--jv01PAWdUc-658372f8c61c7",
+      "sort_order": 12,
+      "caption": "Studio Outside 2.jpg"
+    }
+  ],
+  "feature": {
+    "ok": true,
+    "path": "D:\\UC PROJECTS\\Brad\\content\\listings\\studio\\feature.png",
+    "bytes": 268954,
+    "content_type": "image/png",
+    "url": "https://www.lavidabelize.com/uploads/properties/66b111506d23d.png"
+  }
+}

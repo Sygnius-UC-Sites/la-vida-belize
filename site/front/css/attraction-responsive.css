@@ -1,0 +1,115 @@
+@media (max-width: 1024px) {
+    section.memory-section .col-4 {
+        padding:0px;
+    }
+
+    .memory-section .dot {
+        right: -1rem
+    }
+
+    .memory-section .row:nth-child(2n) .dot {
+        left: -1rem
+    }
+}
+
+@media (max-width: 980px) {
+    section.memory-section .col-4 {
+        padding: 0px 12px;
+        width: 50%;
+    }
+
+    .attractions .col-4 {
+        width: 49%;
+    }
+
+    .memory-section .content,.memory-section .img {
+        width: 100%;
+        padding: 0
+    }
+
+    .memory-section .img {
+        position: relative
+    }
+
+    .memory-section .memory-image img {
+        width: 100%;
+        /* height:400px; */
+        max-width: 100%;
+        padding: 0
+    }
+
+    .memory-image {
+        /* height:400px; */
+        /* margin-bottom:var(--m30); */
+        padding: 0
+    }
+
+    .memory-section .dot {
+        display: none
+    }
+
+    .memory-section .row,.row .rev {
+        /* margin-bottom: 3rem; */
+    }
+
+    .memory-section .rev {
+        flex-direction: column-reverse
+    }
+
+    .memory-section .memory-item {
+        min-height: auto
+    }
+}
+
+@media (max-width: 540px) {
+  
+  
+  section.attractions_wrapper .col-12{
+    padding:0;
+  }
+  
+    .attractions .head {
+        padding: var(--p40) 24px;
+    }
+
+    .attractions .image-box img {
+        height: 350px;
+    }
+
+    .attractions .lower-content h4 {
+        height: auto;
+    }
+
+    .attractions .col-4 {
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .attractions .row {
+        bottom: 0px;
+    }
+
+    .memory-image,.memory-section .memory-image img {
+        /* height: 300px; */
+    }
+
+    .memory-section h2 {
+        font-size: var(--f20);
+        height: auto;
+    }
+
+    .memory-section .row,.row .rev {
+        /* margin-bottom: 2rem; */
+    }
+  section.memory-section .col-4 {
+        padding: 0px 0px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .memory-section h2 {
+        font-size:var(--f24)
+    }
+}

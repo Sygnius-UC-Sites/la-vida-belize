@@ -1,0 +1,188 @@
+@media (max-width: 1366px){
+    section.get-quote h2.quote-title {
+    width: 60%;
+}
+}
+@media (max-width: 1024px){
+#datepicker-demo17.datepicker {
+    z-index: 2;
+    left: 0 !important;
+}
+    section.get-quote h2.quote-title {
+        width: 70%;
+    }
+}
+@media (max-width: 980px){
+    section.get-quote .row.quote-area {
+    flex-direction: column-reverse;
+    gap: 30px;
+}
+section.get-quote .col-6.book-detail-sec {
+    padding-left: 0;
+    width: 100%;
+    padding-right:0px;
+}
+section.get-quote .col-6.quote-detail {
+    padding: 0px;
+    width: 100%;
+}
+section.get-quote .info-detail{
+    padding-bottom: 0;
+}
+  section.get-quote h2.quote-title {
+        width: 100%;
+    }
+}
+@media (max-width: 540px){
+    section.get-quote h2{
+        font-size: var(--f24);
+        margin-bottom: var(--m20);
+    }
+    section.get-quote .sticky-area, section.booking-reciept .jumbotron{
+        padding: var(--p20) var(--p15);
+    }
+    section.get-quote .quote-pro{
+        flex-direction: column;
+    }
+    section.booking-reciept .quote-pro{
+        flex-direction: column;
+    }
+    section.get-quote h4.pro-name {
+    font-size: var(--f18);
+    }
+    section.booking-reciept .cont{
+        flex-direction: column;
+    }
+    section.booking-reciept .cont .left{
+        width:100%;
+    }
+    section.booking-reciept .cont .right{
+        width:100%;
+        text-wrap: wrap;
+    overflow-wrap: break-word;
+    }
+    section.get-quote .price-details h4, section.get-quote .col-6.quote-detail h4, section.get-quote .date-box h3, section.get-quote .guest-box h3 {
+    font-size: var(--f20);
+    }
+    section.get-quote .total-amt, section.get-quote .total-amt form{
+        width:100%;
+    }
+    div#coupon-form .c-btn{
+        flex-direction: column;
+    }
+    div#coupon-form input{
+        width: 100%;
+    display: block;
+    height: 51px;
+    }
+    section.get-quote .date-box, section.get-quote .guest-box{
+        padding: var(--p20) var(--p15);
+    }
+    
+    section.get-quote .info-detail .form-btn.sub {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+section.get-quote .info-detail button {
+    margin-top: 0px;
+    width: 100%;
+    font-size: var(--f14);
+}
+div#coupon-form button.submit{
+    width: 100%;
+    font-size: var(--f14);
+}
+section.get-quote .rental-agreement h3{
+    font-size: var(--f22) !important;
+}
+.document-html h1, .document-html h2, .document-html h3, .document-html h4, .document-html h5, .document-html h6{
+    font-size: var(--f22) !important;
+    margin-bottom: var(--m15) !important;
+}
+.sign-area.row {
+    flex-direction: column;
+    gap: 10px;
+}
+section.get-quote .sign-area.row .col-6 {
+    padding: 0px;
+    width: 100%;
+}
+section.get-quote #sig-canvas{
+    width: 100% !important;
+}
+section.get-quote .sign-btn button {
+    border-radius: 0px;
+    width: 100%;
+    font-size: var(--f14);
+}
+section.get-quote .sign-btn{
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+section.booking-area .jumbotron{
+    padding: var(--p20) var(--p15);
+}
+.cancel-policy h3, .cancel-policy h2, .cancel-policy h1{
+    font-size: var(--f20);
+} 
+.datepicker__inner {
+    padding: 20px 15px !important;
+}
+section.get-quote .date-box .ovabrw_datetime_wrapper {
+    margin-top: var(--m5);
+    margin-bottom: var(--m5);
+    width: 100%;
+}
+input#demo17 {
+    position: absolute;
+    left: 0 !important;
+    top: 2px !important;
+    height: 100px !important;
+    width: 100% !important;
+}
+.datepicker__info--selected{
+    margin-bottom: 10px !important;
+    text-align: center !important;
+}
+.datepicker__buttons{
+    display: flex !important;
+    justify-content: space-between !important;
+}
+section.get-quote h2.quote-title {
+    font-size: 25px;
+}
+}
+@media (max-width: 360px){
+    section.get-quote .trip-date, section.get-quote .trip-guest{
+        flex-direction: column;
+    }
+    section.get-quote h2 {
+    font-size: var(--f22);
+    }
+    section.get-quote h4.pro-name {
+    font-size: var(--f17);
+}
+section.get-quote .rental-agreement h3{
+    font-size: var(--f19) !important;
+}
+section.get-quote .price-details h4, section.get-quote .col-6.quote-detail h4, section.get-quote .date-box h3, section.get-quote .guest-box h3 {
+    font-size: var(--f18);
+}
+section.get-quote .guest-box .adult-box p, section.get-quote .guest-box .pets-box p, section.get-quote button.head {
+    font-size: var(--f15);
+}
+.document-html h1, .document-html h2, .document-html h3, .document-html h4, .document-html h5, .document-html h6 {
+    font-size: var(--f19) !important;
+}
+section.get-quote .total-amt p{
+    line-height:1.6;
+}
+section.get-quote .date-box .ovabrw_datetime_wrapper{
+    margin-top: var(--m5);
+    margin-bottom: var(--m5);
+    width: 100%;
+}
+
+}

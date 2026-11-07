@@ -1,0 +1,139 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Services\Mail\HealthMonitor;
+use App\Services\Mail\SesMailer;
+use App\Services\Mail\SesSettings;
+use App\Services\Mail\SuppressionList;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class MailSettingsController extends Controller
+{
+    /** Settings keys with non-sensitive plaintext storage. */
+    private const PLAIN_KEYS = [
+        'mail_enabled', 'mail_send_disabled',
+        'mail_from_email', 'mail_from_name', 'mail_reply_to',
+        'mail_domain', 'mail_configuration_set',
+        'mail_provider_key_id', 'mail_provider_region',
+        'mail_max_per_minute',
+        'mail_bounce_rate_threshold', 'mail_complaint_rate_threshold',
+        'mail_topic_arn_prefix',
+    ];
+
+    public function edit(SesSettings $settings, HealthMonitor $health)
+    {
+        $values = [
+            'mail_enabled'                  => $settings->enabled(),
+            'mail_send_disabled'            => $settings->sendDisabled(),
+            'mail_from_email'               => $settings->fromEmail(),
+            'mail_from_name'                => $settings->fromName(),
+            'mail_reply_to'                 => $settings->replyTo(),
+            'mail_domain'                   => $settings->domain(),
+            'mail_configuration_set'        => $settings->configurationSet(),
+            'mail_provider_key_id'        => $settings->awsAccessKeyId(),
+            'mail_provider_region'               => $settings->awsRegion(),
+            'mail_max_per_minute'           => $settings->maxPerMinute(),
+            'mail_bounce_rate_threshold'    => $settings->bounceRateThreshold(),
+            'mail_complaint_rate_threshold' => $settings->complaintRateThreshold(),
+            'mail_topic_arn_prefix'     => $settings->snsTopicArnPrefix(),
+        ];
+
+        $secretSet = $settings->awsSecretAccessKey() !== '';
+
+        $stats = $health->rollingStats();
+
+        $recentSends = DB::table('mail_send_log')
+            ->orderByDesc('id')->limit(50)
+            ->get(['id', 'purpose', 'from_email', 'to_email', 'subject', 'status', 'error_code', 'error_message', 'sent_at', 'created_at']);
+
+        $suppressions = DB::table('mail_suppressions')
+            ->orderByDesc('id')->limit(50)
+            ->get(['email', 'reason', 'bounce_subtype', 'source', 'created_at']);
+
+        $webhookUrl = url('webhooks/mail');
+
+        return view('admin.settings.mail', compact('values', 'secretSet', 'stats', 'recentSends', 'suppressions', 'webhookUrl'));
+    }
+
+    public function update(Request $request, SesSettings $settings)
+    {
+        $validated = $request->validate([
+            'mail_enabled'                  => 'nullable|boolean',
+            'mail_from_email'               => 'nullable|email',
+            'mail_from_name'                => 'nullable|string|max:120',
+            'mail_reply_to'                 => 'nullable|email',
+            'mail_domain'                   => 'nullable|string|max:255|regex:/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+            'mail_configuration_set'        => 'nullable|string|max:120',
+            'mail_provider_key_id'        => 'nullable|string|max:128',
+            'mail_provider_secret'    => 'nullable|string|max:255',
+            'mail_provider_region'               => 'nullable|string|max:32',
+            'mail_max_per_minute'           => 'nullable|integer|min:1|max:10000',
+            'mail_bounce_rate_threshold'    => 'nullable|numeric|min:0|max:1',
+            'mail_complaint_rate_threshold' => 'nullable|numeric|min:0|max:1',
+            'mail_topic_arn_prefix'     => 'nullable|string|max:255',
+        ]);
+
+        $bools = ['mail_enabled'];
+        foreach (self::PLAIN_KEYS as $key) {
+            // send_disabled is operator-only; do NOT update from this form so the auto-pause
+            // can't be silently re-enabled by saving the page. Use the dedicated route.
+            if ($key === 'mail_send_disabled') continue;
+            $value = in_array($key, $bools, true)
+                ? ($request->boolean($key) ? '1' : '0')
+                : (string) ($validated[$key] ?? '');
+            DB::table('basic_settings')->updateOrInsert(['name' => $key], ['value' => $value, 'updated_at' => now()]);
+        }
+
+        // Secret only updates when admin types a new value — empty input leaves the existing secret in place.
+        $newSecret = (string) ($request->input('mail_provider_secret') ?? '');
+        if ($newSecret !== '') {
+            $settings->setEncryptedSecret($newSecret);
+        }
+
+        $settings->refresh();
+        return redirect()->back()->with('success', 'Mail settings updated.');
+    }
+
+    /** Operator action: re-enable sending after auto-pause. */
+    public function resumeSending(SesSettings $settings)
+    {
+        $settings->put('mail_send_disabled', '0');
+        return redirect()->back()->with('success', 'Mail sending resumed.');
+    }
+
+    /** Operator action: pause sending immediately. */
+    public function pauseSending(SesSettings $settings)
+    {
+        $settings->put('mail_send_disabled', '1');
+        return redirect()->back()->with('success', 'Mail sending paused.');
+    }
+
+    /** Send a test email to a given address using the configured from-identity. */
+    public function sendTest(Request $request, SesMailer $mailer)
+    {
+        $validated = $request->validate(['test_to' => 'required|email']);
+        $siteName = \ModelHelper::getDataFromSetting('website') ?: config('app.name', 'this site');
+        $result = $mailer->send(
+            $validated['test_to'],
+            'SES test from ' . parse_url(url('/'), PHP_URL_HOST),
+            '<p>This is a test email from your ' . e($siteName) . ' CMS install. If you got this, mail delivery is wired up correctly.</p>',
+            ['purpose' => 'test', 'source_ip' => $request->ip()]
+        );
+        if ($result->success) {
+            return redirect()->back()->with('success', 'Test email sent. SES message id: ' . $result->messageId);
+        }
+        return redirect()->back()->with('danger', 'Test send failed (' . $result->errorCode . '): ' . $result->errorMessage);
+    }
+
+    public function removeSuppression(Request $request, SuppressionList $suppression)
+    {
+        $email = (string) $request->input('email');
+        if ($email !== '') {
+            $suppression->remove($email);
+        }
+        return redirect()->back()->with('success', "Removed $email from the suppression list.");
+    }
+}

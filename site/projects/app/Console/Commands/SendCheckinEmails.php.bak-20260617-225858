@@ -1,0 +1,117 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\Models\BookingRequest;
+use App\Models\Property;
+use Illuminate\Console\Command;
+
+class SendCheckinEmails extends Command
+{
+    protected $signature = 'bookings:send-checkin-emails';
+    protected $description = 'Send check-in info emails (per-property override → global checkin_email_send_day).';
+
+    public function handle(): int
+    {
+        $today = date('Y-m-d');
+        $horizon = date('Y-m-d', strtotime('+90 days'));
+
+        $candidates = BookingRequest::where('booking_status', 'booked')
+            ->where('checkin_email', 'false')
+            ->whereBetween('checkin', [$today, $horizon])
+            ->get();
+
+        $sent = 0;
+        foreach ($candidates as $booking) {
+            $property = Property::find($booking->property_id);
+            if (!$property) continue;
+
+            $resolver = new \App\Services\Stay\StayCommunicationsResolver($property, $booking);
+            $offsetDays = $resolver->resolveSendDayOffset('checkin_email_send_day', 'checkin_email_send_day', 0);
+            $targetDate = date('Y-m-d', strtotime("{$booking->checkin} -{$offsetDays} days"));
+
+            if ($targetDate !== $today) continue;
+
+            // Phase 4 — when post-confirmation signing is required and the
+            // guest hasn't signed yet, hold the check-in email until they
+            // sign. Logs a single skip per booking so we don't spam the log
+            // every cron tick. The check-in flag stays 'false' so the cron
+            // re-attempts daily once the signing flips status to 'true'.
+            if ($property->requiresPostConfirmationSigning()
+                && ($booking->rental_aggrement_status ?? 'false') !== 'true'
+            ) {
+                logger()->info('SendCheckinEmails: skipping — agreement unsigned', [
+                    'booking_id' => $booking->id,
+                    'checkin'    => $booking->checkin,
+                ]);
+                continue;
+            }
+
+            try {
+                $payload = $resolver->resolveCheckinPayload();
+                $sendError = null;
+                $mailable = new \App\Mail\CheckinInfoSent($booking, $property, $payload);
+                $rendered = $mailable->render();
+                $subject  = $resolver->expandMergeFields((string) (\ModelHelper::getDataFromSetting('checkin_default_subject') ?: 'Check-in details for your stay at {{property_name}}'));
+                try {
+                    \Mail::to($booking->email)->send($mailable);
+
+                    if (\ModelHelper::getDataFromSetting('admin_bcc_checkin_enabled') === '1') {
+                        $this->sendAdminBccAlert($booking, $property, $resolver,
+                            'admin_alert_checkin_subject', 'admin_alert_checkin_body_html',
+                            'Check-in info sent — booking #{{booking_id}} ({{property_name}})');
+                    }
+                } catch (\Throwable $mailErr) {
+                    $sendError = $mailErr->getMessage();
+                    logger()->warning('SendCheckinEmails: mail send failed', [
+                        'booking_id' => $booking->id, 'error' => $sendError,
+                    ]);
+                }
+                // Phase 13I — only flip the success flag on actual success.
+                $update = [
+                    'checkin_email_attempted_at' => now(),
+                    'checkin_email_error' => $sendError,
+                ];
+                if ($sendError === null) {
+                    $update['checkin_email'] = 'true';
+                    $update['checkin_email_sent_at'] = now();
+                }
+                $booking->update($update);
+                \App\Services\Email\SendLog::record((int)$booking->id, 'checkin', (string)$booking->email, $subject, $rendered, $sendError);
+                if ($sendError === null) $sent++;
+            } catch (\Throwable $e) {
+                $this->error("Booking {$booking->id} failed: " . $e->getMessage());
+                logger()->error('SendCheckinEmails failed', ['booking_id' => $booking->id, 'exception' => $e]);
+            }
+        }
+
+        $this->info("Sent {$sent} check-in emails (matched {$candidates->count()} candidates within {$today}..{$horizon})");
+        return self::SUCCESS;
+    }
+
+    /** Phase 13E — shared admin-BCC helper. See SendWelcomeEmails for the canonical version. */
+    private function sendAdminBccAlert(
+        BookingRequest $booking,
+        Property $property,
+        \App\Services\Stay\StayCommunicationsResolver $resolver,
+        string $subjectKey,
+        string $bodyKey,
+        string $defaultSubject
+    ): void {
+        $adminTo = \ModelHelper::getDataFromSetting('booking_receiving_mail')
+                ?: \ModelHelper::getDataFromSetting('admin_email_primary');
+        if (!$adminTo) return;
+
+        $brand  = \ModelHelper::getDataFromSetting('mailer_admin_name')
+               ?: \ModelHelper::getDataFromSetting('mail_from_name')
+               ?: \ModelHelper::getDataFromSetting('owner_name')
+               ?: 'Notification';
+        $footer = \ModelHelper::getDataFromSetting('mail_footer') ?: '';
+
+        $subject = $resolver->expandMergeFields((string) (\ModelHelper::getDataFromSetting($subjectKey) ?: $defaultSubject));
+        $body    = $resolver->expandMergeFields((string) (\ModelHelper::getDataFromSetting($bodyKey) ?: '<p>{{property_name}} — booking #{{booking_id}}.</p><p><a href="{{admin_url}}">View →</a></p>'));
+        $html    = view('mail.email-shell', ['body_html_rendered' => $body, 'brand' => $brand, 'mail_footer' => $footer])->render();
+
+        \MailHelper::emailSenderByController($html, $adminTo, $subject);
+    }
+}

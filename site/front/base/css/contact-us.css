@@ -1,0 +1,116 @@
+h2,
+h2.form-head {
+    text-transform: uppercase
+}
+
+.address h4,
+h2.form-head {
+    font-family: var(--font-third)
+}
+
+.contact-us {
+    padding-top: 20px;
+    padding-bottom: 0
+}
+
+h2 {
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 45px;
+    color: var(--brown)
+}
+
+.address .right {
+    border-right: 1px solid var(--brown)
+}
+
+.address h4 {
+    color: var(--text-dark);
+    font-size: 30px;
+    margin-bottom: 23px
+}
+
+.address p,
+.address p a {
+    color: var(--green)
+}
+
+.address p {
+    font-size: 18px;
+    font-weight: 500
+}
+
+.form-map {
+    padding: 80px 12px
+}
+
+.form-map .main {
+    border-radius: 10px;
+    padding: 45px;
+    width: 100%;
+    box-shadow: 0 0 5px 5px #00000020;
+    backdrop-filter: blur(5px);
+    background-color: #ffffff85
+}
+
+h2.form-head {
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 20px
+}
+
+.form-map .form-floating {
+    position: relative;
+    margin-bottom: 15px
+}
+
+.form-map form label {
+    font-size: 15px
+}
+
+.form-map form input.form-control {
+    border: 0 solid;
+    border-bottom: 2px solid var(--text-dark);
+    border-radius: 0;
+    font-family: var(--body-font);
+    padding-top: 30px !important;
+    font-size: 14px
+}
+
+.form-map textarea#floatingTextarea {
+    border: 0 solid;
+    border-bottom: 2px solid var(--text-dark);
+    border-radius: 0;
+    margin-bottom: 15px;
+    height: 100px;
+    font-family: var(--body-font)
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+    box-shadow: none;
+    border: none
+}
+
+.main-btn {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    border: 0 solid var(--green);
+    background-color: var(--green);
+    border-radius: 40px;
+    display: inline-block;
+    transition: .3s ease-in-out;
+    letter-spacing: .5px;
+    padding: 12px 20px;
+    width: 200px;
+    margin-top: 20px
+}
+
+.main-btn:hover {
+    color: var(--white);
+    background-color: var(--text-dark)
+}

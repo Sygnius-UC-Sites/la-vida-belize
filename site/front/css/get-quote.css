@@ -1,0 +1,583 @@
+/* =============================================
+   Booking / Quote Page — Base Design System
+   ============================================= */
+
+:root {
+    --booking-sidebar-w: 360px;
+    --gold: #c5a46a;
+    --cream: #f4efe6;
+    --bg-dark: #0e0c0a;
+    --muted: #888;
+}
+
+/* ── Layout ────────────────────────────────── */
+.booking-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 60px auto 100px;
+    padding: 0 24px;
+    align-items: flex-start;
+}
+
+.booking-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.booking-right {
+    width: var(--booking-sidebar-w);
+    flex-shrink: 0;
+}
+
+/* ── Trip / Section blocks ─────────────────── */
+.booking-section,
+.booking-left .trip,
+.booking-left .visitor-rate,
+.booking-left .info-detail {
+    border-bottom: 1px solid rgba(14, 12, 10, .1);
+    padding: 28px 0;
+    margin-bottom: 0;
+}
+
+.booking-left .trip:last-of-type,
+.booking-left .visitor-rate:last-of-type,
+.booking-left .info-detail:last-of-type {
+    border-bottom: none;
+}
+
+.booking-left .trip h4,
+.booking-left .info-detail h3,
+.booking-left .visitor-rate h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 20px;
+}
+
+/* ── Form elements ─────────────────────────── */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label,
+.booking-left .form-floating label {
+    display: block;
+    font-family: Jost, sans-serif;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--bg-dark);
+    margin-bottom: 6px;
+}
+
+.booking-left input.form-control,
+.booking-left select.form-control,
+.booking-left textarea.form-control,
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(14, 12, 10, .25);
+    border-radius: 4px;
+    font-family: Jost, sans-serif;
+    font-size: .875rem;
+    color: var(--bg-dark);
+    background: transparent;
+    outline: none;
+    transition: border-color .2s;
+}
+
+.booking-left input.form-control:focus,
+.booking-left select.form-control:focus,
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--gold);
+    box-shadow: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-row.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 0;
+}
+
+.form-row-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* ── Bootstrap col overrides inside form-row.row ── */
+.form-row.row .col-4,
+.form-row.row .col-6 {
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* ── Submit / CTA buttons ──────────────────── */
+.btn-confirm,
+.booking-left .form-btn.sub button.submit.main-btn,
+#sig-submitBtn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--gold);
+    color: #0e0c0a;
+    font-family: Jost, sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .25s, transform .2s;
+    margin-top: 24px;
+}
+
+.btn-confirm:hover,
+.booking-left .form-btn.sub button.submit.main-btn:hover,
+#sig-submitBtn:hover {
+    background: #d4b87e;
+    transform: translateY(-2px);
+}
+
+/* Save / Cancel inline buttons */
+.booking-left .main-btn,
+.booking-left button.main-btn {
+    background: var(--gold);
+    color: #0e0c0a;
+    font-family: Jost, sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.booking-left .main-btn:hover,
+.booking-left button.main-btn:hover {
+    background: #d4b87e;
+}
+
+/* ── Card details section ──────────────────── */
+.card-details.info-detail {
+    border-bottom: 1px solid rgba(14, 12, 10, .1);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.card-form-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.card-form-head h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin: 0;
+}
+
+/* ── Sidebar card ──────────────────────────── */
+.sidebar-card {
+    position: sticky;
+    top: 100px;
+    background: #fff;
+    border: 1px solid rgba(197, 164, 106, .3);
+    border-radius: 12px;
+    padding: 28px;
+}
+
+/* ── Property preview (sidebar) ────────────── */
+.property-preview {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(14, 12, 10, .08);
+}
+
+.property-preview img,
+.sidebar-card .property-preview img {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Old .quote-pro structure used inside sidebar */
+.sidebar-card .quote-pro {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(14, 12, 10, .08);
+}
+
+.sidebar-card .quote-pro .pro-img img {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.sidebar-card .pro-name,
+.property-preview h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bg-dark);
+    margin: 0 0 4px;
+}
+
+.sidebar-card .pro-cont p,
+.property-preview p {
+    font-family: Jost, sans-serif;
+    font-size: .78rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+.sidebar-card .ammenity-home span {
+    font-family: Jost, sans-serif;
+    font-size: .75rem;
+    color: var(--muted);
+}
+
+/* ── Price summary ─────────────────────────── */
+.price-summary {
+    margin-top: 4px;
+}
+
+.price-summary h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bg-dark);
+    margin-bottom: 16px;
+}
+
+/* Old .prc rows restyled as .price-row */
+.price-summary .prc,
+.price-summary .total-amt,
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: Jost, sans-serif;
+    font-size: .83rem;
+    color: var(--bg-dark);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(14, 12, 10, .06);
+}
+
+.price-summary .prc:last-child,
+.price-summary .total-amt:last-child,
+.price-row:last-child {
+    border-bottom: none;
+}
+
+.price-summary .prc .value,
+.price-summary .total-amt .value {
+    font-family: Jost, sans-serif;
+    font-size: .83rem;
+    color: var(--bg-dark);
+    margin: 0;
+}
+
+.price-summary .prc .total,
+.price-summary .total-amt .total {
+    font-family: Jost, sans-serif;
+    font-size: .83rem;
+    color: var(--bg-dark);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Total row emphasis */
+.price-summary .total-amt:has(#total_amout),
+.price-row.total {
+    font-weight: 700;
+    font-size: .95rem;
+    border-top: 1px solid rgba(14, 12, 10, .15);
+    border-bottom: none;
+    padding-top: 14px;
+    margin-top: 6px;
+}
+
+/* Coupon / promo section */
+.price-summary #coupon-form {
+    padding: 12px 0;
+}
+
+.price-summary #coupon-form input.form-control {
+    font-family: Jost, sans-serif;
+    font-size: .8rem;
+    border: 1px solid rgba(14, 12, 10, .25);
+    border-radius: 4px;
+    padding: 8px 10px;
+}
+
+.price-summary .c-btn {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.price-summary .c-btn .submit.main-btn {
+    background: var(--gold);
+    color: #0e0c0a;
+    font-family: Jost, sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background .2s;
+    white-space: nowrap;
+}
+
+.price-summary .c-btn .submit.main-btn:hover {
+    background: #d4b87e;
+}
+
+/* ── Terms / checkbox ──────────────────────── */
+.terms-check {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-family: Jost, sans-serif;
+    font-size: .8rem;
+    color: var(--bg-dark);
+    margin: 20px 0;
+}
+
+.terms-check a {
+    color: var(--gold);
+}
+
+/* ── Payment icons ─────────────────────────── */
+.payment-icons {
+    display: flex;
+    gap: 12px;
+    font-size: 1.8rem;
+    color: var(--bg-dark);
+    margin-bottom: 16px;
+}
+
+/* ── Trip date / guest boxes ───────────────── */
+.trip-date,
+.trip-guest {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(14, 12, 10, .06);
+}
+
+.trip-date .left p,
+.trip-guest .left p {
+    font-family: Jost, sans-serif;
+    font-size: .83rem;
+    color: var(--bg-dark);
+    margin: 0;
+}
+
+.trip-date .left p.head,
+.trip-guest .left p.head {
+    font-family: Jost, sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.trip-date .right button.edit,
+.trip-guest .right button.edit-guest {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: Jost, sans-serif;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    padding: 4px 14px;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+
+.trip-date .right button.edit:hover,
+.trip-guest .right button.edit-guest:hover {
+    background: var(--gold);
+    color: #0e0c0a;
+}
+
+/* Floating date / guest popovers */
+.date-box,
+.guest-box {
+    background: #fff;
+    border: 1px solid rgba(197, 164, 106, .3);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 16px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(14, 12, 10, .1);
+}
+
+.date-box h3,
+.guest-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 16px;
+}
+
+/* Adult box inside guest selector */
+.adult-box p,
+.pets-box p {
+    font-family: Jost, sans-serif;
+    font-size: .83rem;
+    color: var(--bg-dark);
+}
+
+.adult-btn button.button1 {
+    background: transparent;
+    border: 1px solid rgba(14, 12, 10, .25);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-family: Jost, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color .2s;
+}
+
+.adult-btn button.button1:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* ── Visitor rate info ─────────────────────── */
+.visitor-rate h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 12px;
+}
+
+/* ── Error / success alerts ────────────────── */
+.error .alert-danger {
+    font-family: Jost, sans-serif;
+    font-size: .83rem;
+    border-radius: 4px;
+}
+
+.text-danger {
+    font-family: Jost, sans-serif;
+    font-size: .8rem;
+}
+
+.text-success {
+    font-family: Jost, sans-serif;
+    font-size: .8rem;
+}
+
+/* ── Legacy utility overrides ──────────────── */
+.price-sm-text {
+    font-size: .7rem;
+    color: var(--muted);
+}
+
+.price-md-text {
+    font-size: .75rem;
+    color: var(--muted);
+}
+
+/* suppress old section/container padding bleed */
+.booking-left > .container {
+    padding: 0;
+    max-width: 100%;
+}
+
+/* Rental agreement section */
+.rental-agreement {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.rental-agreement h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 16px;
+}
+
+/* Signature canvas */
+#sig-canvas {
+    border: 1px solid rgba(14, 12, 10, .2);
+    border-radius: 4px;
+    background: #fff;
+    display: block;
+    max-width: 100%;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 991px) {
+    .booking-container {
+        flex-direction: column;
+    }
+
+    .booking-right {
+        width: 100%;
+    }
+
+    .sidebar-card {
+        position: static;
+    }
+}
+
+@media (max-width: 575px) {
+    .form-row,
+    .form-row-3,
+    .form-row.row {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-container {
+        padding: 0 16px;
+        margin: 32px auto 60px;
+    }
+}

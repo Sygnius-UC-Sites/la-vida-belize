@@ -1,0 +1,179 @@
+/*About owner css*/
+section.about-home .about-img{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+ 
+}
+.banner h1{
+    display: none;
+}
+.head-sec p {
+    font-size: var(--f12);
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: var(--m5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.7;
+}
+section.about-home .about-img .main-about-img{
+     overflow:hidden;
+     border-radius:10px;
+}
+section.about-home img{
+   width: 100%;
+    height: auto;
+    min-height: 300px;
+    max-height: 460px;
+    object-fit: cover;
+    height:440px;
+    transition: 0.5s all;
+    border-radius:10px;
+}
+section.about-home img:hover{
+    transform: scale(1.14);
+}
+
+section.about-home .col-7.md-12.sm-12 {
+    /*background: var(--black-color);*/
+    padding: 0 var(--p80);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+section.about-home .cont{
+    margin-bottom: 0;
+    max-height: 100%;
+}
+
+section.about-home a.abt-btn.main-btn {
+    width: 250px;
+    text-align: center;
+    padding: var(--p13) var(--p20);
+}
+section.about-home .abt-cont {
+   /* height: 460px; */
+    min-height: 440px;
+}
+section.about-home .head-sec p{
+    text-align:left;
+}
+section.about-home .head-sec {
+    text-align: left;
+    margin-bottom: var(--m20);
+}
+section.about-home .col-7.md-12.sm-12 {
+    padding: 0 var(--p80);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+section.about-home .main-about-img {
+   width: 540px;
+    overflow: hidden;
+    float: left;
+    margin-right: var(--m50);
+    border-radius: 10px;
+}
+
+/*  */
+
+section.about-owner .rhea_mask {
+    fill: var(--white-color);
+}
+section.about-owner .svg-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+section.about-owner .col-6.col-md-6.col-sm-12.img{
+   position: relative;
+    padding-left: var(--p60);
+    padding-right: var(--p60);
+}
+section.about-owner .abt-owner {
+    position: relative;
+    height: 100%;
+}
+section.about-owner .abt-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+section.about-owner img{
+    width: 100%;
+    height: 589px;
+    object-fit: contain;
+}
+section.about-owner svg {
+    height: 588px;
+    width: 100%;
+    display: none;
+}
+section.about-owner .head-sec{
+   text-align:left;
+   margin-bottom: var(--m15);
+}
+section.about-owner h4{
+    font-size: var(--f21);
+    font-weight: 500;
+}
+section.about-owner p{
+    /* color: var(--primary-color); */
+}
+section.about-owner .icon-area {
+    border-radius: 100%;
+    border: 1px solid #b3b3b3;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: var(--f20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--btn-color);
+}
+section.about-owner .call-us, section.about-owner .email-us {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+section.about-owner .call-area {
+    display: block;
+    color: #000;
+}
+section.about-owner .call-area a{
+    display: block;
+}
+section.about-owner .abt-detail {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: var(--m30);
+}
+section.about-owner a.main-btn {
+    display: block;
+    width: 150px;
+    text-align: center;
+}
+
+section.about-owner img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50px;
+    transition: 0.5s all;
+    border-radius: 50px;
+}
+
+section.about-owner{
+    /* height:620px; */
+}

@@ -1,0 +1,457 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\BasicSetting;
+use App\Helper\Upload;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CommonExport;
+use Hash;
+use Auth;
+use Helper;
+use DB;
+use App\Models\User;
+
+class DashboardController extends Controller
+{
+    /**
+     * Phase 12 — keys that the catch-all admin/setting form is allowed to save.
+     * Audit reference: docs/superpowers/plans/2026-05-03-settings-whitelist.md (Task 4 table).
+     *
+     * NOT included here (managed by their own dedicated controllers):
+     *   - installment_*, tax_applies_to_*, discount_applies_to_*  → PaymentSettingsController
+     *   - rental_agreement_*                                       → RentalAgreementSettingsController
+     *   - checkin_default_*, checkout_default_*, *_email_send_day,
+     *     welcome_default_*                                        → StayCommunicationsSettingsController
+     *   - stripe_*, paypal_*, square_*, AUTHORIZED_*,
+     *     authorize_*, enabled_payment_gateways                    → PaymentGatewaysSettingsController
+     *
+     * Conservative bias: AMBIGUOUS keys (admin-form-only with no live readers in
+     * code) are included anyway — better to keep saves working than to silently
+     * drop a value the admin still expects to persist.
+     */
+    private const MANAGED_KEYS = [
+        // Mail / SMTP (read at boot by AppServiceProvider via MailHelper::mailsendbydbdata)
+        'smtp_host', 'smtp_port', 'smtp_user', 'smtp_pass',
+        'email_encryption', 'mail_from', 'mail_from_name',
+        'mailer_admin_name', 'mail_footer',
+
+        // Phase 13C — captcha keys removed (g_captcha_enabled, google_captcha_site_key,
+        // google_captcha_secret_key) along with the captcha verification logic in PageController.
+
+        // Phase 13B — primary admin email; fallback for any empty per-event override below.
+        'admin_email_primary',
+
+        // Email-routing addresses (controllers route mail to these)
+        'contact_us_receiving_mail', 'booking_receiving_mail', 'cancel_receiving_mail',
+        'rental_aggrement_receiving_mail', 'welcome_package_receiving_mail',
+        'review_receiving_mail', 'newsletter_receiving_mail', 'payment_receiving_mail',
+        'reminder_package_receiving_mail',
+        'new_order_receiving_mail', 'new_user_receiving_mail',  // form-saved; reader-orphan but harmless
+
+        // Footer / branding (rendered in front layouts)
+        'address', 'email', 'mobile', 'mobile1', 'mobile2',
+        'website', 'whatsapp_number', 'whatsapp',
+        'copyright', 'favicon', 'header_logo', 'footer_logo', 'footer-image',
+        'default_header_image', 'booking_window_months',
+        'footer_brand_sub', 'footer_brand_tagline', 'owner_name', 'owner_image',
+
+        // Social links (header/footer + admin form)
+        'facebook', 'facebook_url', 'instagram', 'instagram_url',
+        'twitter', 'youtube', 'linkedin', 'pinterest', 'telegram', 'skype',
+
+        // Analytics / tracking widgets (rendered in front layouts head)
+        'google-analytics', 'google-tag-master', 'facebook-pixel-code',
+        'elfsight-reviews-widget', 'chat-bot',
+
+        // Nav (front layouts header reads basic_settings.nav_menu JSON)
+        'nav_menu',
+
+        // Phase 13C — installment fields (second_*, third_*, payment_interval) deleted from form.
+        // Active gateway selector (which_payment_gateway) and blocked_email also dropped.
+        // Installments are now managed exclusively by PaymentSettingsController.
+        // Currency moved to PaymentSettings ('payment_currency' is in PaymentSettingsController::MANAGED_KEYS).
+        // Guest-email schedule (welcome_package_send_day, review_send_day, checkin_email_send_day,
+        // checkout_email_send_day) is owned by StayCommunicationsSettingsController — not here.
+
+        // CMS-content text fields (admin form has them; some render conditionally on specific pages)
+        'about', 'airbnb_booking_url', 'map',
+        'attraction-heading-text', 'attraction-subheading-text',
+        'common-footer-data', 'common-header-data',
+        'event-heading-text',
+        'faq-heading-text', 'faq-subheading-text',
+        'property-heading-text', 'property-subheading-text',
+        'testimonial-heading-text', 'testimonial-subheading-text',
+        'header-top', 'home_video', 'home-video-text',
+
+        // Cancellation policy templates (legacy, no current reader, kept conservatively)
+        'cancellation_template_firm', 'cancellation_template_flexible',
+        'cancellation_template_moderate', 'cancellation_template_strict',
+        'cancellation_template_super_strict',
+
+        // Misc admin form fields (no current reader; conservative keep)
+        'auction', 'direct_buyer', 'wholesale_buyer', 'open-office', 'pop-up',
+        'version_css_js',
+
+        // PMS API credentials (managed via the PMS settings tab)
+        'guesty_api_key', 'guesty_client_id',
+        'hostfully_api_key', 'hostfully_agency_uid',
+        'hostaway_api_key', 'hostaway_account_id',
+        'lodgify_api_key',
+        'webhook_base_url', 'lodgify_webhook_token',
+        'pms_webhooks_registered_at',
+    ];
+
+    /** Phase 12 — file fields handled specially (Upload helpers replace the value with the upload path). */
+    private const FILE_KEYS = ['favicon', 'footer-image', 'header_logo', 'footer_logo', 'owner_image', 'home_video', 'default_header_image'];
+
+    /** Phase 13B — per-event mail inboxes that fall back to admin_email_primary when blank. */
+    private const MAIL_OVERRIDE_KEYS = [
+        'contact_us_receiving_mail', 'newsletter_receiving_mail',
+        'booking_receiving_mail', 'payment_receiving_mail',
+        'rental_aggrement_receiving_mail', 'welcome_package_receiving_mail',
+        'reminder_package_receiving_mail', 'review_receiving_mail',
+        'cancel_receiving_mail',
+    ];
+
+    public function exportData($model)
+    {
+        return Excel::download(new CommonExport($model), $model . '-' . date('d-m-y-H-I-s') . '.csv', \Maatwebsite\Excel\Excel::CSV);
+    }
+
+    function multipleDelete(Request $request, $model)
+    {
+        foreach ($request->id as $id) {
+            if ($model == "testimonials") {
+                $data = \App\Models\Testimonial::find($id);
+                if ($data) {
+                    $data->delete();
+                }
+            }
+            if ($model == "faqs") {
+                $data = \App\Models\Faq::find($id);
+                if ($data) {
+                    $data->delete();
+                }
+            }
+            if ($model == "contact-us-enquiries") {
+                $data = \App\Models\ContactusRequest::find($id);
+                if ($data) {
+                    $data->delete();
+                }
+            }
+        }
+    }
+
+    function index()
+    {
+        return redirect('admin/properties');
+        // return view("admin.dashboard.index");
+    }
+
+    function mediasDelete(Request $request)
+    {
+        $path = public_path() . '/uploads/uploads/' . $request->file;
+        if (is_file($path)) {
+            unlink($path);
+        }
+        return redirect()->back()->with('success', 'Media deleted successfully');
+    }
+
+    function newFileUploads(Request $request)
+    {
+        if ($request->file("file")) {
+            foreach ($request->file("file") as $key1 => $image) {
+                if ($request->file("file")[$key1]) {
+                    Upload::fileUpload($request->file("file")[$key1]);
+                }
+            }
+        }
+        return redirect()->back();
+    }
+
+    /**
+     * Inline image upload for JSON-editor `image` fields (e.g. Better-than-Airbnb icons).
+     * Returns JSON {url, path}. `path` is a relative, asset()-friendly path stored in the JSON.
+     */
+    function jeUpload(Request $request)
+    {
+        $request->validate(['file' => 'required|image|max:5120']); // 5MB
+        $file = $request->file('file');
+        $name = preg_replace('/[^A-Za-z0-9_.-]/', '_', pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
+              . '_' . time() . '.' . strtolower($file->getClientOriginalExtension());
+        $dir = public_path('uploads/cms');
+        if (!is_dir($dir)) { @mkdir($dir, 0775, true); }
+        $file->move($dir, $name);
+        $path = 'uploads/cms/' . $name;
+        return response()->json(['url' => asset($path), 'path' => $path]);
+    }
+
+    function mediaCenter()
+    {
+        // Guard: fresh installs don't have the media folder yet.
+        $dir = public_path("uploads/uploads");
+        if (!is_dir($dir)) {
+            @mkdir($dir, 0755, true);
+        }
+        $data = is_dir($dir) ? scandir($dir) : [];
+        rsort($data);
+        return view("admin.dashboard.medias", compact("data"));
+    }
+
+    function setting()
+    {
+        return view("admin.dashboard.setting");
+    }
+
+    function settingPost(Request $request)
+    {
+        // PMS credential groups — if any key in a group changes, wipe that
+        // provider's synced data so stale listings from the old account don't linger.
+        $pmsGroups = [
+            'guesty'    => ['guesty_api_key', 'guesty_client_id'],
+            'hostfully' => ['hostfully_api_key', 'hostfully_agency_uid'],
+            'hostaway'  => ['hostaway_api_key', 'hostaway_account_id'],
+            'lodgify'   => ['lodgify_api_key'],
+        ];
+        $allPmsKeys = array_merge(...array_values($pmsGroups));
+        $oldValues  = BasicSetting::whereIn('name', $allPmsKeys)->pluck('value', 'name')->toArray();
+
+        // Phase 12 — replace the prior $request->input (no parens, magic accessor)
+        // blanket save with a whitelisted loop. Unknown keys are silently
+        // dropped + logged at debug level; file uploads still flow through
+        // Upload::logouploadData / videoUploadData helpers as before.
+        $payload = $request->all();
+
+        // Back-compat: some module views (e.g. the packaged PMS settings tab)
+        // name fields `input['key']`, which PHP parses as a nested array under
+        // 'input' with quoted keys. The whitelisted loop below would silently
+        // drop them ("saved" but nothing written — the bug behind 'new Lodgify
+        // key not saving'). Flatten them into the payload, stripping quotes.
+        if (isset($payload['input']) && is_array($payload['input'])) {
+            foreach ($payload['input'] as $rawKey => $rawVal) {
+                $cleanKey = trim(str_replace(["'", '"'], '', (string) $rawKey));
+                if ($cleanKey !== '' && !array_key_exists($cleanKey, $payload)) {
+                    $payload[$cleanKey] = $rawVal;
+                }
+            }
+            unset($payload['input']);
+        }
+
+        // Phase 13B — fallback: empty per-event mail overrides inherit from admin_email_primary.
+        $primary = isset($payload['admin_email_primary']) ? trim((string) $payload['admin_email_primary']) : '';
+        if ($primary !== '') {
+            foreach (self::MAIL_OVERRIDE_KEYS as $k) {
+                if (!array_key_exists($k, $payload) || trim((string) $payload[$k]) === '') {
+                    $payload[$k] = $primary;
+                }
+            }
+        }
+
+        $ignored = [];
+        foreach ($payload as $name => $value) {
+            if (!is_string($name)) continue;
+            $name = str_replace("'", "", $name);
+
+            // Skip CSRF / method spoofing / file companion fields.
+            if (in_array($name, ['_token', '_method'], true)) continue;
+            if (str_starts_with($name, 'old_')) continue;
+
+            if (!in_array($name, self::MANAGED_KEYS, true)) {
+                $ignored[] = $name;
+                continue;
+            }
+
+            if (in_array($name, self::FILE_KEYS, true)) {
+                // File companion field convention: old_<key> holds prior path for cleanup.
+                $oldFileKey = "old_" . $name;
+                if (!empty($request->$oldFileKey)) {
+                    Helper::deleteFile($request->$oldFileKey);
+                }
+                if ($name === 'home_video') {
+                    $value = Upload::videoUploadData($value);
+                } else {
+                    $value = Upload::logouploadData($value);
+                }
+            }
+
+            // Coerce empty string to NULL where appropriate (NULL is canonical absence).
+            if (is_string($value) && $value === '') $value = null;
+
+            $data = BasicSetting::where("name", $name)->first();
+            if ($data) {
+                $data->value = $value;
+                $data->save();
+            } else {
+                BasicSetting::create(['name' => $name, "value" => $value]);
+            }
+        }
+
+        if (!empty($ignored)) {
+            \Log::debug('settingPost ignored unknown keys', ['keys' => $ignored]);
+        }
+
+        // Detect PMS key changes. What happens to the old provider's synced
+        // data is the admin's choice (pms_data_action radio on the PMS
+        // settings page): archive (default — export to a JSON snapshot, then
+        // clear), delete (clear permanently), or keep (leave as-is).
+        $pmsDataAction = in_array($request->input('pms_data_action'), ['archive', 'delete', 'keep'], true)
+            ? $request->input('pms_data_action') : 'archive';
+
+        $clearedProviders = [];
+        $archivedFiles = [];
+        foreach ($pmsGroups as $provider => $keys) {
+            foreach ($keys as $key) {
+                $newVal = trim((string) ($payload[$key] ?? ''));
+                $oldVal = trim((string) ($oldValues[$key] ?? ''));
+                if ($newVal !== '' && $newVal !== $oldVal) {
+                    if ($pmsDataAction === 'keep') {
+                        $clearedProviders[] = ucfirst($provider) . ' (data kept — may show stale listings until re-synced)';
+                        break;
+                    }
+                    $archiveService = app(\App\Services\PmsArchiveService::class);
+                    if ($pmsDataAction === 'archive') {
+                        $archivedFiles[] = $archiveService->archive($provider);
+                    }
+                    $archiveService->clear($provider);
+                    if ($provider === 'guesty') {
+                        \Illuminate\Support\Facades\Cache::forget('guesty_access_token_' . md5($oldVal));
+                    }
+                    $clearedProviders[] = ucfirst($provider);
+                    break;
+                }
+            }
+        }
+
+        $message = 'Settings saved successfully.';
+        if (!empty($clearedProviders)) {
+            $message .= ' PMS key changed for: ' . implode(', ', $clearedProviders) . '.';
+            if (!empty($archivedFiles)) {
+                $message .= ' Previous data archived (' . implode(', ', array_filter($archivedFiles)) . ') — download it anytime from PMS Settings & Sync.';
+            } elseif ($pmsDataAction === 'delete') {
+                $message .= ' Previous data deleted permanently.';
+            }
+            if ($pmsDataAction !== 'keep') {
+                $message .= ' Run a sync to import the new account.';
+            }
+        }
+
+        return redirect()->back()->with('success', $message);
+    }
+
+    /**
+     * Export everything synced from a PMS provider into a timestamped JSON
+     * snapshot under storage/app/pms-archives/ (downloadable from the PMS
+     * settings page) before the live rows are cleared.
+     */
+    private function archivePmsProvider(string $provider): ?string
+    {
+        $tables = [
+            'pms_properties', 'pms_rooms', 'pms_images', 'pms_bookings',
+            'pms_calendar', 'pms_rates', 'pms_unavailable_dates',
+            'pms_amenity_groups', 'pms_amenity_group_items', 'pms_property_links',
+        ];
+        $snapshot = [
+            'provider'    => $provider,
+            'archived_at' => now()->toIso8601String(),
+            'tables'      => [],
+        ];
+        // pms_images has no pms_source column — select via the provider's
+        // room/property external ids (must happen before rooms are cleared).
+        $roomIds = \Schema::hasTable('pms_rooms')
+            ? \DB::table('pms_rooms')->where('pms_source', $provider)->pluck('pms_room_id')->filter()->toArray() : [];
+        $propIds = \Schema::hasTable('pms_properties')
+            ? \DB::table('pms_properties')->where('pms_source', $provider)->pluck('pms_property_id')->filter()->toArray() : [];
+
+        foreach ($tables as $table) {
+            if (!\Schema::hasTable($table)) continue;
+            if (\Schema::hasColumn($table, 'pms_source')) {
+                $rows = \DB::table($table)->where('pms_source', $provider)->get();
+            } elseif ($table === 'pms_images' && ($roomIds || $propIds)) {
+                $rows = \DB::table('pms_images')
+                    ->where(function ($q) use ($roomIds, $propIds) {
+                        if ($roomIds) $q->whereIn('pms_room_id', $roomIds);
+                        if ($propIds) $q->orWhereIn('pms_property_id', $propIds);
+                    })->get();
+            } else {
+                continue;
+            }
+            if ($rows->count()) $snapshot['tables'][$table] = $rows->toArray();
+        }
+        // Provider-specific raw-data tables (pms_lodgify_*, pms_guesty_data, …).
+        foreach (\Schema::getTables() as $t) {
+            $tname = is_array($t) ? ($t['name'] ?? '') : ($t->name ?? '');
+            if (str_starts_with($tname, 'pms_' . $provider)) {
+                $rows = \DB::table($tname)->get();
+                if ($rows->count()) $snapshot['tables'][$tname] = $rows->toArray();
+            }
+        }
+        // Which site pages were linked to this provider (pages themselves are kept).
+        $snapshot['linked_site_properties'] = \DB::table('properties')
+            ->where('pms_source', $provider)->pluck('seo_url')->toArray();
+
+        if (empty($snapshot['tables'])) return null;
+
+        $dir = storage_path('app/pms-archives');
+        if (!is_dir($dir)) @mkdir($dir, 0755, true);
+        $file = $provider . '-' . now()->format('Y-m-d-His') . '.json';
+        file_put_contents($dir . '/' . $file, json_encode($snapshot, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        return $file;
+    }
+
+    /**
+     * Remove a provider's synced rows from all live PMS tables. Site pages
+     * created via "Publish to site" are kept (they're site content now) but
+     * unlinked so the live calendar detaches.
+     */
+    private function clearPmsProvider(string $provider): void
+    {
+        // pms_images has no pms_source — clear via room/property ids first.
+        if (\Schema::hasTable('pms_images') && \Schema::hasTable('pms_rooms')) {
+            $roomIds = \DB::table('pms_rooms')->where('pms_source', $provider)->pluck('pms_room_id')->filter()->toArray();
+            $propIds = \Schema::hasTable('pms_properties')
+                ? \DB::table('pms_properties')->where('pms_source', $provider)->pluck('pms_property_id')->filter()->toArray() : [];
+            if ($roomIds || $propIds) {
+                \DB::table('pms_images')->where(function ($q) use ($roomIds, $propIds) {
+                    if ($roomIds) $q->whereIn('pms_room_id', $roomIds);
+                    if ($propIds) $q->orWhereIn('pms_property_id', $propIds);
+                })->delete();
+            }
+        }
+        foreach (['pms_properties', 'pms_rooms', 'pms_bookings',
+                  'pms_calendar', 'pms_rates', 'pms_unavailable_dates',
+                  'pms_amenity_groups', 'pms_amenity_group_items', 'pms_property_links'] as $table) {
+            if (\Schema::hasTable($table) && \Schema::hasColumn($table, 'pms_source')) {
+                \DB::table($table)->where('pms_source', $provider)->delete();
+            }
+        }
+        foreach (\Schema::getTables() as $t) {
+            $tname = is_array($t) ? ($t['name'] ?? '') : ($t->name ?? '');
+            if (str_starts_with($tname, 'pms_' . $provider)) {
+                \DB::table($tname)->delete();
+            }
+        }
+        \DB::table('properties')->where('pms_source', $provider)
+            ->update(['pms_source' => null, 'pms_room_id' => null]);
+    }
+
+
+    function changePassword()
+    {
+        return view("admin.dashboard.changePassword");
+    }
+
+    function changePasswordPost(Request $request)
+    {
+        $password = $request->new_password;
+        if (Hash::check($request->old_password, Auth::user()->password)) {
+            $user = User::where(["email" => Auth::user()->email])->first();
+            $user->password = bcrypt($password);
+            $user->save();
+            return redirect()->back()->with('success', 'Password updated successfully');
+        }
+        return redirect()->back()->with('danger', 'Current password is incorrect.');
+    }
+}

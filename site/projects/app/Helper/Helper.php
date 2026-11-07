@@ -1,0 +1,678 @@
+<?php
+
+namespace App\Helper;
+
+use App\Models\Agent;
+use Auth;
+use DB;
+use ModelHelper;
+use LiveCart;
+use File;
+use App\Models\BasicSetting;
+use App\Models\PropertyRate;
+use App\Models\Property;
+use Illuminate\Http\Request;
+use Session;
+use App\Models\BookingRequest;
+use Illuminate\Support\Str;
+
+class Helper
+{
+	/**
+	 * Microcopy resolver: returns an editable UI string for a CMS page.
+	 * Reads the page's `ui_labels` JSON (either {key:value} or [{key,value}] from the
+	 * JSON-editor) and falls back to $default so the front never breaks before any edit.
+	 * Usage in blade: {{ Helper::label($data, 'submit_btn', 'Submit') }}
+	 */
+	public function label($data, $key, $default = '')
+	{
+		$labels = [];
+		$raw = is_object($data) ? ($data->ui_labels ?? null) : (is_array($data) ? ($data['ui_labels'] ?? null) : null);
+		if (!empty($raw)) {
+			$decoded = is_string($raw) ? json_decode($raw, true) : (is_array($raw) ? $raw : null);
+			if (is_array($decoded)) {
+				$isList = $decoded === [] ? false : (array_keys($decoded) === range(0, count($decoded) - 1));
+				if ($isList) {
+					foreach ($decoded as $row) {
+						if (is_array($row) && isset($row['key'])) $labels[$row['key']] = $row['value'] ?? '';
+					}
+				} else {
+					$labels = $decoded;
+				}
+			}
+		}
+		$val = $labels[$key] ?? null;
+		return ($val !== null && $val !== '') ? $val : $default;
+	}
+
+	public function getIp()
+	{
+		foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key) {
+			if (array_key_exists($key, $_SERVER) === true) {
+				foreach (explode(',', $_SERVER[$key]) as $ip) {
+					$ip = trim($ip); // just to be safe
+					if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false) {
+						return $ip;
+					}
+				}
+			}
+		}
+		$clientIP = \Request::getClientIp(true);
+		return ($clientIP);
+	}
+
+	public function checkCreditCardString($string)
+	{
+
+		$keyword = "If using a Credit Card, processing fee";
+
+		if (Str::contains($string, $keyword)) {
+			$result = true;
+		} else {
+			$result = false;
+		}
+
+		return $result;
+	}
+
+	public function calculateDays($start_date, $end_date)
+	{
+		$now = strtotime($start_date); // or your date as well
+		$your_date = strtotime($end_date);
+		$datediff =  $your_date - $now;
+		$day = ceil($datediff / (60 * 60 * 24));
+		return $day;
+	}
+
+	public function deleteFile($file)
+	{
+
+		$filePath = base_path('../'.$file);
+		if (File::exists($filePath)) {
+			File::delete($filePath);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Phase 13F — clean status-pill mapping for the booking-enquiries index.
+	 * Returns ['label' => string, 'class' => css-class-suffix] where the class
+	 * suffix maps to the .be-pill--{suffix} styles in the index Blade.
+	 */
+	public function getBookingStatusLabel($item)
+	{
+		$map = [
+			'pending-approval'         => ['label' => 'New enquiry',         'class' => 'new'],
+			'pending-payment'          => ['label' => 'Awaiting payment',    'class' => 'pending'],
+			'booking-accepted'         => ['label' => 'Awaiting payment',    'class' => 'pending'],
+			'rental-aggrement'         => ['label' => 'Awaiting agreement',  'class' => 'pending'],
+			'rental-aggrement-success' => ['label' => 'Agreement signed',    'class' => 'pending'],
+			'booked'                   => ['label' => 'Booked',              'class' => 'booked'],
+			'completed'                => ['label' => 'Completed',           'class' => 'completed'],
+			'cancelled'                => ['label' => 'Cancelled',           'class' => 'cancelled'],
+		];
+		return $map[$item] ?? ['label' => $item ?: '—', 'class' => 'unknown'];
+	}
+
+	public function getBookingStatus($item, $id)
+	{
+		// Defensive default — many call sites pass statuses outside the if-branch list (e.g. 'pending-payment', 'completed')
+		$s = '<span class="badge bg-secondary">' . e((string) $item) . '</span>';
+		if ($item == "booked") {
+			$s = '<a href="' . url('admin/booking-enquiries/confirmed/' . $id) . '" class="btn btn-xs btn-primary">Accept Booking</a>';
+		}
+		if ($item == "booking-accepted") {
+			$s = '<a href="' . url('admin/booking-enquiries/confirmed/' . $id) . '" class="btn btn-xs btn-primary">Booking Accepted</a>';
+		}
+		if ($item == "rental-aggrement-success") {
+			$s = '<a href="' . url('admin/booking-enquiries/confirmed/' . $id) . '" class="btn btn-xs btn-warning">Accept Booking</a>';
+		}
+		if ($item == "rental-aggrement") {
+			$s = '<a href="' . url('admin/booking-enquiries/confirmed/' . $id) . '" class="btn btn-xs btn-warning">Booking Accepted</a>';
+		}
+		if ($item == "booked") {
+			$s = '<a href="javascript:;" class="btn btn-xs btn-success">Booking Confirmed</a>';
+		}
+		if ($item == "cancelled") {
+			$s = '<a href="javascript:;" class="btn btn-xs btn-danger">Booking Cancelled</a>';
+		}
+		return $s;
+	}
+
+	public function checkStatus($item)
+	{
+		if ($item == "true") {
+			return '<i class="fa fa-check"></i>';
+		} else {
+			return '<i class="fa fa-times"></i>';
+		}
+	}
+
+	public function getFeeAmountAndName($c, $gross_amount)
+	{
+		$name = $c->fee_name;
+		if ($c->fee_type == "Percentage"):
+			$name .= ' (' . $c->fee_rate . '%)';
+			$amount = round(($gross_amount * $c->fee_rate) / 100, 2);
+		else:
+			$amount = $c->fee_rate;
+		endif;
+		return ["status" => true, "name" => $name, "amount" => $amount];
+	}
+
+	public function getPropertyRates($id)
+	{
+		$ar = PropertyRate::where(["property_id" => $id])->orderBy("id", "desc")->get();
+		$ar_checkin_checkout = LiveCart::iCalDataCheckInCheckOut($id);
+		$new_dates = [];
+		$payment_currency = ModelHelper::getDataFromSetting('payment_currency');
+		$property = Property::find($id);
+		$price = '';
+		if ($property) {
+			$price = $property->standard_rate;
+		}
+		for ($i = 0; $i <= 365; $i++) {
+			$title = $payment_currency . '' . $price;
+			$class = "available-date-full-calendar";
+			$date_single = date('Y-m-d', strtotime("+ " . $i . "days", strtotime(date('Y-m-d'))));
+			$a = PropertyRate::where(["property_id" => $id])->where("single_date", $date_single)->orderBy("id", "desc")->first();
+			if ($a) {
+				$title = $payment_currency . '' . $a->price;
+			}
+			if (in_array($date_single, $ar_checkin_checkout['checkin'])) {
+				$title = '';
+				$class = "booked-date-full-calendar";
+			}
+			if (in_array($date_single, $ar_checkin_checkout['checkout'])) {
+				$title = '';
+				$class = "booked-date-full-calendar";
+			}
+			$new_dates[] = ["title" => $title, "start" => $date_single, "end" => $date_single, "className" => $class];
+		}
+		return json_encode($new_dates);
+	}
+	/**
+	 * BC adapter — delegates to QuoteCalculator (the canonical pricing engine).
+	 * Returns the legacy shape so existing callsites (PageController, etc.) keep working.
+	 *
+	 * Phase 2 will retire this method as callsites are migrated to consume
+	 * the structured Quote object directly.
+	 */
+	public function getGrossAmountData($property, $start_date, $end_date)
+	{
+		// Defensive guards for the legacy "blank inputs" path
+		if (!$property || !$start_date || !$end_date) {
+			return ["status" => false, "gross_amount" => 0, "total_night" => 0, "message" => '', "extra_amount" => 0];
+		}
+
+		$propertyId = $property instanceof \App\Models\Property ? $property->id : (int) $property;
+
+		$calc = app(\App\Services\Booking\QuoteCalculator::class);
+		$input = \App\Services\Booking\QuoteInput::fromArray([
+			'property_id' => $propertyId,
+			'check_in'    => $start_date,
+			'check_out'   => $end_date,
+			'adults'      => 1,
+			'children'    => 0,
+			'pets'        => 0,
+		]);
+		$quote = $calc->calculate($input);
+
+		// Map QuoteCalculator errors back to the legacy status codes that controllers branch on.
+		if (!$quote->valid || !empty($quote->errors)) {
+			$first = (string) ($quote->errors[0] ?? '');
+			$lower = strtolower($first);
+			if (str_contains($lower, 'check-in') || str_contains($lower, 'check-out') || str_contains($lower, 'checkin') || str_contains($lower, 'checkout')) {
+				$status = 'checkin-checkout-day';
+			} elseif (str_contains($lower, 'unavailable') || str_contains($lower, 'blocked') || str_contains($lower, 'already')) {
+				$status = 'already-booked';
+			} elseif (str_contains($lower, 'minimum') || str_contains($lower, 'maximum') || str_contains($lower, 'min stay') || str_contains($lower, 'max stay')) {
+				$status = 'min-stay-day';
+			} elseif (str_contains($lower, 'past') || str_contains($lower, 'after')) {
+				$status = false;
+			} else {
+				$status = false;
+			}
+			return [
+				"status"       => $status,
+				"gross_amount" => 0,
+				"total_night"  => $quote->nights,
+				"message"      => $first,
+				"extra_amount" => 0,
+			];
+		}
+
+		return [
+			"status"       => true,
+			"gross_amount" => $quote->subtotal_nights_only,
+			"total_night"  => $quote->nights,
+			"message"      => '',
+			"extra_amount" => 0,
+		];
+	}
+
+	public function getWeekNameSelect()
+	{
+		$days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		return $days;
+	}
+
+	public function getPropertyList($start_date, $end_date)
+	{
+		$now = strtotime($start_date);
+		$your_date = strtotime($end_date);
+		$datediff =  $your_date - $now;
+		$day = ceil($datediff / (60 * 60 * 24));
+		$data = Property::where("status", "true")->get();
+		$prop_ids = [];
+		foreach ($data as $property) {
+			$checkinCheckout = LiveCart::iCalDataCheckInCheckOut($property->id);
+			for ($i = 0; $i < $day; $i++) {
+				$date = strtotime($start_date);
+				$date = strtotime("+" . $i . " day", $date);
+				$date = date('Y-m-d', $date);
+				$ar[] = $date;
+				if (in_array($date, $checkinCheckout['checkin'])) {
+					$prop_ids[] = $property->id;
+					break;
+				}
+			}
+		}
+		return $prop_ids;
+	}
+
+	public function languageChanger($lan)
+	{
+		Session::put("current_language", $lan);
+	}
+
+	public function getPropertyStatus()
+	{
+		return ["Available" => "Available", "No Available" => "No Available", "Rented" => "Rented", "Trending" => "Trending", "Sale" => "Sale"];
+	}
+
+	public function getSeoUrlGet($title)
+	{
+		return strtolower(str_replace(array('/', '\\', '\'', '"', ',', ';', '<', '>', '&', ' ', '*', '!', '@', '#', '$', '%', '+', ',', '.', '`', '~', ':', '[', ']', '{', '}', '(', ')', '?'), '-', $title));
+	}
+
+	public function getTypeOfField()
+	{
+		return ["select" => "select", "text" => "text", "color" => "color", "date" => "date", "time" => "time", "number" => "number", "textarea" => "textarea",];
+	}
+
+	public function getGenderData()
+	{
+		return ["male" => "male", "female" => "female", 'unisex' => "unisex", 'kids' => "kids"];
+	}
+
+	public function getLoginTypeData()
+	{
+		return ["normal" => "normal", "google" => "google", 'facebook' => "facebook"];
+	}
+
+	public function getDeviceTypeData()
+	{
+		return ["ios" => "ios", "A" => "android"];
+	}
+
+	public function getBooleanData()
+	{
+		return ['0' => "false", "1" => "true"];
+	}
+
+	public function getBooleanDataActual()
+	{
+		return ['false' => "false", "true" => "true"];
+	}
+
+	public function getStatusOptions()
+	{
+		return ["true" => "Active", "false" => "Inactive"];
+	}
+
+	public function getYesNoOptions()
+	{
+		return ["true" => "Yes", "false" => "No"];
+	}
+
+	public function getAmenityIcons()
+	{
+		return [
+			// Internet / electronics
+			'wifi'              => 'Wi-Fi',
+			'tv'                => 'TV',
+			'gamepad'           => 'Games console',
+			'music'             => 'Sound system',
+			'plug'              => 'Outlets / power',
+
+			// Climate / heating
+			'snowflake'         => 'Air conditioning',
+			'fire'              => 'Heating',
+			'fan'               => 'Ceiling fan',
+
+			// Kitchen
+			'kitchen-set'       => 'Kitchen / appliance',
+			'utensils'          => 'Dining',
+			'mug-hot'           => 'Coffee maker',
+			'mug-saucer'        => 'Espresso machine',
+			'wine-glass'        => 'Wine bar',
+
+			// Bedroom / bathroom
+			'bed'               => 'Bedroom',
+			'bath'              => 'Bathtub',
+			'shower'            => 'Shower',
+			'broom'             => 'Cleaning service',
+
+			// Laundry
+			'soap'              => 'Toiletries',
+
+			// Outdoor / view
+			'umbrella-beach'    => 'Beach access',
+			'water'             => 'Ocean / waterfront',
+			'mountain'          => 'Mountain view',
+			'tree'              => 'Garden / outdoor',
+			'swimming-pool'     => 'Pool',
+			'hot-tub'           => 'Hot tub',
+			'fire-burner'       => 'Fire pit / BBQ',
+
+			// Parking / arrival
+			'car'               => 'Free parking',
+			'charging-station'  => 'EV charger',
+			'key'               => 'Keypad / keyless entry',
+
+			// Family / accessibility
+			'baby'              => 'Crib / baby gear',
+			'paw'               => 'Pet-friendly',
+			'wheelchair'        => 'Wheelchair access',
+
+			// Wellness / standout
+			'dumbbell'          => 'Gym',
+			'spa'               => 'Spa / sauna',
+			'star'              => 'Standout amenity',
+
+			// Safety
+			'shield'            => 'Security',
+			'camera'            => 'Security camera',
+			'fire-extinguisher' => 'Fire extinguisher',
+			'kit-medical'       => 'First aid kit',
+
+			// Generic
+			'house'             => 'Whole home',
+			'circle-info'       => 'Other',
+		];
+	}
+
+	public function getAmenityLibrary()
+	{
+		return [
+			'Bathroom' => [
+				['name' => 'Bathtub',                            'icon' => 'bath'],
+				['name' => 'Shower',                             'icon' => 'shower'],
+				['name' => 'Hair dryer',                         'icon' => 'wind'],
+				['name' => 'Cleaning products',                  'icon' => 'spray-can-sparkles'],
+				['name' => 'Shampoo',                            'icon' => 'pump-soap'],
+				['name' => 'Conditioner',                        'icon' => 'pump-soap'],
+				['name' => 'Body soap',                          'icon' => 'soap'],
+				['name' => 'Hot water',                          'icon' => 'temperature-high'],
+				['name' => 'Bidet',                              'icon' => 'toilet'],
+				['name' => 'Outdoor shower',                     'icon' => 'cloud-rain'],
+			],
+			'Bedroom & laundry' => [
+				['name' => 'Washer',                             'icon' => 'shirt'],
+				['name' => 'Dryer',                              'icon' => 'wind'],
+				['name' => 'Essentials (towels, sheets, soap)',  'icon' => 'hand-holding-droplet'],
+				['name' => 'Hangers',                            'icon' => 'shirt'],
+				['name' => 'Bed linens',                         'icon' => 'bed'],
+				['name' => 'Extra pillows & blankets',           'icon' => 'layer-group'],
+				['name' => 'Iron',                               'icon' => 'shirt'],
+				['name' => 'Clothing storage',                   'icon' => 'door-closed'],
+				['name' => 'Drying rack',                        'icon' => 'shirt'],
+				['name' => 'Mosquito net',                       'icon' => 'mosquito'],
+			],
+			'Entertainment' => [
+				['name' => 'TV',                                 'icon' => 'tv'],
+				['name' => 'HDTV',                               'icon' => 'tv'],
+				['name' => 'Sound system',                       'icon' => 'music'],
+				['name' => 'Books and reading material',         'icon' => 'book'],
+				['name' => 'Ethernet connection',                'icon' => 'ethernet'],
+				['name' => 'Game console',                       'icon' => 'gamepad'],
+				['name' => 'Ping pong table',                    'icon' => 'table-tennis-paddle-ball'],
+				['name' => 'Pool table',                         'icon' => 'dice'],
+				['name' => 'Piano',                              'icon' => 'music'],
+			],
+			'Family' => [
+				['name' => 'Crib',                               'icon' => 'baby-carriage'],
+				['name' => 'High chair',                         'icon' => 'chair'],
+				['name' => "Pack 'n play / travel crib",         'icon' => 'baby'],
+				['name' => "Children's books and toys",          'icon' => 'dice'],
+				['name' => "Children's dinnerware",              'icon' => 'utensils'],
+				['name' => 'Babysitter recommendations',         'icon' => 'hands-helping'],
+				['name' => 'Baby monitor',                       'icon' => 'baby'],
+				['name' => 'Baby safety gates',                  'icon' => 'shield'],
+				['name' => 'Window guards',                      'icon' => 'shield'],
+				['name' => 'Outlet covers',                      'icon' => 'plug'],
+				['name' => 'Stair gates',                        'icon' => 'shield'],
+				['name' => 'Changing table',                     'icon' => 'baby'],
+			],
+			'Heating & cooling' => [
+				['name' => 'Air conditioning',                   'icon' => 'snowflake'],
+				['name' => 'Ceiling fan',                        'icon' => 'fan'],
+				['name' => 'Portable fan',                       'icon' => 'fan'],
+				['name' => 'Heating',                            'icon' => 'fire'],
+				['name' => 'Indoor fireplace',                   'icon' => 'fire-flame-curved'],
+			],
+			'Home safety' => [
+				['name' => 'Smoke alarm',                        'icon' => 'bell'],
+				['name' => 'Carbon monoxide alarm',              'icon' => 'bell'],
+				['name' => 'Fire extinguisher',                  'icon' => 'fire-extinguisher'],
+				['name' => 'First aid kit',                      'icon' => 'kit-medical'],
+				['name' => 'Lock on bedroom door',               'icon' => 'lock'],
+				['name' => 'Security cameras on property',       'icon' => 'camera'],
+				['name' => 'Self-check-in lockbox',              'icon' => 'lock'],
+			],
+			'Internet & office' => [
+				['name' => 'Wi-Fi',                              'icon' => 'wifi'],
+				['name' => 'Pocket Wi-Fi',                       'icon' => 'signal'],
+				['name' => 'Dedicated workspace',                'icon' => 'briefcase'],
+				['name' => 'Laptop-friendly workspace',          'icon' => 'laptop'],
+				['name' => 'Printer',                            'icon' => 'print'],
+			],
+			'Kitchen & dining' => [
+				['name' => 'Kitchen',                            'icon' => 'kitchen-set'],
+				['name' => 'Refrigerator',                       'icon' => 'kitchen-set'],
+				['name' => 'Mini fridge',                        'icon' => 'kitchen-set'],
+				['name' => 'Freezer',                            'icon' => 'snowflake'],
+				['name' => 'Microwave',                          'icon' => 'kitchen-set'],
+				['name' => 'Cooking basics',                     'icon' => 'utensils'],
+				['name' => 'Dishes and silverware',              'icon' => 'utensils'],
+				['name' => 'Dishwasher',                         'icon' => 'sink'],
+				['name' => 'Stove',                              'icon' => 'fire'],
+				['name' => 'Oven',                               'icon' => 'fire'],
+				['name' => 'Hot water kettle',                   'icon' => 'mug-hot'],
+				['name' => 'Coffee maker',                       'icon' => 'mug-hot'],
+				['name' => 'Espresso machine',                   'icon' => 'mug-saucer'],
+				['name' => 'Toaster',                            'icon' => 'bread-slice'],
+				['name' => 'Baking sheet',                       'icon' => 'cookie'],
+				['name' => 'Barbecue utensils',                  'icon' => 'utensils'],
+				['name' => 'Dining table',                       'icon' => 'utensils'],
+				['name' => 'Wine glasses',                       'icon' => 'wine-glass'],
+				['name' => 'Coffee provided',                    'icon' => 'mug-saucer'],
+				['name' => 'Bread maker',                        'icon' => 'bread-slice'],
+				['name' => 'Blender',                            'icon' => 'blender'],
+			],
+			'Location features' => [
+				['name' => 'Beachfront',                         'icon' => 'umbrella-beach'],
+				['name' => 'Lake access',                        'icon' => 'water'],
+				['name' => 'Waterfront',                         'icon' => 'water'],
+				['name' => 'Resort access',                      'icon' => 'building'],
+				['name' => 'Ski-in/out',                         'icon' => 'snowflake'],
+				['name' => 'Laundromat nearby',                  'icon' => 'shirt'],
+			],
+			'Outdoor' => [
+				['name' => 'Garden / outdoor',                   'icon' => 'tree'],
+				['name' => 'Outdoor furniture',                  'icon' => 'chair'],
+				['name' => 'Outdoor dining area',                'icon' => 'utensils'],
+				['name' => 'Patio or balcony',                   'icon' => 'tree'],
+				['name' => 'Backyard',                           'icon' => 'tree'],
+				['name' => 'BBQ grill',                          'icon' => 'fire-burner'],
+				['name' => 'Fire pit',                           'icon' => 'fire'],
+				['name' => 'Pool',                               'icon' => 'swimming-pool'],
+				['name' => 'Hot tub',                            'icon' => 'hot-tub-person'],
+				['name' => 'Sauna',                              'icon' => 'temperature-high'],
+				['name' => 'Bikes',                              'icon' => 'bicycle'],
+				['name' => 'Kayak',                              'icon' => 'water'],
+				['name' => 'Hammock',                            'icon' => 'tree'],
+				['name' => 'Mountain view',                      'icon' => 'mountain'],
+				['name' => 'Ocean view',                         'icon' => 'water'],
+			],
+			'Parking & facilities' => [
+				['name' => 'Free parking on premises',           'icon' => 'car'],
+				['name' => 'Free street parking',                'icon' => 'car'],
+				['name' => 'Paid parking on premises',           'icon' => 'car'],
+				['name' => 'EV charger',                         'icon' => 'charging-station'],
+				['name' => 'Keypad / keyless entry',             'icon' => 'key'],
+				['name' => 'Gym',                                'icon' => 'dumbbell'],
+				['name' => 'Spa / sauna',                        'icon' => 'spa'],
+				['name' => 'Single-level home',                  'icon' => 'house'],
+				['name' => 'Private entrance',                   'icon' => 'door-open'],
+				['name' => 'Elevator',                           'icon' => 'building'],
+			],
+			'Services' => [
+				['name' => 'Pet-friendly',                       'icon' => 'paw'],
+				['name' => 'Wheelchair access',                  'icon' => 'wheelchair'],
+				['name' => 'Whole home',                         'icon' => 'house'],
+				['name' => 'Standout amenity',                   'icon' => 'star'],
+				['name' => 'Cleaning available during stay',     'icon' => 'broom'],
+				['name' => 'Long-term stays allowed',            'icon' => 'calendar-days'],
+				['name' => 'Luggage drop-off allowed',           'icon' => 'suitcase'],
+				['name' => 'Smoking allowed',                    'icon' => 'smoking'],
+				['name' => 'Events allowed',                     'icon' => 'champagne-glasses'],
+			],
+		];
+	}
+
+	public function getCardHighlightLimit()
+	{
+		return 6;
+	}
+
+	public function getGalleryCategories()
+	{
+		return [
+			'exterior'    => 'Exterior',
+			'living_room' => 'Living room',
+			'kitchen'     => 'Kitchen',
+			'dining'      => 'Dining',
+			'bedroom'     => 'Bedroom',
+			'bathroom'    => 'Bathroom',
+			'view'        => 'View',
+			'pool'        => 'Pool / hot tub',
+			'outdoor'     => 'Outdoor / patio',
+			'amenity'     => 'Amenity / detail',
+			'other'       => 'Other',
+		];
+	}
+
+	public function backfillCardHighlightsForProperty($propertyId)
+	{
+		$property = \DB::table('properties')->where('id', $propertyId)->first(['id', 'card_amenities']);
+		if (!$property || empty($property->card_amenities)) {
+			return 0;
+		}
+
+		$chips = json_decode($property->card_amenities, true);
+		if (!is_array($chips) || empty($chips)) {
+			return 0;
+		}
+
+		$groupIds = \DB::table('property_amenity_groups')->where('property_id', $propertyId)->pluck('id');
+		if ($groupIds->isEmpty()) {
+			return 0;
+		}
+
+		$amenityMap = \DB::table('property_amenities')
+			->whereIn('property_amenity_id', $groupIds)
+			->get(['id', 'name'])
+			->mapWithKeys(fn ($a) => [strtolower(trim($a->name)) => $a->id])
+			->toArray();
+
+		$matches = 0;
+		foreach ($chips as $chip) {
+			$key = strtolower(trim((string)$chip));
+			if ($key !== '' && isset($amenityMap[$key])) {
+				\DB::table('property_amenities')
+					->where('id', $amenityMap[$key])
+					->update(['is_card_highlight' => 1]);
+				$matches++;
+			}
+		}
+		return $matches;
+	}
+
+	public function getfirstTrueBooleanData()
+	{
+		return ["1" => "true", "0" => "false"];
+	}
+
+	public function getCoupanCodeList()
+	{
+		return ["exact" => "Exact", "percentage" => "Percentage"];
+	}
+
+	public function defaultHeaderImage()
+	{
+		$img = \ModelHelper::getDataFromSetting('default_header_image');
+		return $img ? ltrim($img, '/') : 'front/themes/base/img/placeholder.svg';
+	}
+
+	public function getTempletes()
+	{
+		return [
+			"home" => "Home",
+			"common" => "Common",
+			"contact" => "Contact",
+			"about" => "About Us",
+			"about-owner" => "About Owner",
+			"map" => "Map",
+			"reviews" => "Reviews",
+			"gallery" => "Gallery",
+			"property-list" => "Property List",
+			"property-detail" => "Property Detail",
+			"attractions" => "Attractions",
+			"attractions-dining" => "Attractions: Dining",
+			"attractions-adventures" => "Attractions: Adventures",
+			"attractions-taxi" => "Attractions: Taxi",
+			"attractions-golf-cart" => "Attractions: Golf Cart",
+			"attractions-car-rental" => "Attractions: Car Rental",
+			"review-your-quote" => "Review Your Quote",
+			"faq" => "FAQ",
+			"our-story" => "Our Story",
+			"experiences" => "Experience",
+			"groups" => "Group Stays",
+			"privacy" => "Privacy",
+			"terms" => "Terms",
+			"legal-page" => "Legal Page",
+			"condos" => "Category Listing (legacy)",
+			"houses" => "Property Listing (legacy)",
+			"checkout" => "Checkout",
+			"payment-success" => "Payment Successful",
+			"payment-failed" => "Payment Failed",
+			"magic-link-payment" => "Magic Link Payment",
+			"magic-link-expired" => "Magic Link Expired",
+			"booking-confirmed" => "Booking Confirmed (Instant Pay)",
+			"booking-request-received" => "Booking Request Received",
+		];
+	}
+
+	public function getImage($image)
+	{
+		if ($image != "") {
+			if (is_file(public_path($image))) {
+				return $image;
+			}
+		}
+		return 'uploads/no-image.jpg';
+	}
+}

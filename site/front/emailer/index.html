@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emailer</title>
+
+    <style>
+        .clearfix:after {
+         content: "";
+         display: table;
+         clear: both;
+       }
+       body {
+         width: 100%;  
+         height: 100%; 
+         margin: 0 auto; 
+         color: #000;
+         background: #FFFFFF; 
+         font-family: Arial, sans-serif; 
+         font-size: 12px; 
+         font-family: Arial;
+       }
+       a{
+           color:#000;
+           text-decoration: none;
+       }
+       p{
+           margin-top: 0px;
+           margin-bottom: 0px;
+           line-height: 1.5;
+           font-weight: 500;
+       }
+       table{
+           border-spacing: 0px;
+           width:100%;
+       }
+       .main-area{
+           width:700px;
+           margin: auto;
+       }
+       table.header {
+    padding: 5px 0;
+        }
+        table.header td{
+            font-weight: bold;
+        }
+       td.logo {
+        text-align: center;
+        }
+        td.logo img{
+            width: 120px;
+        }
+        td.date {
+    text-align: right;
+    }
+    .pro-area {
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    padding: 10px 15px;
+    padding-bottom: 0px;
+}
+    table.pro-sec {
+    padding: 10px 0;
+    padding-bottom: 20px;
+}
+td.pro-img {
+    width: 45%;
+    text-align: right;
+    padding-right: 10px;
+}
+td.pro-detail {
+    width: 55%;
+    vertical-align: top;
+}
+p.pro-type {
+    font-size: 11px;
+}
+h1.pro-name {
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+}
+p.pro-value {
+    font-size: 13px;
+}
+td.pro-img img {
+    width: 100px;
+    border-radius: 8px;
+    height: 85px;
+    object-fit: cover;
+}
+.trip-sec {
+    padding: 20px 0;
+    border-top: 1px solid #dddddd;
+}
+h2 {
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    margin-bottom: 15px;
+}
+p.guest-head {
+    margin-top: 10px;
+}
+.price {
+    padding: 20px 0;
+    border-top: 1px solid #dddddd;
+}
+table.prices td{
+    padding-bottom: 15px;
+}
+tr.total td, tr.discount td, tr.amt-discount td{
+    padding-top: 15px;
+    border-top: 1px solid #dddddd;
+}
+td.amt {
+    text-align: right;
+}
+table.prices span {
+    display: block;
+    margin-top: 3px;
+} 
+table.footer img{
+    width: 15px;
+    display: inline-block !important;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+}  
+table.footer td.addr {
+    text-align: right;
+} 
+table.footer td.mail, table.footer td.web-address {
+    text-align: center;
+}
+table.footer b, table.copyright td{
+font-size: 11px;
+}
+table.footer td{
+    align-items: center;
+
+}
+
+table.footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+           </style>
+</head>
+<body>
+    <div class="main-area">
+        <table class="header">
+            <tr>
+                <td class="invoice">Invoice No : 12345</td>
+                <td class="logo"><a href="#"><img src="./images/logo.png" alt="Logo"></a></td>
+                <td class="date">Date : 14-08-2023</td>
+            </tr>
+        </table>
+        <div class="pro-area">
+        <table class="pro-sec">
+            <tr>
+                <td class="pro-img">
+                    <img src="./images/pro.webp" alt="Property">
+                </td>
+                <td class="pro-detail">
+                    <p class="pro-type">Entire Home</p>
+                    <h1 class="pro-name"><b>Big Cahoona Hill</b></h1>
+                    <p class="pro-value">4 Sleeps · 3 bedrooms · 3 bathrooms</p>
+                </td>
+            </tr>
+        </table>
+        <div class="trip-sec">
+            <h2>Your trip</h2>
+            <table class="trip-detail">
+                <td class="trip-date">
+                    <p class="date-head"><b>Dates</b></p>
+                    <p class="tour-date">January 14, 2023 - January 24, 2023</p>
+                    <p class="guest-head"><b>Guests</b></p>
+                    <p class="guest-type">3 Guests (3 Adults, 0 Chid)</p>
+                </td>
+                <td class="renter-detail">
+                    <p><b>Renter Details</b></p>
+                    <p><b>Name :</b> Kevin Smith</p>
+                    <p><b>Email :</b> kevin@webdesignvr.com</p>
+                    <p><b>Mobile :</b> 123456789</p>
+                </td>
+            </table>
+        </div>
+        <div class="price">
+            <h2>Price details</h2>
+            <table class="prices">
+                <tr class="price-per-night">
+                    <td>Price Per Night x 27 nights</td>
+                    <td class="amt">$3,240.00</td>
+                </tr>
+                <tr class="additional-fee">
+                    <td>Additional Guest Fee <span>(27 nights * $50 * 1 Guests)</span></td>
+                    <td class="amt">$1,350.00</td>
+                </tr>
+                <tr class="cleaning-fee">
+                    <td>Cleaning Fee</td>
+                    <td class="amt">$100.00</td>
+                </tr>
+                <tr class="tax">
+                    <td>Tax (10.00%)</td>
+                    <td class="amt">$469.00</td>
+                </tr>
+                <tr class="admin-fee">
+                    <td>Admin Fee</td>
+                    <td class="amt">$200.00</td>
+                </tr>
+                <tr class="total">
+                    <td><b>Total :</b></td>
+                    <td class="amt"><b>$5,359.00</b></td>
+                </tr>
+                <tr class="discount">
+                    <td><b>Discount (Book Now) :</b></td>
+                    <td class="amt"><b>- $1,071.80</b></td>
+                </tr>
+                <tr class="amt-discount">
+                    <td><b>Total Amount After Discount :</b></td>
+                    <td class="amt"><b>$4,287.20</b></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+        <table class="footer">
+            <tr>
+                <td class="ph"><img src="./images/telephone.png" alt="Phone"> <b>123 4560 7890</b></td>
+                <td class="mail"><img src="./images/envelope.png" alt="Email"> <b>youremail@gmail.com</b></td>
+                <td class="web-address"><img src="./images/web.png" alt="Web Address"> <b>www.yourwebaddress.com</b></td>
+                <td class="addr"><img src="./images/pin.png" alt="Address"> <b>North Carolina, United States</b></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

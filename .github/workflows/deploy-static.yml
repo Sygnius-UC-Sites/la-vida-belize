@@ -1,4 +1,4 @@
-name: Deploy static staging
+name: Deploy Laravel staging
 
 on:
   push:
@@ -7,12 +7,12 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-static-${{ github.ref }}
+  group: deploy-laravel-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Deploy to CloudPanel staging
+    name: Deploy Laravel to CloudPanel staging
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
 
@@ -20,13 +20,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Validate static site
+      - name: Validate Laravel site
         shell: bash
         run: |
-          test -f index.html
-          test -d css
-          test -d js
-          grep -q 'La Vida Belize' index.html
+          set -euo pipefail
+          test -f site/index.php
+          test -f site/projects/artisan
+          test -f site/projects/composer.lock
+          test -d site/css
+          test -d site/js
+          test -d site/assets
+          grep -q 'La Vida Belize' site/projects/resources/views/front/layouts/brad.blade.php
+          grep -q 'usePublicPath' site/projects/bootstrap/app.php
 
       - name: Start SSH agent
         uses: webfactory/ssh-agent@v0.9.0
@@ -39,7 +44,7 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' '31.170.165.106 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGOnV0w+MN94o87demmBNK8ee9fJD6Dc3OB6c7GIl5eQ' >> ~/.ssh/known_hosts
 
-      - name: Ensure CloudPanel site
+      - name: Ensure CloudPanel site user
         shell: bash
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -79,7 +84,21 @@ jobs:
           chmod 600 "/home/${SITE_USER}/.ssh/authorized_keys"
           REMOTE
 
-      - name: Deploy files
+      - name: Convert CloudPanel vhost to PHP and ensure MySQL
+        shell: bash
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
+          DEPLOY_APP_PATH: ${{ vars.DEPLOY_APP_PATH }}
+        run: |
+          set -euo pipefail
+          scp -o StrictHostKeyChecking=yes .github/scripts/cloudpanel-laravel-remote.sh \
+            "root@$DEPLOY_HOST:/tmp/cloudpanel-laravel-remote.sh"
+          ssh -o StrictHostKeyChecking=yes "root@$DEPLOY_HOST" \
+            "chmod 700 /tmp/cloudpanel-laravel-remote.sh && DEPLOY_USER='$DEPLOY_USER' DEPLOY_APP_PATH='$DEPLOY_APP_PATH' DEPLOY_DOMAIN='$DEPLOY_DOMAIN' /tmp/cloudpanel-laravel-remote.sh prepare"
+
+      - name: Deploy Laravel files
         shell: bash
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -90,19 +109,50 @@ jobs:
           rsync -rlz --delete --no-perms --omit-dir-times \
             --exclude ".git/" \
             --exclude ".github/" \
-            --exclude ".gitignore" \
-            --exclude "README.md" \
-            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APP_PATH/"
+            --exclude ".env" \
+            --exclude "projects/.env" \
+            --exclude "vendor/" \
+            --exclude "projects/vendor/" \
+            --exclude "node_modules/" \
+            --exclude "projects/node_modules/" \
+            --exclude "uploads/" \
+            --exclude "projects/storage/logs/" \
+            --exclude "projects/storage/debugbar/" \
+            --exclude "projects/storage/framework/cache/" \
+            --exclude "projects/storage/framework/sessions/" \
+            --exclude "projects/storage/framework/views/" \
+            --exclude "projects/bootstrap/cache/*.php" \
+            --exclude "front/assets/bootstrap-5.3.0/" \
+            ./site/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APP_PATH/"
+          rsync -rlz --delete --no-perms --omit-dir-times \
+            ./content/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APP_PATH/content/"
+          rsync -rlz --no-perms --omit-dir-times \
+            ./database/master-clean.sql \
+            "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APP_PATH/projects/database/master-clean.sql"
 
-      - name: Reset site permissions
+      - name: Write staging .env
+        shell: bash
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
+          DEPLOY_APP_PATH: ${{ vars.DEPLOY_APP_PATH }}
+        run: |
+          ssh -o StrictHostKeyChecking=yes "root@$DEPLOY_HOST" \
+            "DEPLOY_USER='$DEPLOY_USER' DEPLOY_APP_PATH='$DEPLOY_APP_PATH' DEPLOY_DOMAIN='$DEPLOY_DOMAIN' /tmp/cloudpanel-laravel-remote.sh env"
+
+      - name: Install Composer dependencies and boot Laravel
         shell: bash
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_APP_PATH: ${{ vars.DEPLOY_APP_PATH }}
         run: |
-          ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_APP_PATH' && clpctl system:permissions:reset --directories=755 --files=644 --path=." || \
-          ssh "root@$DEPLOY_HOST" "chown -R '${{ secrets.DEPLOY_USER }}:${{ secrets.DEPLOY_USER }}' '$DEPLOY_APP_PATH' && find '$DEPLOY_APP_PATH' -type d -exec chmod 755 {} + && find '$DEPLOY_APP_PATH' -type f -exec chmod 644 {} +"
+          set -euo pipefail
+          scp -o StrictHostKeyChecking=yes .github/scripts/cloudpanel-laravel-boot.sh \
+            "root@$DEPLOY_HOST:/tmp/cloudpanel-laravel-boot.sh"
+          ssh -o StrictHostKeyChecking=yes "root@$DEPLOY_HOST" \
+            "chmod 700 /tmp/cloudpanel-laravel-boot.sh && DEPLOY_USER='$DEPLOY_USER' DEPLOY_APP_PATH='$DEPLOY_APP_PATH' /tmp/cloudpanel-laravel-boot.sh"
 
       - name: Install Let's Encrypt certificate
         shell: bash
@@ -121,15 +171,21 @@ jobs:
           ssh -o StrictHostKeyChecking=yes "root@$DEPLOY_HOST" \
             "clpctl lets-encrypt:install:certificate --domainName='$DOMAIN'"
 
-      - name: Verify public staging URL
+      - name: Verify public Laravel staging URL
         shell: bash
         env:
           DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
-          DEPLOY_HEALTH_ENDPOINT: ${{ vars.DEPLOY_HEALTH_ENDPOINT }}
         run: |
           set -euo pipefail
+          DOMAIN="${DEPLOY_DOMAIN%/}"
+          fetch() {
+            local path="$1"
+            local out="$2"
+            curl -fsSL --max-time 30 "${DOMAIN}${path}" -o "$out"
+            test -s "$out"
+          }
           for attempt in 1 2 3 4 5 6; do
-            if curl -fsS "$DEPLOY_DOMAIN$DEPLOY_HEALTH_ENDPOINT" -o /tmp/homepage.html; then
+            if curl -fsSL --max-time 20 "${DOMAIN}/" -o /tmp/homepage.html; then
               break
             fi
             echo "HTTPS not ready yet (attempt ${attempt}); waiting"
@@ -137,5 +193,19 @@ jobs:
           done
           test -s /tmp/homepage.html
           grep -q 'La Vida Belize' /tmp/homepage.html
-          curl -fsS "$DEPLOY_DOMAIN/css/styles.css" -o /dev/null
-          curl -fsS "$DEPLOY_DOMAIN/js/main.js" -o /dev/null
+          grep -q '/properties' /tmp/homepage.html
+          if grep -q 'href="properties.html"' /tmp/homepage.html; then
+            echo "Homepage still looks like the old static HTML tree" >&2
+            exit 1
+          fi
+          fetch /properties /tmp/properties.html
+          grep -qi 'casa\|casita\|studio\|La Vida' /tmp/properties.html
+          fetch /stay/la-vida-belize-casa /tmp/casa.html
+          grep -qi 'La Vida' /tmp/casa.html
+          fetch /login /tmp/login.html
+          grep -qi 'login-email\|Sign in\|password' /tmp/login.html
+          curl -fsSL --max-time 20 "${DOMAIN}/css/styles.css" -o /dev/null
+          curl -fsSL --max-time 20 "${DOMAIN}/js/main.js" -o /dev/null
+          curl -fsSL --max-time 20 "${DOMAIN}/vendor/adminlte/dist/css/adminlte.min.css" -o /tmp/adminlte.css
+          grep -F '.dropdown-menu' /tmp/adminlte.css
+          echo "Laravel staging checks passed"

@@ -1,0 +1,30 @@
+$(document).ready(function(){
+  $(".edit").click(function(){
+    $(".date-box").slideDown();
+    $(".edit").css("visibility","hidden");
+  });
+});
+$(document).ready(function(){
+  $(".date-box>.btn-close").click(function(){
+    $(".date-box").slideUp();
+    $(".edit").css("visibility","visible");
+  });
+});
+$(document).ready(function(){
+  $(".edit-guest").click(function(){
+    $(".guest-box").slideDown();
+    $(".edit-guest").css("visibility","hidden");
+  });
+});
+$(document).ready(function(){
+  $(".guest-box>.btn-close").click(function(){
+    $(".guest-box").slideUp();
+     $(".edit-guest").css("visibility","visible");
+  });
+});
+$(document).ready(function(){
+  $(".cancl").click(function(){
+    $(".guest-box").slideUp();
+     $(".edit-guest").css("visibility","visible");
+  });
+});

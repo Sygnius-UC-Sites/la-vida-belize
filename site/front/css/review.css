@@ -1,0 +1,68 @@
+
+.title-heading {
+    font-size: 38px;
+    color: var(--btn-color);
+    font-weight: 700;
+}
+
+
+.bubble-box {
+    background: #c5ddf4;
+    border-radius: 22px;
+    padding: 25px;
+    position: relative;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    height: auto;
+}
+
+.bubble-box::after {
+    content: "";
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 23px;
+    background: #c5ddf4;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+.quote-icon {
+    font-size: 26px;
+    color: #7da7ce;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.stars {
+    color: #f5b308;
+    font-size: 16px;
+}
+
+.bubble-content p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 10px;
+    /* height: 150px; */
+    /* overflow: hidden; */
+}
+
+
+.review-head {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+.date-span {
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+}

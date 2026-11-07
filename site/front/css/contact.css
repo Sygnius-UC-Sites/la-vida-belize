@@ -1,0 +1,39 @@
+/* === Contact Page === */
+@media (max-width: 991px) {
+    .contact-info {
+        margin: 40px auto !important;
+        padding: 0 20px !important;
+        gap: 40px !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column !important;
+        align-items: center !important;
+        margin: 10px auto !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .contact-info div {
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .contact-info h5 {
+        font-size: 22px !important;
+    }
+
+    .contact-info p {
+        font-size: 1rem !important;
+        text-align: center !important;
+    }
+
+    .contact-info i {
+        display: inline-block !important;
+        margin-bottom: 5px !important;
+    }
+}

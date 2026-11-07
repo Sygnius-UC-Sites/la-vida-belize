@@ -1,0 +1,250 @@
+/* JC theme overrides for Easepick. Variable list: https://easepick.com/sections/customization
+   Easepick's host is a custom element <easepick-wrapper>, not a div.class —
+   so the element selector (no leading dot) is what we need. */
+easepick-wrapper,
+.easepick-wrapper {
+    /* Neutral premium palette: dark for selection, soft grey for in-range,
+       standard greys for locked. Replaces the previous gold accent which
+       clashed with the new orange-and-dark booking-flow look. */
+    --primary-color: #111827;
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f7f7f7;
+    --color-fg-primary: #111827;
+    --color-fg-secondary: #6b7280;
+    --color-fg-locked: #c0c4ca;
+    --color-bg-locked: #ffffff;
+    --color-fg-selected: #ffffff;
+    --color-bg-selected: #111827;
+    --color-fg-inrange: #111827;
+    --color-bg-inrange: #f3f4f6;
+    /* Match the tooltip bubble + its built-in triangle pointer. Easepick's
+       stock CSS draws the pointer with `border-top: 4px solid var(--color-bg-tooltip)`
+       — without this override the pointer rendered white over a dark bubble. */
+    --color-bg-tooltip: #111827;
+    --color-fg-tooltip: #ffffff;
+    --font-family: inherit;
+    --day-width: 40px;
+    --day-height: 40px;
+    --radius: 12px;
+
+    /* Stack the picker above subsequent sections when its host's parent
+       creates a stacking context. */
+    z-index: 99999 !important;
+    position: relative !important;
+}
+
+/* Common section ancestors (.hero, .inner-banner, .banner) often use
+   `overflow: hidden` to clip background visuals. That also clips Easepick
+   popups, since they're positioned absolutely inside the section. Force
+   visible overflow site-wide so pickers can extend past their parent.
+   The original visuals are sized to fill these containers and don't need
+   clipping. */
+.hero,
+.inner-banner,
+.banner-section,
+.banner {
+    overflow: visible !important;
+}
+
+/* The home-hero booking bar is too narrow (max-width: 900px) for the
+   text-input layout. Widen it so the four fields + button fit cleanly. */
+.booking-bar {
+    max-width: 1200px !important;
+    width: min(1200px, 95%) !important;
+}
+
+/* Inputs bound to the picker should look clickable, not "disabled-grey".
+   Browsers grey out `readonly` text inputs by default; we don't want that
+   here — these inputs ARE the trigger for the picker. */
+input[data-jc-datepicker]:not([disabled]):not(.jc-datepicker-locked),
+input[data-jc-datepicker] ~ input[readonly] {
+    cursor: pointer;
+    background-color: transparent;
+    color: inherit;
+    opacity: 1;
+}
+
+/* Strip line-through from every check-in / check-out input across the
+   site. Some legacy CSS (datepicker.css for the previous library) leaked
+   `text-decoration: line-through` onto the inputs themselves on certain
+   pages. Cover both attribute-based selectors AND the named inputs so
+   the rule wins regardless of where the leak is coming from. */
+input[data-jc-datepicker],
+input[data-jc-datepicker] ~ input[readonly],
+input[name="check_in"],
+input[name="check_out"],
+input[name="checkin"],
+input[name="checkout"] {
+    text-decoration: none !important;
+}
+
+/* Native `<input type="date">` had a narrow intrinsic width sized to the
+   date display (~110-150px). A text input defaults to size=20 chars (~200px),
+   which overflows tight flex layouts like the home-hero `.booking-bar`.
+   Constrain the picker's text inputs and their paired check-out inputs so
+   they respect the parent's allotted width. */
+input[data-jc-datepicker],
+input[data-jc-datepicker] ~ input[readonly],
+.booking-bar__field,
+.check-avail-input,
+.date-box input[readonly] {
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Mobile centered modal */
+@media (max-width: 640px) {
+    .easepick-wrapper.jc-mobile {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 9999;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Disabled state — used on checkout.blade.php where the input is read-only */
+input[data-jc-datepicker][disabled],
+input[data-jc-datepicker][readonly].jc-datepicker-locked {
+    background-color: #f7f7f7;
+    cursor: not-allowed;
+}
+
+/* Uniform "Clear dates" pill — drop a `<button class="jc-clear-dates"
+   data-target="#some-input">Clear dates</button>` next to any picker input
+   and jc-datepicker.js auto-wires it (visibility + click → clear). Used on
+   home, contact, /stays listing, condos search, etc. so every picker page
+   has the same UX. */
+.jc-clear-dates {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 8px 0 0;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #d6d6dc;
+    border-radius: 999px;
+    color: #4b5563;
+    font-family: inherit;
+    font-size: .82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color .15s, color .15s, background .15s;
+}
+.jc-clear-dates::before { content: "✕"; font-size: .75rem; line-height: 1; }
+.jc-clear-dates:hover { border-color: #d9a24a; color: #d9a24a; }
+.jc-clear-dates[hidden] { display: none; }
+
+/* === Airbnb-style day polish ===
+   Easepick injects this stylesheet INSIDE its Shadow DOM (via themeCss),
+   so these selectors target the picker's internal markup directly without
+   shadow piercing. Class names below mirror Easepick's emitted DOM
+   (.day.unit, .locked, .in-range, .start, .end, .today). */
+
+/* Smooth all day-cell state transitions so hovering across the calendar
+   feels continuous, not flickery (Airbnb-style). */
+.day.unit {
+    transition: background-color .15s ease, color .15s ease, border-radius .15s ease;
+}
+
+/* Available days — clean hover */
+.day.unit:not(.locked):hover {
+    background-color: #f0f0f0 !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+}
+
+/* Locked / unavailable — strike-through and dim, no hover */
+.day.unit.locked {
+    color: var(--color-fg-locked, #b8b8b8) !important;
+    text-decoration: line-through !important;
+    cursor: not-allowed !important;
+}
+.day.unit.locked:hover {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+}
+
+/* Today */
+.day.unit.today:not(.start):not(.end) {
+    font-weight: 700 !important;
+}
+
+/* In-range — soft fill, no rounded edges (so the strip reads as continuous) */
+.day.unit.in-range:not(.locked) {
+    background-color: var(--color-bg-inrange, #faf2e6) !important;
+    border-radius: 0 !important;
+}
+
+/* Start / end — bold gold pill. Forced over `.locked` styling because a
+   back-to-back date can carry both classes (it's the existing booking's
+   checkout AND the new guest's check-in). */
+.day.unit.start,
+.day.unit.end,
+.day.unit.locked.start,
+.day.unit.locked.end {
+    background-color: var(--color-bg-selected, #111827) !important;
+    color: var(--color-fg-selected, #ffffff) !important;
+    border-radius: 50% !important;
+    font-weight: 600;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+/* Start adjoining the in-range strip — keep the pill round on the left,
+   but blend its right side into the strip */
+.day.unit.start:not(.end) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+.day.unit.end:not(.start) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+/* Single-day selection (start === end) — full pill */
+.day.unit.start.end {
+    border-radius: 50% !important;
+}
+
+/* Picker-internal "Clear dates" link (Airbnb-style). Bottom-RIGHT inside
+   the picker container, sitting on the same white bg as the calendars so
+   the page underneath doesn't show through. Range pickers only. */
+.container.range-plugin {
+    padding-bottom: 32px;
+    background-color: var(--color-bg-default, #fff);
+    border-radius: var(--radius, 12px);
+}
+.container.range-plugin > main {
+    background-color: var(--color-bg-default, #fff);
+}
+.jc-picker-clear {
+    position: absolute;
+    right: 14px;
+    bottom: 8px;
+    background: transparent;
+    border: 0;
+    padding: 4px 6px;
+    color: #111827;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    z-index: 2;
+    font-family: inherit;
+}
+.jc-picker-clear:hover { color: #d9a24a; }
+
+/* === Tooltip (Easepick RangePlugin tooltip rendered while hovering) ===
+   Easepick draws its own triangle pointer via `:before` (shadow) and `:after`
+   (bg fill) using `--color-bg-tooltip`. We just override the bubble's font /
+   padding here — leaving the stock pointer geometry alone so the dark bubble
+   and its triangle stay in sync. */
+.range-plugin-tooltip {
+    padding: 5px 10px !important;
+    font-size: .78rem !important;
+    font-weight: 600 !important;
+    letter-spacing: .01em !important;
+}

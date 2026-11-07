@@ -1,0 +1,13 @@
+{
+  "restore_verified_at": "2026-06-13T12:00:00Z",
+  "backup_sha256": "replace-with-the-64-character-sha256-of-the-restored-backup",
+  "source_backup": "encrypted-offsite-backup-filename.sql.enc",
+  "restored_database": "base_restore_verify_20260613120000",
+  "verified_by": "operator-name",
+  "checks": {
+    "schema_loaded": true,
+    "migrations_present": true,
+    "properties_count_verified": true,
+    "bookings_count_verified": true
+  }
+}

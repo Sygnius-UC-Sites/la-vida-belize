@@ -1,0 +1,4 @@
+/* === Gallery Page === */
+.gallery-grid.filterable {
+    grid-template-columns: repeat(3, 1fr);
+}

@@ -1,0 +1,208 @@
+/* === Attraction List Page === */
+
+/* Flexbox grid replacing Bootstrap .row / .col-lg-6 */
+.atr-row-inner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.atr-row-inner > .atr-img-wrap {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
+
+.atr-row-inner > .atr-info {
+    flex: 1;
+}
+
+.atr-detail-row.row-reverse .atr-row-inner {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 991px) {
+    .atr-row-inner {
+        flex-direction: column !important;
+        gap: 28px;
+    }
+
+    .atr-row-inner > .atr-img-wrap {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Design styles */
+.atr-detail-section .section-eyebrow,
+.atr-tag {
+    font-family: Jost, sans-serif;
+    text-transform: uppercase;
+}
+
+.atr-link,
+.atr-tag {
+    text-transform: uppercase;
+}
+
+.atr-detail-section {
+    padding: 80px 0 60px;
+    background: var(--cream);
+}
+
+.atr-detail-section .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.atr-detail-section .section-eyebrow {
+    font-size: .68rem;
+    letter-spacing: .2em;
+    color: var(--color-gold, #c5a46a);
+    margin-bottom: 6px;
+    display: block;
+    text-align: center;
+}
+
+.atr-detail-section .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    color: var(--bg-dark);
+    margin-bottom: 48px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.atr-detail-row {
+    border-bottom: 1px solid var(--bg-dark);
+    padding: 52px 0;
+    transition: background .3s;
+}
+
+.atr-detail-row:first-of-type {
+    padding-top: 0;
+}
+
+.atr-detail-row:last-of-type {
+    border-bottom: none;
+}
+
+.atr-img-wrap {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    height: 320px;
+}
+
+.atr-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .65s;
+}
+
+.atr-detail-row:hover .atr-img-wrap img {
+    transform: scale(1.05);
+}
+
+.atr-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--color-gold, #c5a46a);
+    color: #0e0c0a;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.atr-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 12px;
+}
+
+.atr-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 14px;
+    line-height: 1.15;
+}
+
+.atr-desc,
+.atr-link,
+.atr-meta-item {
+    font-family: Jost, sans-serif;
+}
+
+.atr-desc {
+    font-size: .875rem;
+    color: var(--bg-dark);
+    line-height: 1.85;
+    margin-bottom: 24px;
+    max-width: 52ch;
+}
+
+.atr-link,
+.atr-link:hover {
+    color: var(--color-gold, #c5a46a);
+}
+
+.atr-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(197, 164, 106, .35);
+    padding-bottom: 3px;
+    transition: gap .25s, border-color .25s;
+    width: fit-content;
+}
+
+.atr-link:hover {
+    gap: 14px;
+    border-color: var(--color-gold, #c5a46a);
+}
+
+.atr-link svg {
+    transition: transform .25s;
+}
+
+.atr-link:hover svg {
+    transform: translateX(4px);
+}
+
+@media (max-width: 991px) {
+    .atr-img-wrap {
+        height: 260px;
+        margin-bottom: 28px;
+    }
+
+    .atr-info {
+        padding: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .atr-detail-section {
+        padding: 60px 0 40px;
+    }
+
+    .atr-img-wrap {
+        height: 220px;
+    }
+
+    .atr-detail-row {
+        padding: 40px 0;
+    }
+}

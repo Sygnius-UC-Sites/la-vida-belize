@@ -1,0 +1,29 @@
+/* === FAQ Page === */
+.faq-page-section {
+    background: var(--cream);
+    padding: 80px 0 100px;
+}
+.faq-page-section .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.faq-page-eyebrow {
+    display: block;
+    font-family: Jost, sans-serif;
+    font-size: .68rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 10px;
+}
+.faq-page-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    color: var(--bg-dark);
+    text-align: center;
+    margin-bottom: 56px;
+    line-height: 1.1;
+}
