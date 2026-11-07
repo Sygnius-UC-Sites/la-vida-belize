@@ -97,14 +97,24 @@ ensure_php_vhost() {
   local backup="${vhost}.pre-laravel.bak"
 
   if grep -q 'fastcgi_pass' "$vhost" && grep -q 'index.php' "$vhost"; then
-    if grep -q "root ${APP_PATH}" "$vhost" || grep -q "root ${APP_PATH};" "$vhost"; then
-      log "Nginx vhost already serves PHP from ${APP_PATH}"
-      return
-    fi
-    sed -i.bak-root -E "s#^[[:space:]]*root[[:space:]].*;#  root ${APP_PATH};#" "$vhost"
+    python3 - "$vhost" "$APP_PATH" <<'PY'
+import re, sys
+path, root = sys.argv[1], sys.argv[2]
+text = open(path, encoding="utf-8").read()
+text = text.replace("try_files $uri $uri/ =404;", "try_files $uri $uri/ /index.php?$query_string;")
+text = re.sub(r"^(\s*)root\s+.+;$", rf"\1root {root};", text, count=1, flags=re.M)
+if "try_files $uri $uri/ /index.php" not in text:
+    text = re.sub(
+        r"(location\s+/\s*\{)",
+        r"\1\n    try_files $uri $uri/ /index.php?$query_string;",
+        text,
+        count=1,
+    )
+open(path, "w", encoding="utf-8").write(text)
+PY
     nginx -t
     systemctl reload nginx || service nginx reload
-    log "Updated nginx root to ${APP_PATH}"
+    log "Ensured Laravel try_files and PHP root ${APP_PATH}"
     return
   fi
 

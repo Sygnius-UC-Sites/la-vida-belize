@@ -184,11 +184,12 @@ jobs:
             curl -fsSL --max-time 30 "${DOMAIN}${path}" -o "$out"
             test -s "$out"
           }
-          for attempt in 1 2 3 4 5 6; do
-            if curl -fsSL --max-time 20 "${DOMAIN}/" -o /tmp/homepage.html; then
+          for attempt in 1 2 3 4 5 6 7 8; do
+            if curl -fsSL --max-time 20 "${DOMAIN}/" -o /tmp/homepage.html \
+              && curl -fsSL --max-time 20 "${DOMAIN}/properties" -o /tmp/properties.html; then
               break
             fi
-            echo "HTTPS not ready yet (attempt ${attempt}); waiting"
+            echo "Laravel routes not ready yet (attempt ${attempt}); waiting"
             sleep 5
           done
           test -s /tmp/homepage.html
@@ -198,7 +199,7 @@ jobs:
             echo "Homepage still looks like the old static HTML tree" >&2
             exit 1
           fi
-          fetch /properties /tmp/properties.html
+          test -s /tmp/properties.html
           grep -qi 'casa\|casita\|studio\|La Vida' /tmp/properties.html
           fetch /stay/la-vida-belize-casa /tmp/casa.html
           grep -qi 'La Vida' /tmp/casa.html
